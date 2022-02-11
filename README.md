@@ -20,6 +20,5 @@ My name is Sarah Fuchi and welcome to my Portfolio! A little bit about me. I did
 
 ### Contact Me
 
-| Contact Method |  |
 | Email | sarahfuchi@gmail.com |
 | LinkedIn | https://www.linkedin.com/in/sarahfuchi/ |
