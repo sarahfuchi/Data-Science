@@ -1,4 +1,4 @@
-![titanic.png](/images/titanic/titanic.png)
+![titanic.png](/images/titanic/titanic0.png)
 
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
@@ -93,9 +93,9 @@ scikit-learn version: 0.24.2
 7. The *SibSp* represents number of related siblings/spouse aboard and *Parch* represents number of related parents/children aboard. Both are discrete quantitative datatypes. This can be used for feature engineering to create a family size and is alone variable.
 8. The *Cabin* variable is a nominal datatype that can be used in feature engineering for approximate position on ship when the incident occurred and SES from deck levels. However, since there are many null values, it does not add value and thus is excluded from analysis.
 
-![pre-view_dataframe.jpg](/images/titanic/pre-view_dataframe.jpg)
+![pre-view_dataframe.jpg](/images/titanic/titanic1.jpg)
 
-![dataframe.jpg](/images/titanic/dataframe.jpg)
+![dataframe.jpg](/images/titanic/titanic2.jpg)
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
@@ -109,43 +109,43 @@ Exploration is key after cleaning and organizing the dataset. I worked on EDA to
 
 Visualizing the quantitative data on graph:
 
-![Titanic_Project_28_1.png](/images/titanic/Titanic_Project_28_1.png)
+![Titanic_Project_28_1.png](/images/titanic/titanic3.png)
 
 Looking at individual features by survival:
 
-![Titanic_Project_29_1.png](/images/titanic/Titanic_Project_29_1.png)
+![Titanic_Project_29_1.png](/images/titanic/titanic4.png)
 
 I then compared class and a 2nd feature:
 
-![Titanic_Project_30_1.png](/images/titanic/Titanic_Project_30_1.png)
+![Titanic_Project_30_1.png](/images/titanic/titanic5.png)
 
 Followed by comparing sex and a 2nd feature:
 
-![Titanic_Project_31_1.png](/images/titanic/Titanic_Project_31_1.png)
+![Titanic_Project_31_1.png](/images/titanic/titanic6.png)
 
 Family size factor with sex & survival comparison and class factor with sex & survival comparison:
 
-![Titanic_Project_32_1.png](/images/titanic/Titanic_Project_32_1.png)
+![Titanic_Project_32_1.png](/images/titanic/titanic7.png)
 
 Embark data visualization with class, sex, and survival:
 
-![Titanic_Project_33_1.png](/images/titanic/Titanic_Project_33_1.png)
+![Titanic_Project_33_1.png](/images/titanic/titanic8.png)
 
 Distributions of age of passengers who survived or did not survive:
 
-![Titanic_Project_34_1.png](/images/titanic/Titanic_Project_34_1.png)
+![Titanic_Project_34_1.png](/images/titanic/titanic9.png)
 
 Histogram comparison of sex, class, and age by survival:
 
-![Titanic_Project_35_1.png](/images/titanic/Titanic_Project_35_1.png)
+![Titanic_Project_35_1.png](/images/titanic/titanic10.png)
 
 Pairplot to see the entire dataset:
 
-![Titanic_Project_36_1.png](/images/titanic/Titanic_Project_36_1.png)
+![Titanic_Project_36_1.png](/images/titanic/titanic11.png)
 
 Heatmap of the entire dataset:
 
-![Titanic_Project_37_0.png](/images/titanic/Titanic_Project_37_0.png)
+![Titanic_Project_37_0.png](/images/titanic/titanic12.png)
 
 <a id="ch7"></a>
 # Step 5: Data Modelling
@@ -165,11 +165,11 @@ I will use supervised learning classification algorithm for predicting the binar
 ### Which Machine Learning Algorithm (MLA) to choose ?
 In order to define that I worked on some performance analysis for different models:
 
-![compare_mla.jpg](/images/titanic/compare_mla.jpg)
+![compare_mla.jpg](/images/titanic/titanic13.jpg)
 
 Then let's see the barplot:
 
-![Titanic_Project_39_1.png](/images/titanic/Titanic_Project_39_1.png)
+![Titanic_Project_39_1.png](/images/titanic/titanic14.png)
 
 <a id="ch8"></a>
 ## 5.1 Evaluate Model Performance
@@ -177,36 +177,21 @@ After some data pre-processing, analysis, and machine learning algorithms (MLA),
 
 
 ### Somethings to consider: ###
-Our accuracy is increasing, but can we do better? Are there any signals in our data? To illustrate this, we're going to build our own decision tree model, because it is the easiest to conceptualize and requires simple addition and multiplication calculations. When creating a decision tree, you want to ask questions that segment your target response, placing the survived/1 and dead/0 into homogeneous subgroups. This is part science and part art, so let's just play the 21-question game to show you how it works. If you want to follow along on your own, download the train dataset and import into Excel. Create a pivot table with survival in the columns, count and % of row count in the values, and the features described below in the rows.
+Our accuracy is increasing, but can we do better? I looked more correlations to improve the data.
 
-By creating subgroups using a decision tree model to get survived/1 in one bucket and dead/0 in another bucket, I may be able to improve this model. I will do some generalziation here, if the majority or 50% or more survived, then everybody in our subgroup survived(1), but if 50% or less survived then if everybody in our subgroup died (0). Also, I will stop if the subgroup is less than 10 and/or my model accuracy plateaus or decreases. 
-
-***Question 1: Were you on the Titanic?*** If Yes, then majority (62%) died. Note our sample survival is different than our population of 68%. Nonetheless, if we assumed everybody died, our sample accuracy is 62%.
-
-***Question 2: Are you male or female?*** Male, majority (81%) died. Female, majority (74%) survived. Giving us an accuracy of 79%.
-
-***Question 3A (going down the female branch with count = 314): Are you in class 1, 2, or 3?*** Class 1, majority (97%) survived and Class 2, majority (92%) survived. Since the dead subgroup is less than 10, we will stop going down this branch. Class 3, is even at a 50-50 split. No new information to improve our model is gained.
-
-***Question 4A (going down the female class 3 branch with count = 144): Did you embark from port C, Q, or S?*** We gain a little information. C and Q, the majority still survived, so no change. Also, the dead subgroup is less than 10, so we will stop. S, the majority (63%) died. So, we will change females, class 3, embarked S from assuming they survived, to assuming they died. Our model accuracy increases to 81%. 
-
-***Question 5A (going down the female class 3 embarked S branch with count = 88):*** So far, it looks like we made good decisions. Adding another level does not seem to gain much more information. This subgroup 55 died and 33 survived, since majority died we need to find a signal to identify the 33 or a subgroup to change them from dead to survived and improve our model accuracy. We can play with our features. One I found was fare 0-8, majority survived. It's a small sample size 11-9, but one often used in statistics. We slightly improve our accuracy, but not much to move us past 82%. So, we'll stop here.
-
-***Question 3B (going down the male branch with count = 577):*** Going back to question 2, we know the majority of males died. So, we are looking for a feature that identifies a subgroup that majority survived. Surprisingly, class or even embarked didn't matter like it did for females, but title does and gets us to 82%. Guess and checking other features, none seem to push us past 82%. So, we'll stop here for now.
-
-Early on with little information I got to 82% accuracy. I will work on implementing these improvements to see if I can do better than 82%.
 
 This is the result of the model with improvements:
 
 
-![handmade_model_score.jpg](/images/titanic/handmade_model_score.jpg)
+![handmade_model_score.jpg](/images/titanic/titanic15.jpg)
 
 The confusion matrix without normalization:
 
-![Titanic_Project_44_1.png](/images/titanic/Titanic_Project_44_1.png)
+![Titanic_Project_44_1.png](/images/titanic/titanic16.png)
 
 Confusion matrix with normalization:
 
-![Titanic_Project_44_2.png](/images/titanic/Titanic_Project_44_2.png)
+![Titanic_Project_44_2.png](/images/titanic/titanic17.png)
 
 ## 5.11 Model Performance with Cross-Validation (CV)
 In this section, I worked on cross valdiation (CV). By using CV I was autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
@@ -222,17 +207,17 @@ However, decision trees do not generalize data well, they do have tendency to me
 
 DT before any after optimization:
 
-![dt_parameters.jpg](/images/titanic/dt_parameters.jpg)
+![dt_parameters.jpg](/images/titanic/titanic18.jpg)
 
 <a id="ch10"></a>
 ## 5.13 Tune Model with Feature Selection
 Recursive feature elimination (RFE) with cross validation (CV) is used for feature selection:
 
-![feature_elimination.jpg](/images/titanic/feature_elimination.jpg)
+![feature_elimination.jpg](/images/titanic/titanic19.jpg)
 
 The graph visualization of the tree:
 
-![dt_graph.jpg](/images/titanic/dt_graph.jpg)
+![dt_graph.jpg](/images/titanic/titanic20.jpg)
 
 <a id="ch11"></a>
 # Step 6: Validate Model
@@ -240,7 +225,7 @@ The next step is to validate the data.
 
 Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
 
-![Titanic_Project_54_0.png](/images/titanic/Titanic_Project_54_0.png)
+![Titanic_Project_54_0.png](/images/titanic/titanic21.png)
 
 I worked on using more than one model instead of picking one. This gave an opportunity to create a supermodel. I removed the models 
 who are exactly correlated to another model (1) and the models with no predict_proba attribute are also removed. 
