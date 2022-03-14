@@ -6,7 +6,7 @@ This repository holds the below projects. Currently they're binned in five diffe
 
 1. [EDA (Explanatory data Analysis)]()
 2. [Prediction (Regression)]()
-3. [Prediction (Classification)]()
+3. [Prediction (Classification)](https://github.com/sarahfuchi/Data-Science/blob/main/Prediction%20(Classification)/README.md)
 4. [Cluster analysis (unclassified data)]()
 5. [Advanced data science (NLP, computer vision, deep neural nets)]()
 
