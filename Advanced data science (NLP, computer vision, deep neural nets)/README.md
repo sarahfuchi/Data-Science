@@ -125,7 +125,7 @@ def read_tfrecord(example):
     return image
 ```
 
-I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed.
+I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed. More details on upsample and downsample will be discussed below.
 
 The downsample reduces the 2D dimensions, the width and height, of the image by the stride. The stride is the length of the step the filter takes. Since the stride is 2, the filter was applied to every other pixel, hence reducing the weight and height by 2.
 
@@ -152,7 +152,11 @@ def downsample(filters, size, apply_instancenorm=True):
     return result
 ```
 
-Upsample does the opposite of downsample and increases the dimensions of the of the image. Conv2DTranspose does basically the opposite of a Conv2D layer.
+Upsample does the opposite of downsample and increases the dimensions of the of the image. [A good article disucssion the upsample and downsample can be found here.](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) 
+
+I am more of a visual person, so a visual example of upsampling can be seen here:
+
+![upsample_example.jpg](/images/monet/monet3.jpg)
 
 ```
 def upsample(filters, size, apply_dropout=False):
