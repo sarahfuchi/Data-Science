@@ -302,7 +302,7 @@ plt.show()
 
 In this section, I subclassed a tf.keras.Model. The idea is then to apply the fit() later to train the model. During the training step, the model transforms a photo to a Monet painting and then back to a photo. The difference between the original photo and the twice-transformed photo is the cycle-consistency loss. The expectation is the original photo and the twice-transformed photo to be similar to one another. A simple translation of Cycle GAN can be seen in the below image, inspired by [A Gentle Introduction to Cycle Consistent Adversarial Networks article.](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87)
 
-[translation_cycle.jpg](/images/monet/monet5.jpg)
+![translation_cycle.jpg](/images/monet/monet5.jpg)
 
 ```
 class CycleGan(keras.Model):
