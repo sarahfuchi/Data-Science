@@ -70,6 +70,7 @@ The data is pre-processed already coming from Kaggle so I just focused on scalin
 
 ## 3.1 Import Libraries
 
+```
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -77,7 +78,7 @@ import tensorflow_addons as tfa
 from kaggle_datasets import KaggleDatasets
 import matplotlib.pyplot as plt
 import numpy as np
-
+```
 -------------------------
 
 **This is the input data from Kaggle :**  ['monet_jpg', 'monet_tfrec', 'photo_jpg', 'photo_tfrec']
