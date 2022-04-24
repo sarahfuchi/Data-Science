@@ -25,58 +25,59 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 # Project Overview
 I have always loved painting and data science. I wanted to take on this project to connect both passions of mine. Painters, such as Claude Monet have unique brush strokes and color choices. This project revolves around whether I can use generative adversarial networks (GANs) to bring Monet's style to the existing photos and recreating that style from stratch.
 
-If those photos are created successfully, the classifier will approve and I call call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
+If those photos are created successfully, the classifier will approve and I call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
 
-**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
+**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to convince the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
 
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
 # Data Science Steps
-1. **Problem Definition:** Finding "what sorts of people were more likely to survive?” using passenger data (ie name, age, gender, socio-economic class, etc).
-2. **Data Gathering:** Kaggle provided the input data on their website. That is how I got access to them.
-3. **Data Preperation:** I prepped the data by analyzing missing, or outlier data points.
-4. **EDA (Explanatory Data Analysis):** Garbage-in, garbage-out (GIGO). Therefore, it is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I made sure to make sense of the data. 
-5. **Data Modelling:** It is very important to know when to select which model. If we select the wrong model for a particular usecase, all the other steps become meaningless. 
-6. **Validate Model:** After training the model, I worked on validating it to see the performance and the overfitting/underfitting issues.
-7. **Optimize Model:** Using techniques like hyperparameter optimization, I worked on making the model better.  
+1. **Problem Definition:** Finding whether the image that is created is real or generated through classification. 
+2. **Data Gathering:** I used the Monet TFRecord dataset as well as the Photo TFRecord dataset, I got access to them through the KaggleDatasets() app. 
+3. **Data Preperation:** I prepped the data by using scaling and normalization methods.
+4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used visualization techniques to analyze the data. 
+5. **Data Modelling:** In this project, I built a generator to generate Monet-like photos, a discriminator to classify whether the image is real or fake, CycleGAN architecture to train the model.
+6. **Validate Model:** After training the model, I worked on validating it to see the performance of the model I have built.
+7. **Optimize Model:** Used loss function to adjust the weights to optimize the model. 
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
-Goal is to predict the survival outcome of passengers on the Titanic.
+Goal is to generate Monet like photos either from stratch or from existing photos, and then classify them whether they are real or fake.
 
 **Project Summary from Kaggle:**
-The sinking of the Titanic is one of the most infamous shipwrecks in history.
+We recognize the works of artists through their unique style, such as color choices or brush strokes. The “je ne sais quoi” of artists like Claude Monet can now be imitated with algorithms thanks to generative adversarial networks (GANs). In this getting started competition, you will bring that style to your photos or recreate the style from scratch!
 
-On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.
+Computer vision has advanced tremendously in recent years and GANs are now capable of mimicking objects in a very convincing way. But creating museum-worthy masterpieces is thought of to be, well, more art than science. So can (data) science, in the form of GANs, trick classifiers into believing you’ve created a true Monet? That’s the challenge you’ll take on!
 
-While there was some element of luck involved in surviving, it seems some groups of people were more likely to survive than others.
+The Challenge:
+A GAN consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For our competition, you should generate images in the style of Monet. This generator is trained using a discriminator.
 
-In this challenge, we ask you to build a predictive model that answers the question: “what sorts of people were more likely to survive?” using passenger data (ie name, age, gender, socio-economic class, etc).
+The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images.
+
+Your task is to build a GAN that generates 7,000 to 10,000 Monet-style images.
 
 
 
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle's Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)
+Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started/data) or using the Kaggle app in Python. I went with the second option. 
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
-The data is pre-processed already coming from Kaggle so I just focused on cleaning the data further. 
+The data is pre-processed already coming from Kaggle so I just focused on scaling/normalizing the data further. All the images were already sized to 256x256. I also scaled the images to a [-1, 1] scale. Because we are building a generative model, we don't need the labels or the image id in this project. 
 
 ## 3.1 Import Libraries
 
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+import tensorflow_addons as tfa
 
-**These were the versions of the libraries I used**
-
-Python version: 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-pandas version: 1.3.4
-matplotlib version: 3.4.3
-NumPy version: 1.20.3
-SciPy version: 1.7.1
-IPython version: 8.0.1
-scikit-learn version: 0.24.2
+from kaggle_datasets import KaggleDatasets
+import matplotlib.pyplot as plt
+import numpy as np
 -------------------------
 
 **This is the input data from Kaggle :**  ['gender_submission.csv', 'test.csv', 'train.csv']
@@ -84,18 +85,19 @@ scikit-learn version: 0.24.2
 ## 3.2 Pre-view of the Data
 
 
-1. The *Survived* variable is the outcome or dependent variable. It is a binary nominal datatype of 1 for survived and 0 for did not survive. All other variables are potential predictor or independent variables. 
-2. The *PassengerID* and *Ticket* variables are assumed to be random unique identifiers, that have no impact on the outcome variable. Thus, they will be excluded from analysis.
-3. The *Pclass* variable is an ordinal datatype for the ticket class, a proxy for socio-economic status (SES), representing 1 = upper class, 2 = middle class, and 3 = lower class.
-4. The *Name* variable is a nominal datatype. It could be used in feature engineering to derive the gender from title, family size from surname, and SES from titles like doctor or master. Since these variables already exist, we'll make use of it to see if title, like master, makes a difference.
-5. The *Sex* and *Embarked* variables are a nominal datatype. They will be converted to dummy variables for mathematical calculations.
-6. The *Age* and *Fare* variable are continuous quantitative datatypes.
-7. The *SibSp* represents number of related siblings/spouse aboard and *Parch* represents number of related parents/children aboard. Both are discrete quantitative datatypes. This can be used for feature engineering to create a family size and is alone variable.
-8. The *Cabin* variable is a nominal datatype that can be used in feature engineering for approximate position on ship when the incident occurred and SES from deck levels. However, since there are many null values, it does not add value and thus is excluded from analysis.
+The dataset contained four directories: monet_tfrec, photo_tfrec, monet_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting images, and the photo_tfrec and photo_jpg directories contained the same photos. I used the TFRecords as per the Kaggle's recommendation.
 
-![pre-view_dataframe.jpg](/images/titanic/titanic1.jpg)
+The monet directories contained Monet paintings. I used these images to train my model.
 
-![dataframe.jpg](/images/titanic/titanic2.jpg)
+The photo directories contained photos. I added Monet's styling to these images via GAN architectures. CycleGAN dataset contains other artists styles as well. 
+
+**Files**
+monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
+monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
+photo_jpg - 7028 photos sized 256x256 in JPEG format
+photo_tfrec - 7028 photos sized 256x256 in TFRecord format
+
+![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
