@@ -15,9 +15,8 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 7 - Step 5: Build the Discriminator](#ch7)
 1. [Chapter 8 - Step 6: Build the CycleGAN Model](#ch8)
 1. [Chapter 9 - Step 7: Define the loss functions](#ch9)
-1. [Chapter 10 - Tune Model with Feature Selection](#ch10)
-1. [Chapter 11 - Step 6: Validate Model](#ch11)
-1. [Chapter 12 - Step 7: Optimize Model](#ch12)
+1. [Chapter 10 - Step 8: Train the CycleGAN](#ch10)
+
 1. [References](#ch90)
 
 
@@ -452,6 +451,43 @@ with strategy.scope():
         loss = tf.reduce_mean(tf.abs(real_image - same_image))
         return LAMBDA * 0.5 * loss
 ```
+<a id="ch10"></a>
+# Step 8: Train the CycleGAN
+In this part of the project, I compiled the model. Since I used tf.keras.Model to build the CycleGAN, now is the time to use the fit() function to train.
+
+```
+with strategy.scope():
+    monet_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
+    photo_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
+
+    monet_discriminator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
+    photo_discriminator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
+```
+```
+with strategy.scope():
+    cycle_gan_model = CycleGan(
+        monet_generator, photo_generator, monet_discriminator, photo_discriminator
+    )
+
+    cycle_gan_model.compile(
+        m_gen_optimizer = monet_generator_optimizer,
+        p_gen_optimizer = photo_generator_optimizer,
+        m_disc_optimizer = monet_discriminator_optimizer,
+        p_disc_optimizer = photo_discriminator_optimizer,
+        gen_loss_fn = generator_loss,
+        disc_loss_fn = discriminator_loss,
+        cycle_loss_fn = calc_cycle_loss,
+        identity_loss_fn = identity_loss
+    )
+```
+```
+cycle_gan_model.fit(
+    tf.data.Dataset.zip((monet_ds, photo_ds)),
+    epochs=25
+)
+```
+![epochs.jpg](/images/monet/monet6.jpg)
+
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
