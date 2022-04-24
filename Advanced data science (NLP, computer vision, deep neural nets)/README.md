@@ -1,5 +1,8 @@
 ![I am something of a painter myself](/images/monet/monet0.jpg)
 
+“Every artist dips his brush in his own soul, and paints his own nature into his pictures.”
+-Henry Ward Beecher
+
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 # Table of Contents
@@ -20,9 +23,9 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-In this project,I picked a very famous example for classificaion. It is 0 or 1. It either occurred or did not occur. For example, cancer positive or not, manufacturing part pass or fail, it will rain tomorrow or won't etc. 
+We recognize the works of artists through their unique style, such as color choices or brush strokes. The “je ne sais quoi” of artists like Claude Monet can now be imitated with algorithms thanks to generative adversarial networks (GANs). In this getting started competition, you will bring that style to your photos or recreate the style from scratch!
 
-In this case, I am focusing on passingers survived the disaster or not. I used Kaggle's Getting Started Competition, Titanic: Machine Learning from Disaster. I followed a some steps such as focusing on problem definition, gathering the data, preparing the data, EDA (explanatory data analysis), coming up with the data model, validating the model and optimizing the model further.
+Computer vision has advanced tremendously in recent years and GANs are now capable of mimicking objects in a very convincing way. But creating museum-worthy masterpieces is thought of to be, well, more art than science. So can (data) science, in the form of GANs, trick classifiers into believing you’ve created a true Monet? That’s the challenge you’ll take on!
 
 
 
