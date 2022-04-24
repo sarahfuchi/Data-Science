@@ -13,8 +13,8 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 5 - Step 3: Data Preparation](#ch5)
 1. [Chapter 6 - Step 4: Build the Generator](#ch6)
 1. [Chapter 7 - Step 5: Build the Discriminator](#ch7)
-1. [Chapter 8 - Evaluate Model Performance](#ch8)
-1. [Chapter 9 - Tune Model with Hyper-Parameters](#ch9)
+1. [Chapter 8 - Step 6: Build the CycleGAN Model](#ch8)
+1. [Chapter 9 - Step 7: Define the loss functions](#ch9)
 1. [Chapter 10 - Tune Model with Feature Selection](#ch10)
 1. [Chapter 11 - Step 6: Validate Model](#ch11)
 1. [Chapter 12 - Step 7: Optimize Model](#ch12)
@@ -298,81 +298,160 @@ plt.show()
 ![generated_Monet.jpg](/images/monet/monet4.jpg)
 
 <a id="ch8"></a>
-## 5.1 Evaluate Model Performance
-After some data pre-processing, analysis, and machine learning algorithms (MLA), I was able to predict passenger survival with ~82% accuracy. can I do better?
+# Step 6: Build the CycleGAN Model
 
+In this section, I subclassed a tf.keras.Model. The idea is then to apply the fit() later to train the model. During the training step, the model transforms a photo to a Monet painting and then back to a photo. The difference between the original photo and the twice-transformed photo is the cycle-consistency loss. The expectation is the original photo and the twice-transformed photo to be similar to one another. A simple translation of Cycle GAN can be seen in the below image, inspired by [A Gentle Introduction to Cycle Consistent Adversarial Networks article.](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87)
 
-### Somethings to consider: ###
-Our accuracy is increasing, but can we do better? I looked more correlations to improve the data.
+[translation_cycle.jpg](/images/monet/monet5.jpg)
 
+```
+class CycleGan(keras.Model):
+    def __init__(
+        self,
+        monet_generator,
+        photo_generator,
+        monet_discriminator,
+        photo_discriminator,
+        lambda_cycle=10,
+    ):
+        super(CycleGan, self).__init__()
+        self.m_gen = monet_generator
+        self.p_gen = photo_generator
+        self.m_disc = monet_discriminator
+        self.p_disc = photo_discriminator
+        self.lambda_cycle = lambda_cycle
+        
+    def compile(
+        self,
+        m_gen_optimizer,
+        p_gen_optimizer,
+        m_disc_optimizer,
+        p_disc_optimizer,
+        gen_loss_fn,
+        disc_loss_fn,
+        cycle_loss_fn,
+        identity_loss_fn
+    ):
+        super(CycleGan, self).compile()
+        self.m_gen_optimizer = m_gen_optimizer
+        self.p_gen_optimizer = p_gen_optimizer
+        self.m_disc_optimizer = m_disc_optimizer
+        self.p_disc_optimizer = p_disc_optimizer
+        self.gen_loss_fn = gen_loss_fn
+        self.disc_loss_fn = disc_loss_fn
+        self.cycle_loss_fn = cycle_loss_fn
+        self.identity_loss_fn = identity_loss_fn
+        
+    def train_step(self, batch_data):
+        real_monet, real_photo = batch_data
+        
+        with tf.GradientTape(persistent=True) as tape:
+            # photo to monet back to photo
+            fake_monet = self.m_gen(real_photo, training=True)
+            cycled_photo = self.p_gen(fake_monet, training=True)
 
-This is the result of the model with improvements:
+            # monet to photo back to monet
+            fake_photo = self.p_gen(real_monet, training=True)
+            cycled_monet = self.m_gen(fake_photo, training=True)
 
+            # generating itself
+            same_monet = self.m_gen(real_monet, training=True)
+            same_photo = self.p_gen(real_photo, training=True)
 
-![handmade_model_score.jpg](/images/titanic/titanic15.jpg)
+            # discriminator used to check, inputing real images
+            disc_real_monet = self.m_disc(real_monet, training=True)
+            disc_real_photo = self.p_disc(real_photo, training=True)
 
-The confusion matrix without normalization:
+            # discriminator used to check, inputing fake images
+            disc_fake_monet = self.m_disc(fake_monet, training=True)
+            disc_fake_photo = self.p_disc(fake_photo, training=True)
 
-![Titanic_Project_44_1.png](/images/titanic/titanic16.png)
+            # evaluates generator loss
+            monet_gen_loss = self.gen_loss_fn(disc_fake_monet)
+            photo_gen_loss = self.gen_loss_fn(disc_fake_photo)
 
-Confusion matrix with normalization:
+            # evaluates total cycle consistency loss
+            total_cycle_loss = self.cycle_loss_fn(real_monet, cycled_monet, self.lambda_cycle) + self.cycle_loss_fn(real_photo, cycled_photo, self.lambda_cycle)
 
-![Titanic_Project_44_2.png](/images/titanic/titanic17.png)
+            # evaluates total generator loss
+            total_monet_gen_loss = monet_gen_loss + total_cycle_loss + self.identity_loss_fn(real_monet, same_monet, self.lambda_cycle)
+            total_photo_gen_loss = photo_gen_loss + total_cycle_loss + self.identity_loss_fn(real_photo, same_photo, self.lambda_cycle)
 
-## 5.11 Model Performance with Cross-Validation (CV)
-In this section, I worked on cross valdiation (CV). By using CV I was autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
+            # evaluates discriminator loss
+            monet_disc_loss = self.disc_loss_fn(disc_real_monet, disc_fake_monet)
+            photo_disc_loss = self.disc_loss_fn(disc_real_photo, disc_fake_photo)
+
+        # Calculate the gradients for generator and discriminator
+        monet_generator_gradients = tape.gradient(total_monet_gen_loss,
+                                                  self.m_gen.trainable_variables)
+        photo_generator_gradients = tape.gradient(total_photo_gen_loss,
+                                                  self.p_gen.trainable_variables)
+
+        monet_discriminator_gradients = tape.gradient(monet_disc_loss,
+                                                      self.m_disc.trainable_variables)
+        photo_discriminator_gradients = tape.gradient(photo_disc_loss,
+                                                      self.p_disc.trainable_variables)
+
+        # Apply the gradients to the optimizer
+        self.m_gen_optimizer.apply_gradients(zip(monet_generator_gradients,
+                                                 self.m_gen.trainable_variables))
+
+        self.p_gen_optimizer.apply_gradients(zip(photo_generator_gradients,
+                                                 self.p_gen.trainable_variables))
+
+        self.m_disc_optimizer.apply_gradients(zip(monet_discriminator_gradients,
+                                                  self.m_disc.trainable_variables))
+
+        self.p_disc_optimizer.apply_gradients(zip(photo_discriminator_gradients,
+                                                  self.p_disc.trainable_variables))
+        
+        return {
+            "monet_gen_loss": total_monet_gen_loss,
+            "photo_gen_loss": total_photo_gen_loss,
+            "monet_disc_loss": monet_disc_loss,
+            "photo_disc_loss": photo_disc_loss
+        }
+```
 
 <a id="ch9"></a>
-# 5.12 Tune Model with Hyper-Parameters
-I worked on hyper-parameter optimization to see how various hyper-parameter settings will change the model accuracy. 
+# Step 7: Define the Loss Functions
 
-Decision trees are simple to understand usually. They can also be visualized. Data prep is quite easy compared to other methods. They can handle both numeric and categorical data. We can validate a model using tests.
+The discriminator loss function below compares real images to a matrix of 1s and fake images to a matrix of 0s. The perfect discriminator will output all 1s for real images and all 0s for fake images. The discriminator loss outputs the average of the real and generated loss.
 
-However, decision trees do not generalize data well, they do have tendency to memorize (overfitting). Pruning can be used to overcome this issue. Small variations may impact the decision trees hugely. They can be biased if some classes dominate.
+```
+with strategy.scope():
+    def discriminator_loss(real, generated):
+        real_loss = tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(real), real)
 
+        generated_loss = tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.zeros_like(generated), generated)
 
-DT before any after optimization:
+        total_disc_loss = real_loss + generated_loss
 
-![dt_parameters.jpg](/images/titanic/titanic18.jpg)
+        return total_disc_loss * 0.5
+```
+The generator wants to convince the discriminator into thinking the generated image is real. The perfect generator will have the discriminator output only 1s. Thus, it compares the generated image to a matrix of 1s to find the loss.
+```
+with strategy.scope():
+    def generator_loss(generated):
+        return tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(generated), generated)
+```
+The goal is our original photo and the twice transformed photo to be similar to one another. Thus, we can calculate the cycle consistency loss be finding the average of their difference.
 
-<a id="ch10"></a>
-## 5.13 Tune Model with Feature Selection
-Recursive feature elimination (RFE) with cross validation (CV) is used for feature selection:
+```
+with strategy.scope():
+    def calc_cycle_loss(real_image, cycled_image, LAMBDA):
+        loss1 = tf.reduce_mean(tf.abs(real_image - cycled_image))
 
-![feature_elimination.jpg](/images/titanic/titanic19.jpg)
+        return LAMBDA * loss1
+```
+The identity loss compares the image with its generator (i.e. photo with photo generator). If given a photo as input, we want it to generate the same image as the image was originally a photo. The identity loss compares the input with the output of the generator.
 
-The graph visualization of the tree:
-
-![dt_graph.jpg](/images/titanic/titanic20.jpg)
-
-<a id="ch11"></a>
-# Step 6: Validate Model
-The next step is to validate the data.
-
-Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
-
-![Titanic_Project_54_0.png](/images/titanic/titanic21.png)
-
-I worked on using more than one model instead of picking one. This gave an opportunity to create a supermodel. I removed the models 
-who are exactly correlated to another model (1) and the models with no predict_proba attribute are also removed. 
-
-I then worked on hard vote or majority rules and soft vote or weighted probabilities. I tuned each estimator before creating a super model
-
-
-<a id="ch12"></a>
-# Step 7: Optimize Model
-## Conclusion
-
-Model provides ~0.78 submission accuracy on the unseen data which was achieved with the simple decision tree. Using the same dataset and different implementation of a decision tree with a super model (adaboost, random forest, gradient boost, xgboost, etc.) with tuning does not exceed the ~0.78 submission accuracy. Conclusion was the simple decision tree algorithm had the best default submission score and with tuning, I still achieved the same best accuracy score.
- 
--  The train dataset has a different distribution than the test/validation dataset and population. This created wide margins between the cross validation (CV) accuracy score and Kaggle submission accuracy score.
-- Given the same dataset, decision tree based algorithms, seemed to converge on the same accuracy score after proper tuning.
--  Despite tuning, no machine learning algorithm, exceeded the homemade algorithm. The author will theorize, that for small datasets, a manmade algorithm is the bar to beat. 
-
-Next steps will include further preprocessing and feature engineering to improve the CV score and Kaggle score as well as the overall accuracy.
-
-
-
+```
+with strategy.scope():
+    def identity_loss(real_image, same_image, LAMBDA):
+        loss = tf.reduce_mean(tf.abs(real_image - same_image))
+        return LAMBDA * 0.5 * loss
+```
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
