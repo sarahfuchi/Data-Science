@@ -12,7 +12,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 4 - Step 2: Data Gathering](#ch4)
 1. [Chapter 5 - Step 3: Data Preparation](#ch5)
 1. [Chapter 6 - Step 4: Build the Generator](#ch6)
-1. [Chapter 7 - Step 5: Data Modelling](#ch7)
+1. [Chapter 7 - Step 5: Build the Discriminator](#ch7)
 1. [Chapter 8 - Evaluate Model Performance](#ch8)
 1. [Chapter 9 - Tune Model with Hyper-Parameters](#ch9)
 1. [Chapter 10 - Tune Model with Feature Selection](#ch10)
@@ -240,28 +240,62 @@ def Generator():
 
 
 <a id="ch7"></a>
-# Step 5: Data Modelling
+# Step 5: Build the Discriminator
 
-I will use supervised learning classification algorithm for predicting the binary ourcome (survived or not). Here are some of the available models I considered using: 
+The discriminator takes in the input image and classifies it as real or fake. The fake I am referring to here is the image that is generator by the generator, not the genuine Monet image. Instead of outputing a single node, the discriminator outputs a smaller 2D image with higher pixel values indicating a real classification and lower values indicating a fake classification.
 
-**Machine Learning Classification Algorithms:**
-* [Ensemble Methods](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble)
-* [Generalized Linear Models (GLM)](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model)
-* [Naive Bayes](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes)
-* [Nearest Neighbors](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors)
-* [Support Vector Machines (SVM)](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.svm)
-* [Decision Trees](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.tree)
-* [Discriminant Analysis](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.discriminant_analysis)
+```
+def Discriminator():
+    initializer = tf.random_normal_initializer(0., 0.02)
+    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
 
+    inp = layers.Input(shape=[256, 256, 3], name='input_image')
 
-### Which Machine Learning Algorithm (MLA) to choose ?
-In order to define that I worked on some performance analysis for different models:
+    x = inp
 
-![compare_mla.jpg](/images/titanic/titanic13.jpg)
+    down1 = downsample(64, 4, False)(x) # (bs, 128, 128, 64)
+    down2 = downsample(128, 4)(down1) # (bs, 64, 64, 128)
+    down3 = downsample(256, 4)(down2) # (bs, 32, 32, 256)
 
-Then let's see the barplot:
+    zero_pad1 = layers.ZeroPadding2D()(down3) # (bs, 34, 34, 256)
+    conv = layers.Conv2D(512, 4, strides=1,
+                         kernel_initializer=initializer,
+                         use_bias=False)(zero_pad1) # (bs, 31, 31, 512)
 
-![Titanic_Project_39_1.png](/images/titanic/titanic14.png)
+    norm1 = tfa.layers.InstanceNormalization(gamma_initializer=gamma_init)(conv)
+
+    leaky_relu = layers.LeakyReLU()(norm1)
+
+    zero_pad2 = layers.ZeroPadding2D()(leaky_relu) # (bs, 33, 33, 512)
+
+    last = layers.Conv2D(1, 4, strides=1,
+                         kernel_initializer=initializer)(zero_pad2) # (bs, 30, 30, 1)
+
+    return tf.keras.Model(inputs=inp, outputs=last)
+```
+```
+with strategy.scope():
+    monet_generator = Generator() # transforms photos to Monet-esque paintings
+    photo_generator = Generator() # transforms Monet paintings to be more like photos
+
+    monet_discriminator = Discriminator() # differentiates real Monet paintings and generated Monet paintings
+    photo_discriminator = Discriminator() # differentiates real photos and generated photos
+```
+Since our generators are not trained yet, the generated Monet-esque photo does not show what is expected at this point.
+
+```
+to_monet = monet_generator(example_photo)
+
+plt.subplot(1, 2, 1)
+plt.title("Original Photo")
+plt.imshow(example_photo[0] * 0.5 + 0.5)
+
+plt.subplot(1, 2, 2)
+plt.title("Monet-esque Photo")
+plt.imshow(to_monet[0] * 0.5 + 0.5)
+plt.show()
+```
+![generated_Monet.jpg](/images/monet/monet4.jpg)
 
 <a id="ch8"></a>
 ## 5.1 Evaluate Model Performance
