@@ -74,13 +74,13 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 import tensorflow_addons as tfa
-
 from kaggle_datasets import KaggleDatasets
 import matplotlib.pyplot as plt
 import numpy as np
+
 -------------------------
 
-**This is the input data from Kaggle :**  ['gender_submission.csv', 'test.csv', 'train.csv']
+**This is the input data from Kaggle :**  ['monet_jpg', 'monet_tfrec', 'photo_jpg', 'photo_tfrec']
 
 ## 3.2 Pre-view of the Data
 
