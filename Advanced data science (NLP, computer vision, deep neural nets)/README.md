@@ -102,9 +102,28 @@ photo_tfrec - 7028 photos sized 256x256 in TFRecord format
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
-In this stage, I cleaned the data by analyzing aberrant values and outliers, filled in missing data where appropriate, worked on feature engineering, and performed data conversion (i.e. convert objects to category using Label Encoder)
 
-I splitted the data in 75/25 format, 75 being the training and 25 being the testing. I paid attention to this split as to not overfit or underfit the model.
+All the images for the competition were already sized to 256x256. As these images are RGB images, I set the channel to 3. Also, I needed to scale the images to a [-1, 1]. Due to the nature of the generative model, I don't need the labels or the image id so I'll only return the image from the TFRecord.
+
+```
+IMAGE_SIZE = [256, 256]
+
+def decode_image(image):
+    image = tf.image.decode_jpeg(image, channels=3)
+    image = (tf.cast(image, tf.float32) / 127.5) - 1
+    image = tf.reshape(image, [*IMAGE_SIZE, 3])
+    return image
+
+def read_tfrecord(example):
+    tfrecord_format = {
+        "image_name": tf.io.FixedLenFeature([], tf.string),
+        "image": tf.io.FixedLenFeature([], tf.string),
+        "target": tf.io.FixedLenFeature([], tf.string)
+    }
+    example = tf.io.parse_single_example(example, tfrecord_format)
+    image = decode_image(example['image'])
+    return image
+```
 
 <a id="ch6"></a>
 # Step 4: Explanatory Data Analysis (EDA)
