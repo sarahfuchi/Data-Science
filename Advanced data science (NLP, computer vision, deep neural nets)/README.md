@@ -488,6 +488,29 @@ cycle_gan_model.fit(
 ```
 ![epochs.jpg](/images/monet/monet6.jpg)
 
+<a id="ch10"></a>
+# Step 9: Visualization 
+
+Now is the time to see how the algorithm translated the photos in to Monet-Esque: 
+
+```
+_, ax = plt.subplots(5, 2, figsize=(12, 12))
+for i, img in enumerate(photo_ds.take(5)):
+    prediction = monet_generator(img, training=False)[0].numpy()
+    prediction = (prediction * 127.5 + 127.5).astype(np.uint8)
+    img = (img[0] * 127.5 + 127.5).numpy().astype(np.uint8)
+
+    ax[i, 0].imshow(img)
+    ax[i, 1].imshow(prediction)
+    ax[i, 0].set_title("Input Photo")
+    ax[i, 1].set_title("Monet-esque")
+    ax[i, 0].axis("off")
+    ax[i, 1].axis("off")
+plt.show()
+```
+
+![monetesque.jpg](/images/monet/monet7.jpg)
+
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
