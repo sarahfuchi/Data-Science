@@ -11,7 +11,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 3 - Step 1: Problem Definition](#ch3)
 1. [Chapter 4 - Step 2: Data Gathering](#ch4)
 1. [Chapter 5 - Step 3: Data Preparation](#ch5)
-1. [Chapter 6 - Step 4: Explanatory Data Analysis (EDA)](#ch6)
+1. [Chapter 6 - Step 4: Build the Generator](#ch6)
 1. [Chapter 7 - Step 5: Data Modelling](#ch7)
 1. [Chapter 8 - Evaluate Model Performance](#ch8)
 1. [Chapter 9 - Tune Model with Hyper-Parameters](#ch9)
@@ -125,49 +125,59 @@ def read_tfrecord(example):
     return image
 ```
 
+I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed.
+
+The downsample reduces the 2D dimensions, the width and height, of the image by the stride. The stride is the length of the step the filter takes. Since the stride is 2, the filter was applied to every other pixel, hence reducing the weight and height by 2.
+
+Normalization or feature scaling is a way to make sure that features with very diverse ranges will proportionally impact the network performance. Without normalization, some features or variables might be ignored. In this particular project I used instance normalization (IN), which operates on a single sample as opposed to batch normalization (BN). Both normalization methods can accelerate training and make the network converge faster. Main difference is While IN transforms a single training sample, BN does that to the whole mini-batch of samples.
+![instance_and_batch_normalization.jpg](/images/monet/monet1.jpg)
+
+```
+OUTPUT_CHANNELS = 3
+
+def downsample(filters, size, apply_instancenorm=True):
+    initializer = tf.random_normal_initializer(0., 0.02)
+    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
+
+    result = keras.Sequential()
+    result.add(layers.Conv2D(filters, size, strides=2, padding='same',
+                             kernel_initializer=initializer, use_bias=False))
+
+    if apply_instancenorm:
+        result.add(tfa.layers.InstanceNormalization(gamma_initializer=gamma_init))
+
+    result.add(layers.LeakyReLU())
+
+    return result
+```
+
+Upsample does the opposite of downsample and increases the dimensions of the of the image. Conv2DTranspose does basically the opposite of a Conv2D layer.
+
+```
+def upsample(filters, size, apply_dropout=False):
+    initializer = tf.random_normal_initializer(0., 0.02)
+    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
+
+    result = keras.Sequential()
+    result.add(layers.Conv2DTranspose(filters, size, strides=2,
+                                      padding='same',
+                                      kernel_initializer=initializer,
+                                      use_bias=False))
+
+    result.add(tfa.layers.InstanceNormalization(gamma_initializer=gamma_init))
+
+    if apply_dropout:
+        result.add(layers.Dropout(0.5))
+
+    result.add(layers.ReLU())
+
+    return result
+```
+
+
 <a id="ch6"></a>
-# Step 4: Explanatory Data Analysis (EDA)
-Exploration is key after cleaning and organizing the dataset. I worked on EDA to visualize the properties and stats of the data I am working with.
+# Step 4: Build the Generator
 
-Visualizing the quantitative data on graph:
-
-![Titanic_Project_28_1.png](/images/titanic/titanic3.png)
-
-Looking at individual features by survival:
-
-![Titanic_Project_29_1.png](/images/titanic/titanic4.png)
-
-I then compared class and a 2nd feature:
-
-![Titanic_Project_30_1.png](/images/titanic/titanic5.png)
-
-Followed by comparing sex and a 2nd feature:
-
-![Titanic_Project_31_1.png](/images/titanic/titanic6.png)
-
-Family size factor with sex & survival comparison and class factor with sex & survival comparison:
-
-![Titanic_Project_32_1.png](/images/titanic/titanic7.png)
-
-Embark data visualization with class, sex, and survival:
-
-![Titanic_Project_33_1.png](/images/titanic/titanic8.png)
-
-Distributions of age of passengers who survived or did not survive:
-
-![Titanic_Project_34_1.png](/images/titanic/titanic9.png)
-
-Histogram comparison of sex, class, and age by survival:
-
-![Titanic_Project_35_1.png](/images/titanic/titanic10.png)
-
-Pairplot to see the entire dataset:
-
-![Titanic_Project_36_1.png](/images/titanic/titanic11.png)
-
-Heatmap of the entire dataset:
-
-![Titanic_Project_37_0.png](/images/titanic/titanic12.png)
 
 <a id="ch7"></a>
 # Step 5: Data Modelling
