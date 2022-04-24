@@ -1,4 +1,4 @@
-![I am something of a painter myself](/images/monet/titanic.jpeg)
+![I am something of a painter myself]
 
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
