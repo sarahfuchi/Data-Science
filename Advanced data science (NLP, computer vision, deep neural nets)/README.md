@@ -510,18 +510,16 @@ for i, img in enumerate(photo_ds.take(5)):
     ax[i, 1].axis("off")
 plt.show()
 ```
-
 ![monetesque.jpg](/images/monet/monet7.jpg)
 
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
 
-* [A Data Science Framework: To Achieve 99% Accuracy by LD Freeman](https://www.kaggle.com/ldfreeman3/a-data-science-framework-to-achieve-99-accuracy) - Indepth dive to data science steps.
-
-* [Introduction to Machine Learning with Python: A Guide for Data Scientists by Andreas Müller and Sarah Guido](https://www.amazon.com/gp/product/1449369413/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1449369413&linkId=740510c3199892cca1632fe738fb8d08) - Machine Learning 101 written by a core developer of sklearn
-* [Visualize This: The Flowing Data Guide to Design, Visualization, and Statistics by Nathan Yau](https://www.amazon.com/gp/product/0470944889/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0470944889&linkId=f797da48813ed5cfc762ce5df8ef957f) - Learn the art and science of data visualization
-* [Machine Learning for Dummies by John Mueller and Luca Massaron ](https://www.amazon.com/gp/product/1119245516/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1119245516&linkId=5b4ac9a6fd1da198d82f9ca841d1af9f) - Easy to understand for a beginner book, but detailed to actually learn the fundamentals of the topic
+* [Monet CycleGAN Tutorial](https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial) - Indepth dive to Cyclegan steps.
+* [Instance vs Batch Normalization](https://www.baeldung.com/cs/instance-vs-batch-normalization) -  Normalization (IN) and Batch Normalization (BN) overview.
+* [Downsampling and Upsampling of Images](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) - Downsampling and Upsampling of Images - Demystifying the Theory.
+* [A Gentle Introduction to Cycle Consistent Adversarial Networks](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87) - Article going over what exactly Cycle GAN are and what are the existing applications of such models are
 
 
 
