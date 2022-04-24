@@ -16,6 +16,8 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 8 - Step 6: Build the CycleGAN Model](#ch8)
 1. [Chapter 9 - Step 7: Define the loss functions](#ch9)
 1. [Chapter 10 - Step 8: Train the CycleGAN](#ch10)
+1. [Chapter 11 - Step 9: Visualization](#ch11)
+
 
 1. [References](#ch90)
 
@@ -488,7 +490,7 @@ cycle_gan_model.fit(
 ```
 ![epochs.jpg](/images/monet/monet6.jpg)
 
-<a id="ch10"></a>
+<a id="ch11"></a>
 # Step 9: Visualization 
 
 Now is the time to see how the algorithm translated the photos in to Monet-Esque: 
