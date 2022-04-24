@@ -27,7 +27,7 @@ I have always loved painting and data science. I wanted to take on this project 
 
 If those photos are created successfully, the classifier will approve and I call call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
 
-**NOTE: ** A GAN consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
+**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
 
 Let's take a look at the steps:  
 
