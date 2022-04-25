@@ -1,4 +1,4 @@
-![I am something of a painter myself](/images/monet/monet0.jpg)
+![Let's look at the home prices!](/images/house/house0.jpg)
 
 “Every artist dips his brush in his own soul, and paints his own nature into his pictures.”
 -Henry Ward Beecher
