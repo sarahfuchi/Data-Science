@@ -42,9 +42,10 @@ Ask a home buyer to describe their dream house, and they probably won't begin wi
 
 With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
 
-Practice Skills
-Creative feature engineering 
-Advanced regression techniques like random forest and gradient boosting.
+Practice Skills: 
+
+- Creative feature engineering 
+- Advanced regression techniques like random forest and gradient boosting.
 
 <a id="ch4"></a>
 # Step 2: Data Gathering
