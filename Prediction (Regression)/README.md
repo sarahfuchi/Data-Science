@@ -11,8 +11,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 4 - Step 2: Data Gathering](#ch4)
 1. [Chapter 5 - Step 3: Data Preparation](#ch5)
 1. [Chapter 6 - Step 4: Build the Models](#ch6)
-1. [Chapter 10 - Step 5: Model Comparison](#ch7)
-1
+1. [Chapter 7 - Step 5: Model Comparison](#ch7)
 
 
 1. [References](#ch90)
@@ -27,16 +26,16 @@ Let's take a look at the steps:
 <a id="ch2"></a>
 # Data Science Steps
 1. **Problem Definition:** Finding the final price of homes. 
-2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the[Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)  
-3. **Data Preperation:** I prepped the data by using scaling and normalization methods.
-4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used visualization techniques to analyze the data. 
-5. **Data Modelling:** In this project, I built a generator to generate Monet-like photos, a discriminator to classify whether the image is real or fake, CycleGAN architecture to train the model.
-6. **Validate Model:** After training the model, I worked on validating it to see the performance of the model I have built.
-7. **Optimize Model:** Used loss function to adjust the weights to optimize the model. 
+2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)  
+3. **Data Preperation:** I prepped the data by using scaling methods.
+4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used heatmaps and correlation matrix to analyze the data. 
+5. **Data Modelling:** In this project, I used different linear regression methods including Linear Regression, Robust Regression, Ridge Regression, LASSO Regression, Elastic Net, Polynomial Regression, Stochastic Gradient Descent, Artficial Neural Network,  Random Forest Regressor and Support Vector Machine.
+6. **Validate Model:** After training the model, I worked with cross validation techniques to validate the model.
+7. **Optimize Model:** In this particular project, I did not focus on optimizing the model but used the models as is from sklearn. This will be a future improvement for me to work on. 
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
-Goal is to generate Monet like photos either from stratch or from existing photos, and then classify them whether they are real or fake.
+Goal is to predict the home prices using variables.
 
 **Project Summary from Kaggle:**
 We recognize the works of artists through their unique style, such as color choices or brush strokes. The “je ne sais quoi” of artists like Claude Monet can now be imitated with algorithms thanks to generative adversarial networks (GANs). In this getting started competition, you will bring that style to your photos or recreate the style from scratch!
@@ -508,10 +507,7 @@ plt.show()
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
 
-* [Monet CycleGAN Tutorial](https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial) - Indepth dive to Cyclegan steps.
-* [Instance vs Batch Normalization](https://www.baeldung.com/cs/instance-vs-batch-normalization) -  Normalization (IN) and Batch Normalization (BN) overview.
-* [Downsampling and Upsampling of Images](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) - Downsampling and Upsampling of Images - Demystifying the Theory.
-* [A Gentle Introduction to Cycle Consistent Adversarial Networks](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87) - Article going over what exactly Cycle GAN are and what are the existing applications of such models are.
+* [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
 
 
 
