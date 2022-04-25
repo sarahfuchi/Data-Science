@@ -519,7 +519,7 @@ I would like to express gratitude for the following resources, and thank develop
 * [Monet CycleGAN Tutorial](https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial) - Indepth dive to Cyclegan steps.
 * [Instance vs Batch Normalization](https://www.baeldung.com/cs/instance-vs-batch-normalization) -  Normalization (IN) and Batch Normalization (BN) overview.
 * [Downsampling and Upsampling of Images](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) - Downsampling and Upsampling of Images - Demystifying the Theory.
-* [A Gentle Introduction to Cycle Consistent Adversarial Networks](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87) - Article going over what exactly Cycle GAN are and what are the existing applications of such models are
+* [A Gentle Introduction to Cycle Consistent Adversarial Networks](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87) - Article going over what exactly Cycle GAN are and what are the existing applications of such models are.
 
 
 
