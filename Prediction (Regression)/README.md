@@ -1,7 +1,6 @@
 ![Let's look at the home prices!](/images/house/house0.jpg)
 
-“Every artist dips his brush in his own soul, and paints his own nature into his pictures.”
--Henry Ward Beecher
+In this project, I will summarize my work using regression techniques to calculate home prices. 
 
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
@@ -11,12 +10,9 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 3 - Step 1: Problem Definition](#ch3)
 1. [Chapter 4 - Step 2: Data Gathering](#ch4)
 1. [Chapter 5 - Step 3: Data Preparation](#ch5)
-1. [Chapter 6 - Step 4: Build the Generator](#ch6)
-1. [Chapter 7 - Step 5: Build the Discriminator](#ch7)
-1. [Chapter 8 - Step 6: Build the CycleGAN Model](#ch8)
-1. [Chapter 9 - Step 7: Define the loss functions](#ch9)
-1. [Chapter 10 - Step 8: Train the CycleGAN](#ch10)
-1. [Chapter 11 - Step 9: Visualization](#ch11)
+1. [Chapter 6 - Step 4: Build the Models](#ch6)
+1. [Chapter 10 - Step 5: Model Comparison](#ch7)
+1
 
 
 1. [References](#ch90)
@@ -24,18 +20,14 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-I have always loved painting and data science. I wanted to take on this project to connect both passions of mine. Painters, such as Claude Monet have unique brush strokes and color choices. This project revolves around whether I can use generative adversarial networks (GANs) to bring Monet's style to the existing photos and recreating that style from stratch.
-
-If those photos are created successfully, the classifier will approve and I call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
-
-**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to convince the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
+As hot as the housing has been for the last couple of years. It has been one of my personal interests to work on a project to predict housing prices. In this project, there are 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa. The task is to estimate the final price of each home. 
 
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
 # Data Science Steps
-1. **Problem Definition:** Finding whether the image that is created is real or generated through classification. 
-2. **Data Gathering:** I used the Monet TFRecord dataset as well as the Photo TFRecord dataset, I got access to them through the KaggleDatasets() app. 
+1. **Problem Definition:** Finding the final price of homes. 
+2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the[Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)  
 3. **Data Preperation:** I prepped the data by using scaling and normalization methods.
 4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used visualization techniques to analyze the data. 
 5. **Data Modelling:** In this project, I built a generator to generate Monet-like photos, a discriminator to classify whether the image is real or fake, CycleGAN architecture to train the model.
