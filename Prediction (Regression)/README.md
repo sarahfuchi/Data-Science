@@ -215,6 +215,17 @@ I used the Random sample consensus (RANSAC) model via sklearn. It is an iterativ
 ![robust_regression.jpg](/images/house/house8.jpg)
 
 ## 4.3 Ridge Regression
+
+There is a great resource on [Ridge Regression ](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
+
+As they explain in the above resource, Ridge regression is a model tuning method that is used to analyse any data that suffers from multicollinearity. This method performs L2 regularization. When the issue of multicollinearity occurs, least-squares are unbiased, and variances are large, this results in predicted values being far away from the actual values. 
+
+
+In summary this is what Ridge Regression does:
+
+- It shrinks the parameters. Therefore, it is used to prevent multicollinearity
+- It reduces the model complexity by coefficient shrinkage
+
 ![ridge_regression.jpg](/images/house/house9.jpg)
 
 ## 4.4 Lasso Regression
@@ -239,7 +250,7 @@ I used the Random sample consensus (RANSAC) model via sklearn. It is an iterativ
 
 <a id="ch7"></a>
 # Step 5: Model Comparison 
-
+![neural_net1.jpg](/images/house/house18.jpg)
 
 
 <a id="ch8"></a>
