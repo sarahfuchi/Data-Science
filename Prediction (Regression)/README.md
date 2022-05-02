@@ -216,9 +216,7 @@ I used the Random sample consensus (RANSAC) model via sklearn. It is an iterativ
 
 ## 4.3 Ridge Regression
 
-There is a great resource on [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
-
-As they explain in the above resource, Ridge regression is a model tuning method that is used to analyse any data that suffers from multicollinearity. This method performs L2 regularization. When the issue of multicollinearity occurs, least-squares are unbiased, and variances are large, this results in predicted values being far away from the actual values. 
+There is a great resource on [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/). As they explain in the above resource, Ridge regression is a model tuning method that is used to analyse any data that suffers from multicollinearity. This method performs L2 regularization. When the issue of multicollinearity occurs, least-squares are unbiased, and variances are large, this results in predicted values being far away from the actual values. 
 
 
 In summary this is what Ridge Regression does:
@@ -232,9 +230,7 @@ Here are the results for my Ridge Reegression model:
 
 ## 4.4 Lasso Regression
 
-Same resource I highly benefited from above during the Ridge Regression part covers the [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
-
-As they state on the website: Lasso regression is a regularization technique. It is used over regression methods for a more accurate prediction. This model uses shrinkage. Shrinkage is where data values are shrunk towards a central point as the mean. The lasso procedure encourages simple, sparse models (i.e. models with fewer parameters). This particular type of regression is well-suited for models showing high levels of multicollinearity or when you want to automate certain parts of model selection, like variable selection/parameter elimination.
+Same resource I highly benefited from above during the Ridge Regression part covers the [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression). As they state on the website: Lasso regression is a regularization technique. It is used over regression methods for a more accurate prediction. This model uses shrinkage. Shrinkage is where data values are shrunk towards a central point as the mean. The lasso procedure encourages simple, sparse models (i.e. models with fewer parameters). This particular type of regression is well-suited for models showing high levels of multicollinearity or when we want to automate certain parts of model selection, like variable selection/parameter elimination.
 
 Lasso Regression uses L1 regularization technique. It is used when we have more number of features because it automatically performs feature selection.
 
@@ -249,9 +245,15 @@ Here are the results of the Lasso Regression model:
 Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree. A simple linear regression can be extended by constructing polynomial features from the coefficients.
 
 Here are the results of the Polynomial Regression model:
+
 ![polynomial_regression.jpg](/images/house/house11.jpg)
 
 ## 4.6 Stochastic Gradient Descent
+ The general idea of Gradient Descent is to change the parameters iteratively in order to minimize a cost function. Gradient Descent measures the local gradient of the error function with regards to the parameters vector, and it goes in the direction of descending gradient. Once the gradient is zero, we have reached a minimum. A good explanation with analogies from real wold can be found at [All you need to know about Gradient Descent
+](https://medium.com/analytics-vidhya/all-you-need-to-know-about-gradient-descent-f0178c19131d).
+
+Here are the results of the Stochastic Gradient Descent model:
+
 ![stochastic_gradient.jpg](/images/house/house12.jpg)
 
 ## 4.7 Neural Networks
