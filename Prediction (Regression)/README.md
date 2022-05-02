@@ -50,7 +50,7 @@ Practice Skills:
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started/data) or using the Kaggle app in Python. I went with the second option. 
+Dataset can be found at the Kaggle's mainpage for this project: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) or using the Kaggle app in Python. I went with the second option. 
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
