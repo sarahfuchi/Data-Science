@@ -50,51 +50,42 @@ Practice Skills:
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) or using the Kaggle app in Python. I went with the second option. 
+Dataset can be found at the Kaggle's mainpage for this project: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) or using the Kaggle app in Python. 
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
 I used the USA_Housing dataset. The data contains the following columns:
 
 - <b> Avg. Area Income </b>: Avg. Income of residents of the city house is located in.
-- <b> Avg. Area House Age </b>: Avg Age of Houses in same city
-- <b> Avg. Area Number of Rooms </b>: Avg Number of Rooms for Houses in same city
-- <b> Avg. Area Number of Bedrooms </b>: Avg Number of Bedrooms for Houses in same city
+- <b> Avg. Area House Age </b>: Avg Age of Houses in same city.
+- <b> Avg. Area Number of Rooms </b>: Avg Number of Rooms for Houses in same city.
+- <b> Avg. Area Number of Bedrooms </b>: Avg Number of Bedrooms for Houses in same city.
 - <b> Area Population </b>: Population of city hou se is located in
-- <b> Price </b>: Price that the house sold at
-- <b> Address </b>: Address for the house
+- <b> Price </b>: Price that the house sold at.
+- <b> Address </b>: Address for the house.
 
 ## 3.1 Import Libraries
 
 ```
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-import tensorflow_addons as tfa
-from kaggle_datasets import KaggleDatasets
-import matplotlib.pyplot as plt
+import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import hvplot.pandas
+%matplotlib inline
 ```
 -------------------------
 
-**This is the input data from Kaggle :**  ['monet_jpg', 'monet_tfrec', 'photo_jpg', 'photo_tfrec']
+**This is the input data from Kaggle :**  ['USA_Housing.csv']
 
 ## 3.2 Pre-view of the Data
 
+```
+USAhousing = pd.read_csv('/kaggle/input/usa-housing/USA_Housing.csv')
+USAhousing.head()
+```
 
-The dataset contained four directories: monet_tfrec, photo_tfrec, monet_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting images, and the photo_tfrec and photo_jpg directories contained the same photos. I used the TFRecords as per the Kaggle's recommendation.
-
-The monet directories contained Monet paintings. I used these images to train my model.
-
-The photo directories contained photos. I added Monet's styling to these images via GAN architectures. CycleGAN dataset contains other artists styles as well. 
-
-**Files**
-monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
-monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
-photo_jpg - 7028 photos sized 256x256 in JPEG format
-photo_tfrec - 7028 photos sized 256x256 in TFRecord format
-
-![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
+![data_head.jpg](/images/house/house1.jpg)
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
