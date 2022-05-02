@@ -110,15 +110,50 @@ I used pairplots and heatmaps to look at the data in more detail.
 The Kaggle dataset came in a cleaned up form. So in this section, I have worked on splitting the data to prep for the data modelling part. Data is first split into an X array that contains the features to train on, and a y array with the target variable, Price. I got rid of the address column in this case as it contained only text. 
 
 ```
-X = USAhousing[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
-               'Avg. Area Number of Bedrooms', 'Area Population']]
+X = USAhousing[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms', 'Avg. Area Number of Bedrooms', 'Area Population']]
 y = USAhousing['Price']
+```
+Then I splitted the data into test and train. Train set will be used to train the data, test will be used to test the model's performance. 
+
+```
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+```
+
+Then defined the functions for displaying the model performace. 
+
+```
+from sklearn import metrics
+from sklearn.model_selection import cross_val_score
+
+def cross_val(model):
+    pred = cross_val_score(model, X, y, cv=10)
+    return pred.mean()
+
+def print_evaluate(true, predicted):  
+    mae = metrics.mean_absolute_error(true, predicted)
+    mse = metrics.mean_squared_error(true, predicted)
+    rmse = np.sqrt(metrics.mean_squared_error(true, predicted))
+    r2_square = metrics.r2_score(true, predicted)
+    print('MAE:', mae)
+    print('MSE:', mse)
+    print('RMSE:', rmse)
+    print('R2 Square', r2_square)
+    print('__________________________________')
+    
+def evaluate(true, predicted):
+    mae = metrics.mean_absolute_error(true, predicted)
+    mse = metrics.mean_squared_error(true, predicted)
+    rmse = np.sqrt(metrics.mean_squared_error(true, predicted))
+    r2_square = metrics.r2_score(true, predicted)
+    return mae, mse, rmse, r2_square
 ```
 
 <a id="ch6"></a>
 # Step 4: Build the Models
 
-## 4.1 Pre-view of the Data
+## 4.1 Linear Regression
 
 
 
