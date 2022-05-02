@@ -20,7 +20,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-Housing has been super hot, especially for the last couple of years. Also, It has been one of my personal interests to work on a project to predict housing prices. I come across this project in Kaggle, in this project, there are 79 explanatory variables describing most aspects of residential homes in Ames, Iowa. The task is to estimate the final price of each home. 
+Housing has been super hot, especially for the last couple of years. Also, It has been one of my personal interests to work on a project to predict housing prices. I come across this project in Kaggle, in this project, there are explanatory variables describing most aspects of residential homes in Ames, Iowa. The task is to estimate the final price of each home. 
 
 Let's take a look at the steps:  
 
@@ -271,20 +271,26 @@ Here are the results of the Neural Networks model:
 Random Forest Regression is a supervised learning algorithm that uses ensemble learning method for regression. Ensemble learning method is a technique that combines predictions from multiple machine learning algorithms to make a more accurate prediction than a single model. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
 
 Here are the results of the Random Forest Regressor model:
+
 ![neural_net1.jpg](/images/house/house16.jpg)
 
 ## 4.9 Support Vector Machine 
 ![neural_net1.jpg](/images/house/house17.jpg)
 
+Support Vector Machine be used for classification and regression methods. In this particular project, I used it for rgression. The Support Vector Regression (SVR) uses the same principles as the SVM for classification, with only a few minor differences. Because output is a real number, it becomes very difficult to predict the information at hand, which has infinite possibilities. In the case of regression, a margin of tolerance (epsilon) is set in approximation to the SVM. The main idea is to minimize error, individualizing the hyperplane which maximizes the margin. More on that can be found at [Support Vector Machine ](https://www.saedsayad.com/support_vector_machine_reg.htm).
+
 <a id="ch7"></a>
 # Step 5: Model Comparison 
+
+Let's see all of the models in one place for comparison: 
+
 ![neural_net1.jpg](/images/house/house18.jpg)
 
 
 <a id="ch8"></a>
 # Step 6: Summary
 
-
+In this project I went over different regression models and their evaluation metrics. It was a great way to go deeper into regression and experimenting with differnt models. As a next step, I plan to focus on introducing hyperparameter optimization and diving deeper into the model parameters. 
 
 <a id="ch90"></a>
 # References
