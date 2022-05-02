@@ -25,7 +25,7 @@ Let's take a look at the steps:
 
 <a id="ch2"></a>
 # Data Science Steps
-1. **Problem Definition:** Finding the final price of homes. 
+1. **Problem Definition:** Finding the final price of homes. Since house price is a continues variable, this is a regression problem.
 2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data).  
 3. **Data Preperation:** I prepped the data by using scaling methods.
 4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used heatmaps and correlation matrix to analyze the data. 
@@ -54,7 +54,15 @@ Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m S
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
-The data is pre-processed already coming from Kaggle so I just focused on scaling/normalizing the data further. All the images were already sized to 256x256. I also scaled the images to a [-1, 1] scale. Because we are building a generative model, we don't need the labels or the image id in this project. 
+I used the USA_Housing dataset. The data contains the following columns:
+
+- <b> Avg. Area Income </b>: Avg. Income of residents of the city house is located in.
+- 'Avg. Area House Age': Avg Age of Houses in same city
+- 'Avg. Area Number of Rooms': Avg Number of Rooms for Houses in same city
+- 'Avg. Area Number of Bedrooms': Avg Number of Bedrooms for Houses in same city
+- 'Area Population': Population of city hou se is located in
+- 'Price': Price that the house sold at
+- 'Address': Address for the house
 
 ## 3.1 Import Libraries
 
