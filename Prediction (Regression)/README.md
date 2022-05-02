@@ -257,6 +257,11 @@ Here are the results of the Stochastic Gradient Descent model:
 ![stochastic_gradient.jpg](/images/house/house12.jpg)
 
 ## 4.7 Neural Networks
+
+Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network. More on that can be found at [Neural Networks](https://www.ibm.com/cloud/learn/neural-networks). 
+
+Here are the results of the Neural Networks model:
+
 ![neural_net1.jpg](/images/house/house13.jpg)
 ![neural_net2.jpg](/images/house/house14.jpg)
 ![neural_net3.jpg](/images/house/house15.jpg)
