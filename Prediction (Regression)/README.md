@@ -267,6 +267,10 @@ Here are the results of the Neural Networks model:
 ![neural_net3.jpg](/images/house/house15.jpg)
 
 ## 4.8 Random Forest Regressor
+
+Random Forest Regression is a supervised learning algorithm that uses ensemble learning method for regression. Ensemble learning method is a technique that combines predictions from multiple machine learning algorithms to make a more accurate prediction than a single model. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
+
+Here are the results of the Random Forest Regressor model:
 ![neural_net1.jpg](/images/house/house16.jpg)
 
 ## 4.9 Support Vector Machine 
