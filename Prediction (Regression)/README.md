@@ -57,7 +57,7 @@ Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m S
 I used the USA_Housing dataset. The data contains the following columns:
 
 - <b> Avg. Area Income </b>: Avg. Income of residents of the city house is located in.
-- 'Avg. Area House Age': Avg Age of Houses in same city
+- <b> Avg. Area House Age </b>: Avg Age of Houses in same city
 - 'Avg. Area Number of Rooms': Avg Number of Rooms for Houses in same city
 - 'Avg. Area Number of Bedrooms': Avg Number of Bedrooms for Houses in same city
 - 'Area Population': Population of city hou se is located in
