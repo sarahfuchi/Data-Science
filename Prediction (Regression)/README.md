@@ -203,9 +203,17 @@ Mainly there are 3 metrics for model evaluation in regression:
 
 Next, I went and printed the evaluation metrics for the linear regression model. 
 
-![pair_plots.jpg](/images/house/house7.jpg)
+![linear_regression.jpg](/images/house/house7.jpg)
 
-## 4.1 Robust Regression
+## 4.2 Robust Regression
+
+As stated at [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/): Robust regression is an alternative to least squares regression when data are contaminated with outliers or influential observations, and it can also be used for the purpose of detecting influential observations. A common example to use robust estimation is when the data contain outliers. 
+
+I used the Random sample consensus (RANSAC) model via sklearn. It is an iterative method to estimnate parameters of a mathematical model while treating the outliers with no influence. 
+
+![robust_regression.jpg](/images/house/house7.jpg)
+
+## 4.3 Ridge Regression
 
 <a id="ch7"></a>
 # Step 5: Build the Discriminator
