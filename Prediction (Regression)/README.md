@@ -216,7 +216,7 @@ I used the Random sample consensus (RANSAC) model via sklearn. It is an iterativ
 
 ## 4.3 Ridge Regression
 
-There is a great resource on [Ridge Regression ](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
+There is a great resource on [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
 
 As they explain in the above resource, Ridge regression is a model tuning method that is used to analyse any data that suffers from multicollinearity. This method performs L2 regularization. When the issue of multicollinearity occurs, least-squares are unbiased, and variances are large, this results in predicted values being far away from the actual values. 
 
@@ -226,12 +226,29 @@ In summary this is what Ridge Regression does:
 - It shrinks the parameters. Therefore, it is used to prevent multicollinearity
 - It reduces the model complexity by coefficient shrinkage
 
+Here are the results for my Ridge Reegression model:
+
 ![ridge_regression.jpg](/images/house/house9.jpg)
 
 ## 4.4 Lasso Regression
+
+Same resource I highly benefited from above during the Ridge Regression part covers the [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
+
+As they state on the website: Lasso regression is a regularization technique. It is used over regression methods for a more accurate prediction. This model uses shrinkage. Shrinkage is where data values are shrunk towards a central point as the mean. The lasso procedure encourages simple, sparse models (i.e. models with fewer parameters). This particular type of regression is well-suited for models showing high levels of multicollinearity or when you want to automate certain parts of model selection, like variable selection/parameter elimination.
+
+Lasso Regression uses L1 regularization technique. It is used when we have more number of features because it automatically performs feature selection.
+
+Here are the results of the Lasso Regression model:
+
 ![lasso_regression.jpg](/images/house/house10.jpg)
 
 ## 4.5 Polynomial Regression
+
+[Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/) is a form of Linear regression where only due to the non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.
+
+Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree. A simple linear regression can be extended by constructing polynomial features from the coefficients.
+
+Here are the results of the Polynomial Regression model:
 ![polynomial_regression.jpg](/images/house/house11.jpg)
 
 ## 4.6 Stochastic Gradient Descent
