@@ -19,19 +19,19 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-As hot as the housing has been for the last couple of years. It has been one of my personal interests to work on a project to predict housing prices. In this project, there are 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa. The task is to estimate the final price of each home. 
+Housing has been super hot, especially for the last couple of years. Also, It has been one of my personal interests to work on a project to predict housing prices. I come across this project in Kaggle, in this project, there are 79 explanatory variables describing most aspects of residential homes in Ames, Iowa. The task is to estimate the final price of each home. 
 
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
 # Data Science Steps
 1. **Problem Definition:** Finding the final price of homes. 
-2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)  
+2. **Data Gathering:** I used the USA_Housing dataset, I got access to them through the [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data).  
 3. **Data Preperation:** I prepped the data by using scaling methods.
 4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used heatmaps and correlation matrix to analyze the data. 
 5. **Data Modelling:** In this project, I used different linear regression methods including Linear Regression, Robust Regression, Ridge Regression, LASSO Regression, Elastic Net, Polynomial Regression, Stochastic Gradient Descent, Artficial Neural Network,  Random Forest Regressor and Support Vector Machine.
 6. **Validate Model:** After training the model, I worked with cross validation techniques to validate the model.
-7. **Optimize Model:** In this particular project, I did not focus on optimizing the model but used the models as is from sklearn. This will be a future improvement for me to work on. 
+7. **Optimize Model:** In this particular project, I did not focus on optimizing the model but used the models from sklearn with constant parameters. Parameter optimization will be a future improvement for me to work on. 
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
