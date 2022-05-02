@@ -104,6 +104,7 @@ I used pairplots and heatmaps to look at the data in more detail.
 
 ![pair_plots.jpg](/images/house/house3.jpg)
 
+![pair_plots.jpg](/images/house/house4.jpg)
 
 ## 3.3 Data Preperation: 
 
@@ -120,6 +121,21 @@ from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 ```
+
+Standardizing the data is a very important step before making the model. So I used SatndardScaler() to standardize the data. 
+
+```
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+
+pipeline = Pipeline([
+    ('std_scalar', StandardScaler())
+])
+
+X_train = pipeline.fit_transform(X_train)
+X_test = pipeline.transform(X_test)
+```
+
 
 Then defined the functions for displaying the model performace. 
 
@@ -155,7 +171,41 @@ def evaluate(true, predicted):
 
 ## 4.1 Linear Regression
 
+- Linear Assumption: Linear regression assumes that the relationship between the input and output is linear. In most cases, the unprocessed data may not be linear in real life. There are techniques to make the relationship linear (e.g. log transform for an exponential relationship).
+- Remove Noise: Outliers need to be removed from the dataset if possible for a cleaner input. 
+- Remove Collinearity: Linear regression have a tendency to over-fit the data when input variables are highly correlated. This is mainly why I looked at the pairplots to see if there was anything I could remove, which I did not see. 
+- Normal Distribution: Linear regression makes better predictions if the input and output variables have a normal (Gaussian) distribution. There are some options to transform the variables to make their distribution more normal.
+- Rescaling : Linear regression will often make more reliable predictions if you rescale input variables using standardization or normalization.
 
+sklearn libraty makes it quite simple to apply the models as such: 
+
+```
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression(normalize=True)
+lin_reg.fit(X_train,y_train)
+```
+
+I then visualized the True values vs Predicted Values 
+
+![pair_plots.jpg](/images/house/house5.jpg)
+
+Let's take a look at the residual histogram: 
+
+![pair_plots.jpg](/images/house/house6.jpg)
+
+Now it comes to the evaluation part. Here is a good article I found very useful: [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+
+Mainly there are 3 metrics for model evaluation in regression:
+1. R Square/Adjusted R Square : R Square measures how much variability in dependent variable can be explained by the model.
+2. Mean Square Error(MSE)/Root Mean Square Error(RMSE): While R Square is a relative measure of how well the model fits dependent variables, Mean Square Error is an absolute measure of the goodness for the fit.
+3. Mean Absolute Error(MAE): Mean Absolute Error(MAE) is similar to Mean Square Error(MSE). However, instead of the sum of square of error in MSE, MAE is taking the sum of the absolute value of error.
+
+Next, I went and printed the evaluation metrics for the linear regression model. 
+
+![pair_plots.jpg](/images/house/house7.jpg)
+
+## 4.1 Robust Regression
 
 <a id="ch7"></a>
 # Step 5: Build the Discriminator
