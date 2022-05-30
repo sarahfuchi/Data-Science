@@ -22,13 +22,18 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 
 # **Project Summary from Kaggle:**
 
-- The Breast Cancer datasets is available UCI machine learning repository maintained by the University of California, Irvine.
-- The dataset contains 569 samples of malignant and benign tumor cells.
-- The first two columns in the dataset store the unique ID numbers of the samples and the corresponding diagnosis (M=malignant, B=benign), respectively.
-- The columns 3-32 contain 30 real-value features that have been computed from digitized images of the cell nuclei, which can be used to build a model to predict whether a tumor is benign or malignant.
+Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass. They describe characteristics of the cell nuclei present in the image. n the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: "Robust Linear Programming Discrimination of Two Linearly Inseparable Sets", Optimization Methods and Software 1, 1992, 23-34].
 
-    - 1= Malignant (Cancerous) - Present (M)
-    - 0= Benign (Not Cancerous) -Absent (B)
+This database is also available through the UW CS ftp server:
+ftp ftp.cs.wisc.edu
+cd math-prog/cpo-dataset/machine-learn/WDBC/
+
+![Also can be found on UCI Machine Learning Repository: ](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29)
+
+# Attribute information:
+
+- ID number
+- Diagnosis (M = Malignant(Cancerous) or B = Benign(Not Cancerous))
 
 # Ten real-valued features are computed for each cell nucleus:
 
@@ -45,9 +50,11 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 
 The mean, standard error and "worst" or largest (mean of the three largest values) of these features were computed for each image, resulting in 30 features. For instance, field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.
 
-* All feature values are recoded with four significant digits.
+* All feature values are recoded with four significant digits
 
 * Missing attribute values: none
+
+* Class distribution: 357 benign, 212 malignant
 
 Let's take a look at the steps:  
 
@@ -82,7 +89,7 @@ Here are the steps of EDA I will focus on in this summary:
 <a id="ch3"></a>
 # Step 1: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/code/aditimulye/breast-cancer-prediction/data) or using the Kaggle app in Python.  
+Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) or using the Kaggle app in Python.  
 ```
 # Read data
 data = pd.read_csv('../input/data.csv')
@@ -334,73 +341,12 @@ plt.show()
 ```
 ![Negative correlated features](/images/breast_cancer/breast_cancer21.jpg)
 
-<a id="ch10"></a>
-# Step 8: Train the CycleGAN
-In this part of the project, I compiled the model. Since I used tf.keras.Model to build the CycleGAN, now is the time to use the fit() function to train.
-
-```
-with strategy.scope():
-    monet_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
-    photo_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
-
-    monet_discriminator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
-    photo_discriminator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
-```
-```
-with strategy.scope():
-    cycle_gan_model = CycleGan(
-        monet_generator, photo_generator, monet_discriminator, photo_discriminator
-    )
-
-    cycle_gan_model.compile(
-        m_gen_optimizer = monet_generator_optimizer,
-        p_gen_optimizer = photo_generator_optimizer,
-        m_disc_optimizer = monet_discriminator_optimizer,
-        p_disc_optimizer = photo_discriminator_optimizer,
-        gen_loss_fn = generator_loss,
-        disc_loss_fn = discriminator_loss,
-        cycle_loss_fn = calc_cycle_loss,
-        identity_loss_fn = identity_loss
-    )
-```
-```
-cycle_gan_model.fit(
-    tf.data.Dataset.zip((monet_ds, photo_ds)),
-    epochs=25
-)
-```
-![epochs.jpg](/images/monet/monet6.jpg)
-
-<a id="ch11"></a>
-# Step 9: Visualization 
-
-Now is the time to see how the algorithm translated the photos in to Monet-Esque: 
-
-```
-_, ax = plt.subplots(5, 2, figsize=(12, 12))
-for i, img in enumerate(photo_ds.take(5)):
-    prediction = monet_generator(img, training=False)[0].numpy()
-    prediction = (prediction * 127.5 + 127.5).astype(np.uint8)
-    img = (img[0] * 127.5 + 127.5).numpy().astype(np.uint8)
-
-    ax[i, 0].imshow(img)
-    ax[i, 1].imshow(prediction)
-    ax[i, 0].set_title("Input Photo")
-    ax[i, 1].set_title("Monet-esque")
-    ax[i, 0].axis("off")
-    ax[i, 1].axis("off")
-plt.show()
-```
-![monetesque.jpg](/images/monet/monet7.jpg)
-
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
 
-* [Monet CycleGAN Tutorial](https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial) - Indepth dive to Cyclegan steps.
-* [Instance vs Batch Normalization](https://www.baeldung.com/cs/instance-vs-batch-normalization) -  Normalization (IN) and Batch Normalization (BN) overview.
-* [Downsampling and Upsampling of Images](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) - Downsampling and Upsampling of Images - Demystifying the Theory.
-* [A Gentle Introduction to Cycle Consistent Adversarial Networks](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87) - Article going over what exactly Cycle GAN are and what are the existing applications of such models are.
+* [Breast Cancer Analysis and Prediction](https://www.kaggle.com/code/vincentlugat/breast-cancer-analysis-and-prediction) - Indepth dive to EDA steps.
+* [Advanced EDA](https://www.kaggle.com/code/kanberburak/advanced-eda) -  Advanced EDA
 
 
 
