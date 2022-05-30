@@ -306,44 +306,34 @@ plt.show()
 ![Uncorrelated features](/images/breast_cancer/breast_cancer20.jpg)
 
 <a id="ch9"></a>
-# Step 7: Define the Loss Functions
-
-The discriminator loss function below compares real images to a matrix of 1s and fake images to a matrix of 0s. The perfect discriminator will output all 1s for real images and all 0s for fake images. The discriminator loss outputs the average of the real and generated loss.
+# Step 7: Negative correlated features
 
 ```
-with strategy.scope():
-    def discriminator_loss(real, generated):
-        real_loss = tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(real), real)
+fig = plt.figure(figsize=(12,12))
 
-        generated_loss = tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.zeros_like(generated), generated)
+plt.subplot(221)
+ax1 = sns.scatterplot(x = data['area_mean'], y = data['fractal_dimension_mean'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('smoothness mean vs fractal dimension mean')
+plt.subplot(222)
+ax2 = sns.scatterplot(x = data['radius_mean'], y = data['fractal_dimension_mean'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('radius mean vs fractal dimension mean')
+plt.subplot(223)
+ax2 = sns.scatterplot(x = data['area_mean'], y = data['smoothness_se'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('area mean vs fractal smoothness se')
+plt.subplot(224)
+ax2 = sns.scatterplot(x = data['smoothness_se'], y = data['perimeter_mean'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('smoothness se vs perimeter mean')
 
-        total_disc_loss = real_loss + generated_loss
+fig.suptitle('Negative correlated features', fontsize = 20)
+plt.savefig('3')
+plt.show()
+```
+![Negative correlated features](/images/breast_cancer/breast_cancer21.jpg)
 
-        return total_disc_loss * 0.5
-```
-The generator wants to convince the discriminator into thinking the generated image is real. The perfect generator will have the discriminator output only 1s. Thus, it compares the generated image to a matrix of 1s to find the loss.
-```
-with strategy.scope():
-    def generator_loss(generated):
-        return tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(generated), generated)
-```
-The goal is our original photo and the twice transformed photo to be similar to one another. Thus, we can calculate the cycle consistency loss be finding the average of their difference.
-
-```
-with strategy.scope():
-    def calc_cycle_loss(real_image, cycled_image, LAMBDA):
-        loss1 = tf.reduce_mean(tf.abs(real_image - cycled_image))
-
-        return LAMBDA * loss1
-```
-The identity loss compares the image with its generator (i.e. photo with photo generator). If given a photo as input, we want it to generate the same image as the image was originally a photo. The identity loss compares the input with the output of the generator.
-
-```
-with strategy.scope():
-    def identity_loss(real_image, same_image, LAMBDA):
-        loss = tf.reduce_mean(tf.abs(real_image - same_image))
-        return LAMBDA * 0.5 * loss
-```
 <a id="ch10"></a>
 # Step 8: Train the CycleGAN
 In this part of the project, I compiled the model. Since I used tf.keras.Model to build the CycleGAN, now is the time to use the fit() function to train.
