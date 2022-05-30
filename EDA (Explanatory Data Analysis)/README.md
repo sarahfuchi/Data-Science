@@ -49,6 +49,8 @@ The mean, standard error and "worst" or largest (mean of the three largest value
 
 * Missing attribute values: none
 
+Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/code/aditimulye/breast-cancer-prediction/data) or using the Kaggle app in Python. 
+
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
