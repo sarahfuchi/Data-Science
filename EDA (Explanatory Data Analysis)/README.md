@@ -167,8 +167,17 @@ plot_distribution('area_mean', 10)
 ![Mean for Perimeter](/images/breast_cancer/breast_cancer8.jpg)
 ![Mean for Area](/images/breast_cancer/breast_cancer9.jpg)
 
-
-
+```
+#plot distribution 'se'
+plot_distribution('radius_se', .1)
+plot_distribution('texture_se', .1)
+plot_distribution('perimeter_se', .5)
+plot_distribution('area_se', 5)
+```
+![Se for Radius](/images/breast_cancer/breast_cancer10.jpg)
+![Se for Texture](/images/breast_cancer/breast_cancer11.jpg)
+![Se for Perimeter](/images/breast_cancer/breast_cancer12.jpg)
+![Se for Area](/images/breast_cancer/breast_cancer13.jpg)
 
 <a id="ch6"></a>
 # Step 4: Build the Generator
