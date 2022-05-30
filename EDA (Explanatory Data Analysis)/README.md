@@ -83,8 +83,22 @@ Here are the steps of EDA I will focus on in this summary:
 # Step 1: Data Gathering
 
 Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/code/aditimulye/breast-cancer-prediction/data) or using the Kaggle app in Python.  
+```
+# Read data
+data = pd.read_csv('../input/data.csv')
+```
 
+I chekced the missing values: All features are complete, only 'Unnamed: 32' is completely null, probably an error in the dataset, I dropped it below:
+
+```
+# Drop unnecessary variables
+data = data.drop(['Unnamed: 32','id'],axis = 1)
+
+# Reassign target
+data.diagnosis.replace(to_replace = dict(M = 1, B = 0), inplace = True)
+```
 <a id="ch4"></a>
+
 # Step 2: Head and describe
 
 ```
