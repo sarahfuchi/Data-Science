@@ -1,8 +1,6 @@
 ![Exploratory data analysis](/images/breast_cancer/breast_cancer0.jpg)
 
-This project focuses on exploratory data analysis with a simple step-by-step explanation.
-
-This project uses Kaggle datasets and gets inspiration from public notebooks.
+This project focuses on exploratory data analysis with a simple step-by-step explanation and uses Kaggle datasets and gets inspiration from public notebooks.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
