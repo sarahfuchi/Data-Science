@@ -28,7 +28,7 @@ This database is also available through the UW CS ftp server:
 ftp ftp.cs.wisc.edu
 cd math-prog/cpo-dataset/machine-learn/WDBC/
 
-![Also can be found on UCI Machine Learning Repository: ](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29)
+[Also can be found on UCI Machine Learning Repository:](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29)
 
 # Attribute information:
 
