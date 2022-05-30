@@ -5,16 +5,21 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
 1. [Chapter 2 - EDA Definition and Steps](#ch2)
-1. [Chapter 3 - Step 1: Analysis of Categorical Variables](#ch3)
-1. [Chapter 4 - Step 2: Analysis of Numerical Variables](#ch4)
-1. [Chapter 5 - Step 3: Analysis of Target Variable](#ch5)
-1. [Chapter 6 - Step 4: Analysis of Correlation](#ch6)
+1. [Chapter 3 - Step 1: Head and describe](#ch3)
+1. [Chapter 4 - Step 2: Target distribution](#ch4)
+1. [Chapter 5 - Step 3: Features distribution](#ch5)
+1. [Chapter 6 - Step 4: Correlation matrix](#ch6)
+1. [Chapter 7 - Step 5: Positive correlated features](#ch7)
+1. [Chapter 8 - Step 6: Uncorrelated features](#ch8)
+1. [Chapter 9 - Step 7: Negative correlated features](#ch9)
 
 
 1. [References](#ch90)
 
 
 <a id="ch1"></a>
+# Project Overview
+
 # **Project Summary from Kaggle:**
 
 - The Breast Cancer datasets is available UCI machine learning repository maintained by the University of California, Irvine.
@@ -55,30 +60,39 @@ Exploratory data analysis (EDA) is used by data scientists to analyze and invest
 
 EDA is primarily used to see what data can reveal beyond the formal modeling or hypothesis testing task and provides a provides a better understanding of data set variables and the relationships between them. It can also help determine if the statistical techniques you are considering for data analysis are appropriate. Originally developed by American mathematician John Tukey in the 1970s, EDA techniques continue to be a widely used method in the data discovery process today
 
-It is a study that focuses on advanced functionalized exploratory data analysis with a simple step-by-step explanation
+It is a study that focuses on advanced functionalized exploratory data analysis with a simple step-by-step explanation. It involves organizing and summarizing the raw data, discovering important features and patterns in the data and any striking deviations from those patterns, and then interpreting the findings. 
 
-1. **Analysis of Categorical Variables**
-2. **Analysis of Numerical Variables** 
-3. **Analysis of Target Variable**
-4. **Analysis of Correlation**  
+Some outcomes of EDA:
+
+- Describing the distribution of a single variable (center, spread, shape, outliers)
+- Checking data (for errors or other problems)
+- Checking assumptions to more complex statistical analyses
+- Investigating relationships between variables
+
+Here are the steps of EDA I will focus on in this summary:
+
+- Head and describe
+- Target distribution 
+- Features distribution 
+- Correlation matrix
+- Positive correlated features
+- Uncorrelated features
+- Negative correlated features 
 
 <a id="ch3"></a>
-# Step 1: Problem Definition
-Goal is to generate Monet like photos either from stratch or from existing photos, and then classify them whether they are real or fake.
+# Step 1: Head and describe
 
-**Project Summary from Kaggle:**
-We recognize the works of artists through their unique style, such as color choices or brush strokes. The “je ne sais quoi” of artists like Claude Monet can now be imitated with algorithms thanks to generative adversarial networks (GANs). In this getting started competition, you will bring that style to your photos or recreate the style from scratch!
+```
+# Head
+data.head()
+```
+![Data head](/images/breast_cancer/breast_cancer2.jpg)
 
-Computer vision has advanced tremendously in recent years and GANs are now capable of mimicking objects in a very convincing way. But creating museum-worthy masterpieces is thought of to be, well, more art than science. So can (data) science, in the form of GANs, trick classifiers into believing you’ve created a true Monet? That’s the challenge you’ll take on!
-
-The Challenge:
-A GAN consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For our competition, you should generate images in the style of Monet. This generator is trained using a discriminator.
-
-The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images.
-
-Your task is to build a GAN that generates 7,000 to 10,000 Monet-style images.
-
-
+```
+# describe
+data.describe()
+```
+![Data describe](/images/breast_cancer/breast_cancer3.jpg)
 
 <a id="ch4"></a>
 # Step 2: Data Gathering
