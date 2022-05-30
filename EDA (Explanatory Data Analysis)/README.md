@@ -1,10 +1,10 @@
-![Exploratory data analysis](/images/breast_cancer/breast_cancer0.jpg)
+![Exploratory data analysis for breast cancer prediction](/images/breast_cancer/breast_cancer0.jpg)
 
 This project focuses on exploratory data analysis with a simple step-by-step explanation and uses Kaggle datasets and gets inspiration from public notebooks.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
-1. [Chapter 2 - EDA Science Steps](#ch2)
+1. [Chapter 2 - EDA Definition and Steps](#ch2)
 1. [Chapter 3 - Step 1: Analysis of Categorical Variables](#ch3)
 1. [Chapter 4 - Step 2: Analysis of Numerical Variables](#ch4)
 1. [Chapter 5 - Step 3: Analysis of Target Variable](#ch5)
@@ -15,24 +15,52 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 
 
 <a id="ch1"></a>
-# Project Overview
-I have always loved painting and data science. I wanted to take on this project to connect both passions of mine. Painters, such as Claude Monet have unique brush strokes and color choices. This project revolves around whether I can use generative adversarial networks (GANs) to bring Monet's style to the existing photos and recreating that style from stratch.
+# **Project Summary from Kaggle:**
 
-If those photos are created successfully, the classifier will approve and I call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
+- The Breast Cancer datasets is available UCI machine learning repository maintained by the University of California, Irvine.
+- The dataset contains 569 samples of malignant and benign tumor cells.
+- The first two columns in the dataset store the unique ID numbers of the samples and the corresponding diagnosis (M=malignant, B=benign), respectively.
+- The columns 3-32 contain 30 real-value features that have been computed from digitized images of the cell nuclei, which can be used to build a model to predict whether a tumor is benign or malignant.
 
-**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to convince the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
+    - 1= Malignant (Cancerous) - Present (M)
+    - 0= Benign (Not Cancerous) -Absent (B)
+
+#Ten real-valued features are computed for each cell nucleus:
+
+- radius (mean of distances from center to points on the perimeter)
+- texture (standard deviation of gray-scale values)
+- perimeter
+- area
+- smoothness (local variation in radius lengths)
+- compactness (perimeter^2 / area - 1.0)
+- concavity (severity of concave portions of the contour)
+- concave points (number of concave portions of the contour)
+- symmetry
+- fractal dimension ("coastline approximation" - 1)
+
+The mean, standard error and "worst" or largest (mean of the three largest values) of these features were computed for each image, resulting in 30 features. For instance, field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.
+
+* All feature values are recoded with four significant digits.
+
+* Missing attribute values: none
 
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
-# Data Science Steps
-1. **Problem Definition:** Finding whether the image that is created is real or generated through classification. 
-2. **Data Gathering:** I used the Monet TFRecord dataset as well as the Photo TFRecord dataset, I got access to them through the KaggleDatasets() app. 
-3. **Data Preperation:** I prepped the data by using scaling and normalization methods.
-4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used visualization techniques to analyze the data. 
-5. **Data Modelling:** In this project, I built a generator to generate Monet-like photos, a discriminator to classify whether the image is real or fake, CycleGAN architecture to train the model.
-6. **Validate Model:** After training the model, I worked on validating it to see the performance of the model I have built.
-7. **Optimize Model:** Used loss function to adjust the weights to optimize the model. 
+# EDA Definition and Steps
+
+![Exploratory data analysis steps](/images/breast_cancer/breast_cancer1.jpg)
+
+Exploratory data analysis (EDA) is used by data scientists to analyze and investigate data sets and summarize their main characteristics, often employing data visualization methods. It helps determine how best to manipulate data sources to get the answers you need, making it easier for data scientists to discover patterns, spot anomalies, test a hypothesis, or check assumptions.
+
+EDA is primarily used to see what data can reveal beyond the formal modeling or hypothesis testing task and provides a provides a better understanding of data set variables and the relationships between them. It can also help determine if the statistical techniques you are considering for data analysis are appropriate. Originally developed by American mathematician John Tukey in the 1970s, EDA techniques continue to be a widely used method in the data discovery process today
+
+It is a study that focuses on advanced functionalized exploratory data analysis with a simple step-by-step explanation
+
+1. **Analysis of Categorical Variables**
+2. **Analysis of Numerical Variables** 
+3. **Analysis of Target Variable**
+4. **Analysis of Correlation**  
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
