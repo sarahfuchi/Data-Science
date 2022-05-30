@@ -25,7 +25,7 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
     - 1= Malignant (Cancerous) - Present (M)
     - 0= Benign (Not Cancerous) -Absent (B)
 
-#Ten real-valued features are computed for each cell nucleus:
+# Ten real-valued features are computed for each cell nucleus:
 
 - radius (mean of distances from center to points on the perimeter)
 - texture (standard deviation of gray-scale values)
