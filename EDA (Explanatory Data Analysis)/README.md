@@ -206,7 +206,7 @@ plot_distribution('area_worst', 10)
 ![Worst for Area](/images/breast_cancer/breast_cancer17.jpg)
 
 <a id="ch6"></a>
-# Step 4: Correlation matrix
+# Step 5: Correlation matrix
 ```
 #correlation
 correlation = data.corr()
@@ -243,62 +243,49 @@ py.iplot(fig)
 ![Correlation Matrix](/images/breast_cancer/breast_cancer18.jpg)
 
 <a id="ch7"></a>
-# Step 5: Build the Discriminator
-
-The discriminator takes in the input image and classifies it as real or fake. The fake I am referring to here is the image that is generator by the generator, not the genuine Monet image. Instead of outputing a single node, the discriminator outputs a smaller 2D image with higher pixel values indicating a real classification and lower values indicating a fake classification.
+# Step 6: Positive correlated features
 
 ```
-def Discriminator():
-    initializer = tf.random_normal_initializer(0., 0.02)
-    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
+def plot_feat1_feat2(feat1, feat2) :  
+    trace0 = go.Scatter(
+        x = M[feat1],
+        y = M[feat2],
+        name = 'malignant',
+        mode = 'markers', 
+        marker = dict(color = '#FFD700',
+            line = dict(
+                width = 1)))
 
-    inp = layers.Input(shape=[256, 256, 3], name='input_image')
+    trace1 = go.Scatter(
+        x = B[feat1],
+        y = B[feat2],
+        name = 'benign',
+        mode = 'markers',
+        marker = dict(color = '#7EC0EE',
+            line = dict(
+                width = 1)))
 
-    x = inp
+    layout = dict(title = feat1 +" "+"vs"+" "+ feat2,
+                  yaxis = dict(title = feat2,zeroline = False),
+                  xaxis = dict(title = feat1, zeroline = False)
+                 )
 
-    down1 = downsample(64, 4, False)(x) # (bs, 128, 128, 64)
-    down2 = downsample(128, 4)(down1) # (bs, 64, 64, 128)
-    down3 = downsample(256, 4)(down2) # (bs, 32, 32, 256)
+    plots = [trace0, trace1]
 
-    zero_pad1 = layers.ZeroPadding2D()(down3) # (bs, 34, 34, 256)
-    conv = layers.Conv2D(512, 4, strides=1,
-                         kernel_initializer=initializer,
-                         use_bias=False)(zero_pad1) # (bs, 31, 31, 512)
-
-    norm1 = tfa.layers.InstanceNormalization(gamma_initializer=gamma_init)(conv)
-
-    leaky_relu = layers.LeakyReLU()(norm1)
-
-    zero_pad2 = layers.ZeroPadding2D()(leaky_relu) # (bs, 33, 33, 512)
-
-    last = layers.Conv2D(1, 4, strides=1,
-                         kernel_initializer=initializer)(zero_pad2) # (bs, 30, 30, 1)
-
-    return tf.keras.Model(inputs=inp, outputs=last)
+    fig = dict(data = plots, layout=layout)
+    py.iplot(fig)
 ```
 ```
-with strategy.scope():
-    monet_generator = Generator() # transforms photos to Monet-esque paintings
-    photo_generator = Generator() # transforms Monet paintings to be more like photos
-
-    monet_discriminator = Discriminator() # differentiates real Monet paintings and generated Monet paintings
-    photo_discriminator = Discriminator() # differentiates real photos and generated photos
+plot_feat1_feat2('perimeter_mean','radius_worst')
+plot_feat1_feat2('area_mean','radius_worst')
+plot_feat1_feat2('texture_mean','texture_worst')
+plot_feat1_feat2('area_worst','radius_worst')tos
 ```
-Since our generators are not trained yet, the generated Monet-esque photo does not show what is expected at this point.
+![perimeter_mean vs radius_worst](/images/breast_cancer/breast_cancer19.jpg)
+![area_mean vs radius_worst](/images/breast_cancer/breast_cancer20.jpg)
+![texture_mean vs texture_worst](/images/breast_cancer/breast_cancer21.jpg)
+![area_worst vs radius_worst](/images/breast_cancer/breast_cancer22.jpg)
 
-```
-to_monet = monet_generator(example_photo)
-
-plt.subplot(1, 2, 1)
-plt.title("Original Photo")
-plt.imshow(example_photo[0] * 0.5 + 0.5)
-
-plt.subplot(1, 2, 2)
-plt.title("Monet-esque Photo")
-plt.imshow(to_monet[0] * 0.5 + 0.5)
-plt.show()
-```
-![generated_Monet.jpg](/images/monet/monet4.jpg)
 
 <a id="ch8"></a>
 # Step 6: Build the CycleGAN Model
