@@ -246,45 +246,34 @@ py.iplot(fig)
 # Step 6: Positive correlated features
 
 ```
-def plot_feat1_feat2(feat1, feat2) :  
-    trace0 = go.Scatter(
-        x = M[feat1],
-        y = M[feat2],
-        name = 'malignant',
-        mode = 'markers', 
-        marker = dict(color = '#FFD700',
-            line = dict(
-                width = 1)))
+palette ={0 : 'lightblue', 1 : 'gold'}
+edgecolor = 'grey'
 
-    trace1 = go.Scatter(
-        x = B[feat1],
-        y = B[feat2],
-        name = 'benign',
-        mode = 'markers',
-        marker = dict(color = '#7EC0EE',
-            line = dict(
-                width = 1)))
+# Plot +
+fig = plt.figure(figsize=(12,12))
 
-    layout = dict(title = feat1 +" "+"vs"+" "+ feat2,
-                  yaxis = dict(title = feat2,zeroline = False),
-                  xaxis = dict(title = feat1, zeroline = False)
-                 )
+plt.subplot(221)
+ax1 = sns.scatterplot(x = data['perimeter_mean'], y = data['radius_worst'], hue = "diagnosis",
+                    data = data, palette = palette, edgecolor=edgecolor)
+plt.title('perimeter mean vs radius worst')
+plt.subplot(222)
+ax2 = sns.scatterplot(x = data['area_mean'], y = data['radius_worst'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('area mean vs radius worst')
+plt.subplot(223)
+ax3 = sns.scatterplot(x = data['texture_mean'], y = data['texture_worst'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('texture mean vs texture worst')
+plt.subplot(224)
+ax4 = sns.scatterplot(x = data['area_worst'], y = data['radius_worst'], hue = "diagnosis",
+                    data = data, palette =palette, edgecolor=edgecolor)
+plt.title('area mean vs radius worst')
 
-    plots = [trace0, trace1]
-
-    fig = dict(data = plots, layout=layout)
-    py.iplot(fig)
+fig.suptitle('Positive correlated features', fontsize = 20)
+plt.savefig('1')
+plt.show()
 ```
-```
-plot_feat1_feat2('perimeter_mean','radius_worst')
-plot_feat1_feat2('area_mean','radius_worst')
-plot_feat1_feat2('texture_mean','texture_worst')
-plot_feat1_feat2('area_worst','radius_worst')tos
-```
-![perimeter_mean vs radius_worst](/images/breast_cancer/breast_cancer19.jpg)
-![area_mean vs radius_worst](/images/breast_cancer/breast_cancer20.jpg)
-![texture_mean vs texture_worst](/images/breast_cancer/breast_cancer21.jpg)
-![area_worst vs radius_worst](/images/breast_cancer/breast_cancer22.jpg)
+![positive correlated features](/images/breast_cancer/breast_cancer19.jpg)
 
 
 <a id="ch8"></a>
