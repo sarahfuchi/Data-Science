@@ -5,14 +5,14 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
 1. [Chapter 2 - EDA Definition and Steps](#ch2)
-1. [Chapter 3 - Step 1: Head and describe](#ch3)
-1. [Chapter 4 - Step 2: Target distribution](#ch4)
-1. [Chapter 5 - Step 3: Features distribution](#ch5)
-1. [Chapter 6 - Step 4: Correlation matrix](#ch6)
-1. [Chapter 7 - Step 5: Positive correlated features](#ch7)
-1. [Chapter 8 - Step 6: Uncorrelated features](#ch8)
-1. [Chapter 9 - Step 7: Negative correlated features](#ch9)
-
+1. [Chapter 3 - Step 1: Data Gathering](#ch3)
+1. [Chapter 4 - Step 2: Head and describe](#ch4)
+1. [Chapter 5 - Step 3: Target distribution](#ch5)
+1. [Chapter 6 - Step 4: Features distribution](#ch6)
+1. [Chapter 7 - Step 5: Correlation matrix](#ch7)
+1. [Chapter 8 - Step 6: Positive correlated features](#ch8)
+1. [Chapter 9 - Step 7: Uncorrelated features](#ch9)
+1. [Chapter 10 - Step 8: Negative correlated features](#ch10)
 
 1. [References](#ch90)
 
@@ -49,8 +49,6 @@ The mean, standard error and "worst" or largest (mean of the three largest value
 
 * Missing attribute values: none
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/code/aditimulye/breast-cancer-prediction/data) or using the Kaggle app in Python. 
-
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
@@ -82,7 +80,12 @@ Here are the steps of EDA I will focus on in this summary:
 - Negative correlated features 
 
 <a id="ch3"></a>
-# Step 1: Head and describe
+# Step 1: Data Gathering
+
+Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/code/aditimulye/breast-cancer-prediction/data) or using the Kaggle app in Python.  
+
+<a id="ch4"></a>
+# Step 2: Head and describe
 
 ```
 # Head
@@ -96,46 +99,41 @@ data.describe()
 ```
 ![Data describe](/images/breast_cancer/breast_cancer3.jpg)
 
-<a id="ch4"></a>
-# Step 2: Data Gathering
-
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started/data) or using the Kaggle app in Python. I went with the second option. 
-
 <a id="ch5"></a>
-# Step 3: Data Preperation
-The data is pre-processed already coming from Kaggle so I just focused on scaling/normalizing the data further. All the images were already sized to 256x256. I also scaled the images to a [-1, 1] scale. Because we are building a generative model, we don't need the labels or the image id in this project. 
-
-## 3.1 Import Libraries
+# Step 3: Target distribution
 
 ```
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-import tensorflow_addons as tfa
-from kaggle_datasets import KaggleDatasets
-import matplotlib.pyplot as plt
-import numpy as np
+# Two datasets
+M = data[(data['diagnosis'] != 0)]
+B = data[(data['diagnosis'] == 0)]
 ```
--------------------------
 
-**This is the input data from Kaggle :**  ['monet_jpg', 'monet_tfrec', 'photo_jpg', 'photo_tfrec']
+```
+#------------COUNT-----------------------
+trace = go.Bar(x = (len(M), len(B)), y = ['malignant', 'benign'], orientation = 'h', opacity = 0.8, marker=dict(
+        color=[ 'gold', 'lightskyblue'],
+        line=dict(color='#000000',width=1.5)))
 
-## 3.2 Pre-view of the Data
+layout = dict(title =  'Count of diagnosis variable')
+                    
+fig = dict(data = [trace], layout=layout)
+py.iplot(fig)
+
+#------------PERCENTAGE-------------------
+trace = go.Pie(labels = ['benign','malignant'], values = data['diagnosis'].value_counts(), 
+               textfont=dict(size=15), opacity = 0.8,
+               marker=dict(colors=['lightskyblue', 'gold'], 
+                           line=dict(color='#000000', width=1.5)))
 
 
-The dataset contained four directories: monet_tfrec, photo_tfrec, monet_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting images, and the photo_tfrec and photo_jpg directories contained the same photos. I used the TFRecords as per the Kaggle's recommendation.
+layout = dict(title =  'Distribution of diagnosis variable')
+           
+fig = dict(data = [trace], layout=layout)
+py.iplot(fig)
+```
 
-The monet directories contained Monet paintings. I used these images to train my model.
-
-The photo directories contained photos. I added Monet's styling to these images via GAN architectures. CycleGAN dataset contains other artists styles as well. 
-
-**Files**
-monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
-monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
-photo_jpg - 7028 photos sized 256x256 in JPEG format
-photo_tfrec - 7028 photos sized 256x256 in TFRecord format
-
-![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
+![Count of Diagnosis](/images/breast_cancer/breast_cancer4.jpg)
+![Distribution of Diagnosis](/images/breast_cancer/breast_cancer5.jpg)
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
