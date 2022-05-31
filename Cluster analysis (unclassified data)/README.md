@@ -1,10 +1,10 @@
 ![Getting Started with a Movie Recommendation System](/images/movie/movie0.jpg)
 
-This project focuses on movie recommendation systems, using tmdb_5000 data and gets inspiration from public notebooks.
+This project focuses on movie recommendation systems, using TMDB 5000 Movie Dataset and gets inspiration from public notebooks.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
-1. [Chapter 2 - EDA Definition and Steps](#ch2)
+1. [Chapter 2 - Types of recommendation systems](#ch2)
 1. [Chapter 3 - Step 1: Data Gathering](#ch3)
 1. [Chapter 4 - Step 2: Head and describe](#ch4)
 1. [Chapter 5 - Step 3: Target distribution](#ch5)
@@ -22,69 +22,22 @@ This project focuses on movie recommendation systems, using tmdb_5000 data and g
 
 # **Project Summary from Kaggle:**
 
-Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass. They describe characteristics of the cell nuclei present in the image. n the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: "Robust Linear Programming Discrimination of Two Linearly Inseparable Sets", Optimization Methods and Software 1, 1992, 23-34].
+The rapid growth of data collection has led to a new era of information. Data is being used to create more efficient systems and this is where Recommendation Systems come into play. Recommendation Systems are a type of information filtering systems as they improve the quality of search results and provides items that are more relevant to the search item or are realted to the search history of the user.
 
-This database is also available through the UW CS ftp server:
-- ftp ftp.cs.wisc.edu
-- cd math-prog/cpo-dataset/machine-learn/WDBC/
-
-[Also can be found on UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29)
-
-# Attribute information:
-
-- ID number
-- Diagnosis (M = Malignant(Cancerous) or B = Benign(Not Cancerous))
-
-# Ten real-valued features are computed for each cell nucleus:
-
-- radius (mean of distances from center to points on the perimeter)
-- texture (standard deviation of gray-scale values)
-- perimeter
-- area
-- smoothness (local variation in radius lengths)
-- compactness (perimeter^2 / area - 1.0)
-- concavity (severity of concave portions of the contour)
-- concave points (number of concave portions of the contour)
-- symmetry
-- fractal dimension ("coastline approximation" - 1)
-
-The mean, standard error and "worst" or largest (mean of the three largest values) of these features were computed for each image, resulting in 30 features. For instance, field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.
-
-* All feature values are recoded with four significant digits
-
-* Missing attribute values: none
-
-* Class distribution: 357 benign, 212 malignant
-
-Let's take a look at the steps:  
+They are used to predict the rating or preference that a user would give to an item. Almost every major tech company has applied them in some form or the other: Amazon uses it to suggest products to customers, YouTube uses it to decide which video to play next on autoplay, and Facebook uses it to recommend pages to like and people to follow. Moreover, companies like Netflix and Spotify depend highly on the effectiveness of their recommendation engines for their business and sucees.
 
 <a id="ch2"></a>
-# EDA Definition and Steps
+# Types of recommendation systems
 
 ![Exploratory data analysis steps](/images/breast_cancer/breast_cancer1.jpg)
 
-Exploratory data analysis (EDA) is used by data scientists to analyze and investigate data sets and summarize their main characteristics, often employing data visualization methods. It helps determine how best to manipulate data sources to get the answers you need, making it easier for data scientists to discover patterns, spot anomalies, test a hypothesis, or check assumptions.
+There are basically three types of recommender systems:-
 
-EDA is primarily used to see what data can reveal beyond the formal modeling or hypothesis testing task and provides a provides a better understanding of data set variables and the relationships between them. It can also help determine if the statistical techniques you are considering for data analysis are appropriate. Originally developed by American mathematician John Tukey in the 1970s, EDA techniques continue to be a widely used method in the data discovery process today
+- Demographic Filtering- They offer generalized recommendations to every user, based on movie popularity and/or genre. The System recommends the same movies to users with similar demographic features. Since each user is different , this approach is considered to be too simple. The basic idea behind this system is that movies that are more popular and critically acclaimed will have a higher probability of being liked by the average audience.
 
-It is a study that focuses on advanced functionalized exploratory data analysis with a simple step-by-step explanation. It involves organizing and summarizing the raw data, discovering important features and patterns in the data and any striking deviations from those patterns, and then interpreting the findings. 
+- Content Based Filtering- They suggest similar items based on a particular item. This system uses item metadata, such as genre, director, description, actors, etc. for movies, to make these recommendations. The general idea behind these recommender systems is that if a person liked a particular item, he or she will also like an item that is similar to it.
 
-Some outcomes of EDA:
-
-- Describing the distribution of a single variable (center, spread, shape, outliers)
-- Checking data (for errors or other problems)
-- Checking assumptions to more complex statistical analyses
-- Investigating relationships between variables
-
-Here are the steps of EDA I will focus on in this summary:
-
-- Head and describe
-- Target distribution 
-- Features distribution 
-- Correlation matrix
-- Positive correlated features
-- Uncorrelated features
-- Negative correlated features 
+- Collaborative Filtering- This system matches persons with similar interests and provides recommendations based on this matching. Collaborative filters do not require item metadata like its content-based counterparts.
 
 <a id="ch3"></a>
 # Step 1: Data Gathering
