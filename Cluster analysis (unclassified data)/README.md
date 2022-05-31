@@ -20,16 +20,12 @@ This project focuses on movie recommendation systems, using TMDB 5000 Movie Data
 <a id="ch1"></a>
 # Project Overview
 
-# **Project Summary from Kaggle:**
-
 The rapid growth of data collection has led to a new era of information. Data is being used to create more efficient systems and this is where Recommendation Systems come into play. Recommendation Systems are a type of information filtering systems as they improve the quality of search results and provides items that are more relevant to the search item or are realted to the search history of the user.
 
 They are used to predict the rating or preference that a user would give to an item. Almost every major tech company has applied them in some form or the other: Amazon uses it to suggest products to customers, YouTube uses it to decide which video to play next on autoplay, and Facebook uses it to recommend pages to like and people to follow. Moreover, companies like Netflix and Spotify depend highly on the effectiveness of their recommendation engines for their business and sucees.
 
 <a id="ch2"></a>
 # Types of recommendation systems
-
-![Exploratory data analysis steps](/images/breast_cancer/breast_cancer1.jpg)
 
 There are basically three types of recommender systems:-
 
@@ -40,23 +36,71 @@ There are basically three types of recommender systems:-
 - Collaborative Filtering- This system matches persons with similar interests and provides recommendations based on this matching. Collaborative filters do not require item metadata like its content-based counterparts.
 
 <a id="ch3"></a>
-# Step 1: Data Gathering
+# Step 1: Data Gathering and info from Kaggle
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) or using the Kaggle app in Python.  
-```
-# Read data
-data = pd.read_csv('../input/data.csv')
-```
+# About Dataset
+Background
+What can we say about the success of a movie before it is released? Are there certain companies (Pixar?) that have found a consistent formula? Given that major films costing over $100 million to produce can still flop, this question is more important than ever to the industry. Film aficionados might have different interests. Can we predict which films will be highly rated, whether or not they are a commercial success?
 
-I chekced the missing values: All features are complete, only 'Unnamed: 32' is completely null, probably an error in the dataset, I dropped it below:
+This is a great place to start digging in to those questions, with data on the plot, cast, crew, budget, and revenues of several thousand films.
 
-```
-# Drop unnecessary variables
-data = data.drop(['Unnamed: 32','id'],axis = 1)
+# Data Source Transfer Summary
+Kaggle have removed the original version of this dataset per a DMCA takedown request from IMDB. In order to minimize the impact, we're replacing it with a similar set of films and data fields from The Movie Database (TMDb) in accordance with their terms of use. The bad news is that kernels built on the old dataset will most likely no longer work.
 
-# Reassign target
-data.diagnosis.replace(to_replace = dict(M = 1, B = 0), inplace = True)
-```
+New columns:
+
+- homepage
+
+- id
+
+- original_title
+
+- overview
+
+- popularity
+
+- production_companies
+
+- production_countries
+
+- release_date
+
+- spoken_languages
+
+- status
+
+- tagline
+
+- vote_average
+
+Lost columns:
+
+- actor1facebook_likes
+
+- actor2facebook_likes
+
+- actor3facebook_likes
+
+- aspect_ratio
+
+- casttotalfacebook_likes
+
+- color
+
+- content_rating
+
+- directorfacebooklikes
+
+- facenumberinposter
+
+- moviefacebooklikes
+
+- movieimdblink
+
+- numcriticfor_reviews
+
+- numuserfor_reviews
+
 <a id="ch4"></a>
 
 # Step 2: Head and describe
