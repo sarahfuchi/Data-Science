@@ -84,7 +84,6 @@ df2.head(5)
 ![First look at the data](/images/movie/movie1.jpg)
 
 <a id="ch4"></a>
-
 # Step 2: Demographic Filtering
 
 <a id="ch5"></a>
