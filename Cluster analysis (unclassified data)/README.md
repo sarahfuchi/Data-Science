@@ -287,37 +287,139 @@ def get_recommendations(title, cosine_sim=cosine_sim):
 get_recommendations('The Dark Knight Rises')
 ```
 
-65                              The Dark Knight
-299                              Batman Forever
-428                              Batman Returns
-1359                                     Batman
-3854    Batman: The Dark Knight Returns, Part 2
-119                               Batman Begins
-2507                                  Slow Burn
-9            Batman v Superman: Dawn of Justice
-1181                                        JFK
-210                              Batman & Robin
-Name: title, dtype: object
+![get_recommendations('The Dark Knight Rises')](/images/movie/movie8.jpg)
+
 
 ```
 get_recommendations('The Avengers')
 ```
 
-7               Avengers: Age of Ultron
-3144                            Plastic
-1715                            Timecop
-4124                 This Thing of Ours
-3311              Thank You for Smoking
-3033                      The Corruptor
-588     Wall Street: Money Never Sleeps
-2136         Team America: World Police
-1468                       The Fountain
-1286                        Snowpiercer
-Name: title, dtype: object
+![get_recommendations('The Avengers')](/images/movie/movie9.jpg)
 
 Our system did a good job of locating movies with comparable plot descriptions, but the quality of the recommendations isn't excellent. "The Dark Knight Rises" returns all Batman films, but fans of that film are more likely to love subsequent Christopher Nolan films. This is something that the current system is incapable of capturing.
 
 * Credits, Genres and Keywords Based Recommender
+
+Using better metadata would improve the quality of our recommender. That is precisely what I did in this part. The following metadata was used to develop a recommender: the top three actors, the director, relevant genres, and movie narrative keywords.
+
+I needed to extract the three most essential actors, the director, and the keywords connected with that movie from the cast, crew, and keywords features. Our data is currently stored in the form of "stringified" lists, which I needed to change into a secure and useable structure.
+
+```
+# Parse the stringified features into their corresponding python objects
+from ast import literal_eval
+
+features = ['cast', 'crew', 'keywords', 'genres']
+for feature in features:
+    df2[feature] = df2[feature].apply(literal_eval)
+```
+
+Following that, I developed functions to assist me in extracting the essential data from each feature.
+
+```
+# Get the director's name from the crew feature. If director is not listed, return NaN
+def get_director(x):
+    for i in x:
+        if i['job'] == 'Director':
+            return i['name']
+    return np.nan
+```
+
+```
+# Returns the list top 3 elements or entire list; whichever is more.
+def get_list(x):
+    if isinstance(x, list):
+        names = [i['name'] for i in x]
+        #Check if more than 3 elements exist. If yes, return only first three. If no, return entire list.
+        if len(names) > 3:
+            names = names[:3]
+        return names
+
+    #Return empty list in case of missing/malformed data
+    return []
+```
+
+```
+# Define new director, cast, genres and keywords features that are in a suitable form.
+df2['director'] = df2['crew'].apply(get_director)
+
+features = ['cast', 'keywords', 'genres']
+for feature in features:
+    df2[feature] = df2[feature].apply(get_list)
+```
+
+```
+# Print the new features of the first 3 films
+df2[['title', 'cast', 'director', 'keywords', 'genres']].head(3)
+```
+
+The names and keyword instances was then converted to lowercase and all spaces between them removed. This was done to ensure that the Johnnys of "Johnny Depp" and "Johnny Galecki" are not confused by our vectorizer.
+
+```
+# Function to convert all strings to lower case and strip names of spaces
+def clean_data(x):
+    if isinstance(x, list):
+        return [str.lower(i.replace(" ", "")) for i in x]
+    else:
+        #Check if director exists. If not, return empty string
+        if isinstance(x, str):
+            return str.lower(x.replace(" ", ""))
+        else:
+            return ''
+```
+
+```
+# Apply clean_data function to your features.
+features = ['cast', 'keywords', 'director', 'genres']
+
+for feature in features:
+    df2[feature] = df2[feature].apply(clean_data)
+```
+
+I then generated the "metadata soup," which was a string containing all of the metadata I wanted to provide to the vectorizer (namely actors, director and keywords).
+
+```
+def create_soup(x):
+    return ' '.join(x['keywords']) + ' ' + ' '.join(x['cast']) + ' ' + x['director'] + ' ' + ' '.join(x['genres'])
+df2['soup'] = df2.apply(create_soup, axis=1)
+```
+
+The following steps were identical to those taken with the plot description-based recommender. I utilized CountVectorizer() instead of TF-IDF, which was a significant difference. This was because I didn't want to undervalue an actor's or director's presence simply because he or she has been in or directed in a larger number of films. 
+
+```
+# Import CountVectorizer and create the count matrix
+from sklearn.feature_extraction.text import CountVectorizer
+
+count = CountVectorizer(stop_words='english')
+count_matrix = count.fit_transform(df2['soup'])
+```
+
+```
+# Compute the Cosine Similarity matrix based on the count_matrix
+from sklearn.metrics.pairwise import cosine_similarity
+
+cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
+```
+
+```
+# Reset index of our main DataFrame and construct reverse mapping as before
+df2 = df2.reset_index()
+indices = pd.Series(df2.index, index=df2['title'])
+```
+
+By supplying the new cosine sim2 matrix as the second input, I could then reuse my get recommendations() code:
+
+```
+get_recommendations('The Dark Knight Rises', cosine_sim2)
+```
+![get_recommendations('The Dark Knight Rises', cosine_sim2)](/images/movie/movie.11jpg)
+
+```
+get_recommendations('The Godfather', cosine_sim2)
+```
+
+![get_recommendations('The Godfather', cosine_sim2)](/images/movie/movie.12jpg)
+
+Due to the increased metadata, our recommender was able to capture more data and provide us with (arguably) better recommendations. Fans of Marvel or DC comics are more likely to enjoy films produced by the same studio. As a result, I may add production company to my list of features. I can also raise the director's weight by repeating the feature in the soup numerous times.
 
 <a id="ch6"></a>
 # Step 4: Collaborative Filtering
