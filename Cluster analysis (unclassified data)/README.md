@@ -191,6 +191,133 @@ In a CBF system, the objects of interest are defined by their associated feature
 
 [Other system can be found here, presented by Pazzani et al.](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf), in which the users rate the Web documents and assign them values from the binary “hot” and “cold” scale. These ratings are then used to determine the likelihood of the words appearing in hot or cold documents, based on the user ratings. Then there's the WebWatcher, which tracks users' actions and link choices on Web pages in order to recommend links on Web pages that the user could visit in the future. Unlike  Collaborative Filtering (CF), the CBF is not as complicated because all that is required is an analysis of the things that an independent user has purchased or seen. Because creating an adequate number of characteristics is not always achievable, each item in CBF is described by its features.
 
+* Plot description based Recommender
+
+Based on plot descriptions, I generated pairwise similarity scores for all movies and make recommendations based on those values. Our dataset's overview feature includes a plot explanation. Let's take a closer look at the numbers:
+
+```
+df2['overview'].head(5)
+```
+0    In the 22nd century, a paraplegic Marine is di...
+1    Captain Barbossa, long believed to be dead, ha...
+2    A cryptic message from Bond’s past sends him o...
+3    Following the death of District Attorney Harve...
+4    John Carter is a war-weary, former military ca...
+Name: overview, dtype: object
+
+I needed to convert the word vector of each overview. For each overview, I constructed the TF-IDF vectors (Term Frequency-Inverse Document Frequency). The Term Frequency (TF) is the frequency, with which a word appears in a document and is expressed as (term instances/total instances). The relative count of documents containing the word is represented as log (number of documents/documents with term) in Inverse Document Frequency (IDF). Each word's total value to the documents in which it appears is equal to TF * IDF.
+
+As before, each column will represent a word from the overview vocabulary (all words that occur in at least one document), and each row will represent a movie. This is done to lower the weight of terms that appear frequently in plot overviews, and hence their value in calculating the final similarity score.
+
+Scikit-learn contains a built-in TfIdfVectorizer class that produces the TF-IDF matrix in a couple of lines:
+
+```
+#Import TfIdfVectorizer from scikit-learn
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+#Define a TF-IDF Vectorizer Object. Remove all english stop words such as 'the', 'a'
+tfidf = TfidfVectorizer(stop_words='english')
+
+#Replace NaN with an empty string
+df2['overview'] = df2['overview'].fillna('')
+
+#Construct the required TF-IDF matrix by fitting and transforming the data
+tfidf_matrix = tfidf.fit_transform(df2['overview'])
+
+#Output the shape of tfidf_matrix
+tfidf_matrix.shape
+```
+
+(4803, 20978)
+
+We can observe that the 4800 movies in our dataset were described with over 20,000 different words. We can now compute a similarity score using this matrix. The euclidean, Pearson, and cosine similarity scores are all possibilities for this. There is no right or wrong response to the question of which score is the best. Different scores work well in different situations, and experimenting with different measures is often a good idea.
+
+The cosine similarity will be used to create a numerical value that represents the similarity between two movies. Because it is independent of magnitude and is reasonably simple and quick to calculate, we utilize the cosine similarity score. It is mathematically defined as follows:
+
+![Cosine Similarity Score](/images/movie/movie7.jpg)
+
+Calculating the dot product gives me the cosine similarity score because I utilized the TF-IDF vectorizer. As a result, I applied linear kernel() from sklearn instead of cosine similarities() because it's faster.
+
+```
+# Import linear_kernel
+from sklearn.metrics.pairwise import linear_kernel
+
+# Compute the cosine similarity matrix
+cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+```
+
+I created a function that takes a movie title as an input and returns a list of the top ten most comparable movies. To begin, a reverse mapping of movie names and DataFrame indices was required. To put it another way, I needed a way to find the index of a movie in the metadata DataFrame based on its title.
+
+```
+#Construct a reverse map of indices and movie titles
+indices = pd.Series(df2.index, index=df2['title']).drop_duplicates()
+```
+
+I've arrived at a point where I could define the recommendation function. The following were the steps:
+
+- Get the movie's index based on its title.
+- Get a list of cosine similarity ratings for that movie compared to all other movies. Convert it to a tuple list, with the first element being the position and the second being the similarity score.
+- The second element is to sort the aforementioned list of tuples based on the similarity scores.
+- Take note of the top ten items on this list. Ignore the first element because it is about self (the movie most similar to a particular movie is the movie itself).
+- Return the titles that correspond to the top element's indices.
+
+```
+# Function that takes in movie title as input and outputs most similar movies
+def get_recommendations(title, cosine_sim=cosine_sim):
+    # Get the index of the movie that matches the title
+    idx = indices[title]
+
+    # Get the pairwsie similarity scores of all movies with that movie
+    sim_scores = list(enumerate(cosine_sim[idx]))
+
+    # Sort the movies based on the similarity scores
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+
+    # Get the scores of the 10 most similar movies
+    sim_scores = sim_scores[1:11]
+
+    # Get the movie indices
+    movie_indices = [i[0] for i in sim_scores]
+
+    # Return the top 10 most similar movies
+    return df2['title'].iloc[movie_indices]
+```
+
+```
+get_recommendations('The Dark Knight Rises')
+```
+
+65                              The Dark Knight
+299                              Batman Forever
+428                              Batman Returns
+1359                                     Batman
+3854    Batman: The Dark Knight Returns, Part 2
+119                               Batman Begins
+2507                                  Slow Burn
+9            Batman v Superman: Dawn of Justice
+1181                                        JFK
+210                              Batman & Robin
+Name: title, dtype: object
+
+```
+get_recommendations('The Avengers')
+```
+
+7               Avengers: Age of Ultron
+3144                            Plastic
+1715                            Timecop
+4124                 This Thing of Ours
+3311              Thank You for Smoking
+3033                      The Corruptor
+588     Wall Street: Money Never Sleeps
+2136         Team America: World Police
+1468                       The Fountain
+1286                        Snowpiercer
+Name: title, dtype: object
+
+Our system did a good job of locating movies with comparable plot descriptions, but the quality of the recommendations isn't excellent. "The Dark Knight Rises" returns all Batman films, but fans of that film are more likely to love subsequent Christopher Nolan films. This is something that the current system is incapable of capturing.
+
+* Credits, Genres and Keywords Based Recommender
 
 <a id="ch6"></a>
 # Step 4: Collaborative Filtering
@@ -204,6 +331,8 @@ I would like to express gratitude for the following resources, and thank develop
 * [Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
 * [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
 * [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
+* [„Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
+* [Syskill & Webert: Identifying interesting web sites](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf)
 
 
 
