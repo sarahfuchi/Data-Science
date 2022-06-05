@@ -83,6 +83,11 @@ df2.head(5)
 ```
 ![First look at the data](/images/movie/movie1.jpg)
 
+Then I looked at three types of filtering techniques: 
+
+![Filtering Techniques](/images/movie/movie2.jpg)
+
+
 <a id="ch4"></a>
 # Step 2: Demographic Filtering
 
@@ -90,7 +95,7 @@ df2.head(5)
 # Step 3: Content Based Filtering
 
 <a id="ch6"></a>
-# Step 4: Features distribution 
+# Step 4: Collaborative Filtering
 
 
 
