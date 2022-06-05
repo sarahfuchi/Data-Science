@@ -91,7 +91,93 @@ I found [this paper](https://www.ijert.org/research/recommender-systems-types-of
 <a id="ch4"></a>
 # Step 2: Demographic Filtering
 
-Demographic filtering (DF) classify users according to their demographic information and recommend services accordingly. In DF the user profiles are created by classifying users in stereotypical descriptions, representing the features of classes of users. More informaton can be found [on this paper](https://link.springer.com/article/10.1023/A:1022850703159). Demographic information identifies those users that like related services. Semi-trusted third parties use DF to recommend services by using data on individual users. DF creates categories of users which have similar demographic characteristics and then the cumulative buying behavior or preferences of users within these categories are being tracked. For a new user, recommendations are made by first finding which category he falls in and then the cumulative buying preferences of previous users is applied to that category which he belongs. Like collaborative techniques, demographic techniques also form “people-to-people” correlations but use dissimilar data. A collaborative and content-based technique requires a history of user ratings which is not of the kind required by Demographic approach.
+Demographic filtering (DF) categorizes people and recommends services based on their demographic information. In DF, user profiles are built by categorizing individuals into archetypal descriptions that describe the characteristics of different user groups. [This paper](https://link.springer.com/article/10.1023/A:1022850703159) contains further information. Demographic data reveals people who are interested in similar services. DF is used by semi-trusted third parties to recommend services based on data about specific consumers.
+
+The cumulative buying behavior or preferences of customers within these categories are tracked by DF, which builds groupings of users with comparable demographic traits. For a new user, suggestions are created by first determining which category he belongs to, and then applying the cumulative purchasing preferences of prior users to that category. Demographic techniques, like collaborative techniques, establish "people-to-people" connections but with different data. A collaborative and content-based technique necessitates a history of user ratings, which the Demographic approach does not.
+
+We need a measure that allows us to: 
+- score or rate a movie 
+- calculate the score for each movie 
+- order the scores and propose the highest rated movie to users
+
+As a result, I'll use IMDB's weighted rating (wr), which is as follows:
+
+![IMDB's weighted rating (wr)](/images/movie/movie3.jpg)
+
+where, v is the total amount of votes for the movie. m is the minimum number of votes required to be included in the chart. The movie's average rating is R, and the average vote for the entire report is C.
+
+We already have v(vote count) and R (vote average), so C is simple to calculate:
+
+```
+C= df2['vote_average'].mean()
+C
+```
+
+6.092171559442011
+
+As a result, the average rating for all of the movies is around a 6 on a scale of 10. The next step is to choose an appropriate value for m, which is the number of votes needed to be included in the chart. As a cutoff, we'll choose the 90th percentile. To put it another way, a movie must receive more votes than at least 90% of the other movies on the list in order to be included in the charts.
+
+```
+m= df2['vote_count'].quantile(0.9)
+m
+```
+
+1838.4000000000015
+
+We may now filter out the movies that are eligible for the chart.
+
+```
+q_movies = df2.copy().loc[df2['vote_count'] >= m]
+q_movies.shape
+```
+
+(481, 23)
+
+There are 481 movies that meet the criteria for inclusion in this list. Now we must determine our metric for each qualified movie. To accomplish so, we'll create a weighted rating() function and a new feature score, the value of which will be calculated by applying this function to our DataFrame of qualified movies:
+
+```
+def weighted_rating(x, m=m, C=C):
+    v = x['vote_count']
+    R = x['vote_average']
+    # Calculation based on the IMDB formula
+    return (v/(v+m) * R) + (m/(m+v) * C)
+```
+
+```
+# Define a new feature 'score' and calculate its value with `weighted_rating()`
+q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
+```
+
+Finally, sort the DataFrame by the score feature and output the top 10 movies' title, vote count, vote average, and weighted rating or score.
+
+```
+#Sort movies based on score calculated above
+q_movies = q_movies.sort_values('score', ascending=False)
+
+#Print the top 15 movies
+q_movies[['title', 'vote_count', 'vote_average', 'score']].head(10)
+```
+![Top 15 movies](/images/movie/movie4.jpg)
+
+We've made our first (although rudimentary) recommendation. We can identify movies that are very popular under the Trending Now tab of these systems, and we can get them by sorting the dataset by the popularity column.
+
+```
+pop= df2.sort_values('popularity', ascending=False)
+import matplotlib.pyplot as plt
+plt.figure(figsize=(12,4))
+
+plt.barh(pop['title'].head(6),pop['popularity'].head(6), align='center',
+        color='skyblue')
+plt.gca().invert_yaxis()
+plt.xlabel("Popularity")
+plt.title("Popular Movies")
+```
+
+Text(0.5,1,'Popular Movies')
+
+![Popular movies](/images/movie/movie5.jpg)
+
+Please take into account that these demographic recommenders give all users with a generic chart of recommended movies. They are indifferent to user's preferences and interests. This may be fixed when we switch to a more advanced system called Content Based Filtering.
 
 <a id="ch5"></a>
 # Step 3: Content Based Filtering
