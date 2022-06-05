@@ -83,13 +83,15 @@ df2.head(5)
 ```
 ![First look at the data](/images/movie/movie1.jpg)
 
-Then I looked at three types of filtering techniques: 
+I found [this paper](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf) very helpful to gather information regarding recommendations systems and the filtering techniques. Then I looked at three types of filtering techniques : 
 
 ![Filtering Techniques](/images/movie/movie2.jpg)
 
 
 <a id="ch4"></a>
 # Step 2: Demographic Filtering
+
+Demographic filtering (DF) classify users according to their demographic information and recommend services accordingly. In DF the user profiles are created by classifying users in stereotypical descriptions, representing the features of classes of users. More informaton can be found [on this paper](https://link.springer.com/article/10.1023/A:1022850703159). Demographic information identifies those users that like related services. Semi-trusted third parties use DF to recommend services by using data on individual users. DF creates categories of users which have similar demographic characteristics and then the cumulative buying behavior or preferences of users within these categories are being tracked. For a new user, recommendations are made by first finding which category he falls in and then the cumulative buying preferences of previous users is applied to that category which he belongs. Like collaborative techniques, demographic techniques also form “people-to-people” correlations but use dissimilar data. A collaborative and content-based technique requires a history of user ratings which is not of the kind required by Demographic approach.
 
 <a id="ch5"></a>
 # Step 3: Content Based Filtering
@@ -104,6 +106,9 @@ Then I looked at three types of filtering techniques:
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
 
 * [Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
+* [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
+* [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
+
 
 
 
