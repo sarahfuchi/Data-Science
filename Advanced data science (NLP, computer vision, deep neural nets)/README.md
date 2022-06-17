@@ -88,17 +88,93 @@ The dataset contained four directories: money_tfrec, photo_tfrec, money_jpg, and
 
 The photo directories contained photos. I modified the images to have the same style as Monet using machine learning algorithms (GAN architectures). The CycleGAN dataset includes other artists' styles as well.
 
-All the images for the competition were already sized to 256x256. As these images are RGB images, I set the channel to 3. Also, I needed to scale the images to a [-1, 1]. Due to the nature of the generative model, I don't need the labels or the image id so I'll only return the image from the TFRecord.
-
 **Files**
 - monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
 - monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
 - photo_jpg - 7028 photos sized 256x256 in JPEG format
 - photo_tfrec - 7028 photos sized 256x256 in TFRecord format
 
-Let's see the pre-view of the Monet and Photos example:
-
 ![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
+
+<a id="ch5"></a>
+## 3.3 Data Pre-processing: 
+
+All of the images for the project were already in a 256x256 resolution. To ensure that the images are in RGB format, I set the channel to 3. I needed to scale the images so that they would all be [-1, 1]. Since the model is a generative model, I don't need to use the labels or image id to get the image, I'll just get the image from the TFRecord.
+
+```
+IMAGE_SIZE = [256, 256]
+
+def decode_image(image):
+    image = tf.image.decode_jpeg(image, channels=3)
+    image = (tf.cast(image, tf.float32) / 127.5) - 1
+    image = tf.reshape(image, [*IMAGE_SIZE, 3])
+    return image
+
+def read_tfrecord(example):
+    tfrecord_format = {
+        "image_name": tf.io.FixedLenFeature([], tf.string),
+        "image": tf.io.FixedLenFeature([], tf.string),
+        "target": tf.io.FixedLenFeature([], tf.string)
+    }
+    example = tf.io.parse_single_example(example, tfrecord_format)
+    image = decode_image(example['image'])
+    return image
+```
+
+I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed. More details on upsample and downsample will be discussed below.
+
+The downsample reduces the 2D dimensions, the width and height, of the image by the stride. The stride is the length of the step the filter takes. Since the stride is 2, the filter was applied to every other pixel, hence reducing the weight and height by 2.
+
+Normalization or feature scaling is a way to make sure that features with very diverse ranges will proportionally impact the network performance. Without normalization, some features or variables might be ignored. In this particular project I used instance normalization (IN), which operates on a single sample as opposed to batch normalization (BN). Both normalization methods can accelerate training and make the network converge faster. Main difference is While IN transforms a single training sample, BN does that to the whole mini-batch of samples [More information can be found here on IN and BNs.](https://www.baeldung.com/cs/instance-vs-batch-normalization) 
+
+![instance_and_batch_normalization.jpg](/images/monet/monet2.jpg)
+
+```
+OUTPUT_CHANNELS = 3
+
+def downsample(filters, size, apply_instancenorm=True):
+    initializer = tf.random_normal_initializer(0., 0.02)
+    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
+
+    result = keras.Sequential()
+    result.add(layers.Conv2D(filters, size, strides=2, padding='same',
+                             kernel_initializer=initializer, use_bias=False))
+
+    if apply_instancenorm:
+        result.add(tfa.layers.InstanceNormalization(gamma_initializer=gamma_init))
+
+    result.add(layers.LeakyReLU())
+
+    return result
+```
+
+Upsample does the opposite of downsample and increases the dimensions of the of the image. [A good article on upsample and downsample can be found here.](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) 
+
+I am more of a visual person, so a visual example of upsampling can be seen here:
+
+![upsample_example.jpg](/images/monet/monet3.jpg)
+
+```
+def upsample(filters, size, apply_dropout=False):
+    initializer = tf.random_normal_initializer(0., 0.02)
+    gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
+
+    result = keras.Sequential()
+    result.add(layers.Conv2DTranspose(filters, size, strides=2,
+                                      padding='same',
+                                      kernel_initializer=initializer,
+                                      use_bias=False))
+
+    result.add(tfa.layers.InstanceNormalization(gamma_initializer=gamma_init))
+
+    if apply_dropout:
+        result.add(layers.Dropout(0.5))
+
+    result.add(layers.ReLU())
+
+    return result
+```
+
 
 <a id="ch6"></a>
 # Step 4: Build the Generator
