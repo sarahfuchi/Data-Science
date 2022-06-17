@@ -407,7 +407,7 @@ class CycleGan(keras.Model):
 <a id="ch9"></a>
 # Step 7: Define the Loss Functions
 
-The discriminator loss function below compares real images to a matrix of 1s and fake images to a matrix of 0s. The perfect discriminator will output all 1s for real images and all 0s for fake images. The discriminator loss outputs the average of the real and generated loss.
+The discriminator loss function computes the difference between a real image and a matrix of 1s, and between a fake image and a matrix of 0s. A perfect discriminator will output all 1s for real images and all 0s for fake images. The discriminator loss outputs the average of the true loss and the generated loss.
 
 ```
 with strategy.scope():
@@ -426,8 +426,7 @@ with strategy.scope():
     def generator_loss(generated):
         return tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(generated), generated)
 ```
-The goal is our original photo and the twice transformed photo to be similar to one another. Thus, we can calculate the cycle consistency loss be finding the average of their difference.
-
+The generator is trying to convince the discriminator that the generated image is real. A generator that produces only 1s as its discriminator output would be ideal. The loss is determined by comparing the generated image to a matrix of 1s to find the difference.
 ```
 with strategy.scope():
     def calc_cycle_loss(real_image, cycled_image, LAMBDA):
@@ -435,7 +434,7 @@ with strategy.scope():
 
         return LAMBDA * loss1
 ```
-The identity loss compares the image with its generator (i.e. photo with photo generator). If given a photo as input, we want it to generate the same image as the image was originally a photo. The identity loss compares the input with the output of the generator.
+The identity loss compares the image with the source from which it was generated. We want an image to be generated that is identical to the original image. The identity loss compares the input with the output of the generator.
 
 ```
 with strategy.scope():
