@@ -150,7 +150,7 @@ I am more of a visual person, so a visual example of upsampling can be seen here
 ![upsample_example.jpg](/images/monet/monet3.jpg)
 
 ```
-def upsample(filters, size, apply_dropout=False):
+def upsampler(filters, size, apply_dropout=False):
     initializer = tf.random_normal_initializer(0., 0.02)
     gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
 
