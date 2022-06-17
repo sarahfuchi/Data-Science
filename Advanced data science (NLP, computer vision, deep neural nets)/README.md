@@ -445,7 +445,7 @@ with strategy.scope():
 <a id="ch10"></a>
 # Step 8: Train the CycleGAN
 
-In this part of the project, I compiled the model. Since CycleGAN is already built, now is the time to use the fit() function to train it.
+In this part of the project, I compiled the model. Since CycleGAN is already built, now is the time to use the fit() function to fit the model.
 ```
 with strategy.scope():
     monet_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
