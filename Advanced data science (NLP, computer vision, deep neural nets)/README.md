@@ -60,11 +60,11 @@ The two models will compete against each other, with the generator trying to tri
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: I’m Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started/data) or using the Kaggle app in Python. I went with the second option. 
+The dataset for this project can be found on the Kaggle website: [Kaggle: I’m Something of a Painter Myself](https://www.kaggle.com/competitions/gan-getting-started/data) or using the Kaggle app in Python. I chose the second option. 
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
-The data is pre-processed already coming from Kaggle so I just focused on scaling/normalizing the data further. All the images were already sized to 256x256. I also scaled the images to a [-1, 1] scale. Because we are building a generative model, we don't need the labels or the image id in this project. 
+The data was already pre-processed when it came from Kaggle, so I just focused on scaling and normalizing it further. All the images were already sized to 256x256 pixels. I also scaled the images to a [-1,1] scale. Since we're building a generative model, we don't need labels or image ids in this project.
 
 ## 3.1 Import Libraries
 
