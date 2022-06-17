@@ -182,24 +182,24 @@ def Generator():
 
     # bs = batch size
     down_stack = [
-        downsampler(64, 4, apply_instancenorm=False), # (bs, 128, 128, 64)
-        downsampler(128, 4), # (bs, 64, 64, 128)
-        downsampler(256, 4), # (bs, 32, 32, 256)
-        downsampler(512, 4), # (bs, 16, 16, 512)
-        downsampler(512, 4), # (bs, 8, 8, 512)
-        downsampler(512, 4), # (bs, 4, 4, 512)
-        downsampler(512, 4), # (bs, 2, 2, 512)
-        downsampler(512, 4), # (bs, 1, 1, 512)
+        downsampler(64, 4, apply_instancenorm=False), 
+        downsampler(128, 4), 
+        downsampler(256, 4), 
+        downsampler(512, 4), 
+        downsampler(512, 4), 
+        downsampler(512, 4), 
+        downsampler(512, 4), 
+        downsampler(512, 4), 
     ]
 
     up_stack = [
-        upsampler(512, 4, apply_dropout=True), # (bs, 2, 2, 1024)
-        upsampler(512, 4, apply_dropout=True), # (bs, 4, 4, 1024)
-        upsampler(512, 4, apply_dropout=True), # (bs, 8, 8, 1024)
-        upsampler(512, 4), # (bs, 16, 16, 1024)
-        upsampler(256, 4), # (bs, 32, 32, 512)
-        upsampler(128, 4), # (bs, 64, 64, 256)
-        upsampler(64, 4), # (bs, 128, 128, 128)
+        upsampler(512, 4, apply_dropout=True), 
+        upsampler(512, 4, apply_dropout=True), 
+        upsampler(512, 4, apply_dropout=True), 
+        upsampler(512, 4), 
+        upsampler(256, 4), 
+        upsampler(128, 4), 
+        upsampler(64, 4), 
     ]
 
     initializer = tf.random_normal_initializer(0., 0.02)
@@ -244,33 +244,33 @@ def Discriminator():
 
     x = inp
 
-    down1 = downsample(64, 4, False)(x) # (bs, 128, 128, 64)
-    down2 = downsample(128, 4)(down1) # (bs, 64, 64, 128)
-    down3 = downsample(256, 4)(down2) # (bs, 32, 32, 256)
+    down1 = downsampler(64, 4, False)(x) 
+    down2 = downsampler(128, 4)(down1) 
+    down3 = downsampler(256, 4)(down2) 
 
-    zero_pad1 = layers.ZeroPadding2D()(down3) # (bs, 34, 34, 256)
+    zero_pad1 = layers.ZeroPadding2D()(down3) 
     conv = layers.Conv2D(512, 4, strides=1,
                          kernel_initializer=initializer,
-                         use_bias=False)(zero_pad1) # (bs, 31, 31, 512)
+                         use_bias=False)(zero_pad1) 
 
     norm1 = tfa.layers.InstanceNormalization(gamma_initializer=gamma_init)(conv)
 
     leaky_relu = layers.LeakyReLU()(norm1)
 
-    zero_pad2 = layers.ZeroPadding2D()(leaky_relu) # (bs, 33, 33, 512)
+    zero_pad2 = layers.ZeroPadding2D()(leaky_relu) 
 
     last = layers.Conv2D(1, 4, strides=1,
-                         kernel_initializer=initializer)(zero_pad2) # (bs, 30, 30, 1)
+                         kernel_initializer=initializer)(zero_pad2) 
 
     return tf.keras.Model(inputs=inp, outputs=last)
 ```
 ```
 with strategy.scope():
-    monet_generator = Generator() # transforms photos to Monet-esque paintings
-    photo_generator = Generator() # transforms Monet paintings to be more like photos
+    monet_generator = Generator() # transforms photos into paintings that look like the work of Monet.
+    photo_generator = Generator() # transforms Monet paintings into photos.
 
-    monet_discriminator = Discriminator() # differentiates real Monet paintings and generated Monet paintings
-    photo_discriminator = Discriminator() # differentiates real photos and generated photos
+    monet_discriminator = Discriminator() # differentiates features between real Monet paintings and generated Monet paintings.
+    photo_discriminator = Discriminator() # differentiates features between real photos and generated photos.
 ```
 Since our generators are not trained yet, the generated Monet-esque photo does not show what is expected at this point.
 
@@ -278,11 +278,11 @@ Since our generators are not trained yet, the generated Monet-esque photo does n
 to_monet = monet_generator(example_photo)
 
 plt.subplot(1, 2, 1)
-plt.title("Original Photo")
+plt.title("Original Photo Example")
 plt.imshow(example_photo[0] * 0.5 + 0.5)
 
 plt.subplot(1, 2, 2)
-plt.title("Monet-esque Photo")
+plt.title("Monet-esque Photo Example")
 plt.imshow(to_monet[0] * 0.5 + 0.5)
 plt.show()
 ```
