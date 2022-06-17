@@ -143,9 +143,9 @@ def downsampler(filters, size, apply_instancenorm=True):
     return result
 ```
 
-Upsample does the opposite of downsample and increases the dimensions of the of the image. [A good article on upsample and downsample can be found here.](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) 
+Upsampling is the opposite of downsampling and increases the size of the image. [There is a good article on upsampling and downsampling available here.](https://medium.com/analytics-vidhya/downsampling-and-upsampling-of-images-demystifying-the-theory-4ca7e21db24a) 
 
-I am more of a visual person, so a visual example of upsampling can be seen here:
+I prefer visuals to explanations, so I can provide a visual example of upsampling:
 
 ![upsample_example.jpg](/images/monet/monet3.jpg)
 
