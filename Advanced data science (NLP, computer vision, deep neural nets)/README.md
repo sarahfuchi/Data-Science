@@ -291,7 +291,7 @@ plt.show()
 <a id="ch8"></a>
 # Step 6: Build the CycleGAN Model
 
-In this section, I subclassed a tf.keras.Model. The idea is then to apply the fit() later to train the model. During the training step, the model transforms a photo to a Monet painting and then back to a photo. The difference between the original photo and the twice-transformed photo is the cycle-consistency loss. The expectation is the original photo and the twice-transformed photo to be similar to one another. A simple translation of Cycle GAN can be seen in the below image, inspired by [A Gentle Introduction to Cycle Consistent Adversarial Networks article.](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87)
+In this section, I created a new subclass of the tf.keras.Model class. The idea is to use the fit() function to train the model later. During the training step, the model can change a photo into a painting by transforming it using a Monet algorithm. Later, the model can revert the painting back to a photo.The difference between the original image and the image converted twice is the loss of cycle consistency. The expectation is that the original photo and the twice-transformed photo will share similar features. A simple translation of Cycle GAN can be seen in the image below, inspired by the work of Aamir Jarda. [More can be seen here: A Gentle Introduction to Cycle Consistent Adversarial Networks article.](https://towardsdatascience.com/a-gentle-introduction-to-cycle-consistent-adversarial-networks-6731c8424a87)
 
 ![translation_cycle.jpg](/images/monet/monet5.jpg)
 
@@ -337,11 +337,11 @@ class CycleGan(keras.Model):
         real_monet, real_photo = batch_data
         
         with tf.GradientTape(persistent=True) as tape:
-            # photo to monet back to photo
+            # photo --> monet --> photo
             fake_monet = self.m_gen(real_photo, training=True)
             cycled_photo = self.p_gen(fake_monet, training=True)
 
-            # monet to photo back to monet
+            # monet --> photo --> monet
             fake_photo = self.p_gen(real_monet, training=True)
             cycled_monet = self.m_gen(fake_photo, training=True)
 
@@ -349,11 +349,11 @@ class CycleGan(keras.Model):
             same_monet = self.m_gen(real_monet, training=True)
             same_photo = self.p_gen(real_photo, training=True)
 
-            # discriminator used to check, inputing real images
+            # discriminator (input: real images)
             disc_real_monet = self.m_disc(real_monet, training=True)
             disc_real_photo = self.p_disc(real_photo, training=True)
 
-            # discriminator used to check, inputing fake images
+            # discriminator (input: fake images)
             disc_fake_monet = self.m_disc(fake_monet, training=True)
             disc_fake_photo = self.p_disc(fake_photo, training=True)
 
