@@ -24,7 +24,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-I have always loved painting and data science. I wanted to take on this project to connect both passions of mine. Painters, such as Claude Monet have unique brush strokes and color choices. This project revolves around whether I can use generative adversarial networks (GANs) to bring Monet's style to the existing photos and recreating that style from stratch.
+I have always enjoyed painting and working with data. I have two passions that I want to merge together and do something creative with them. Painters, such as Claude Monet, have unique brush strokes and color choices that set them apart from other painters.The project revolves around using Generative Adversarial Networks (GAN) to incorporate Monet's style into existing photographs and recreate that style from scratch.
 
 If those photos are created successfully, the classifier will approve and I call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
 
