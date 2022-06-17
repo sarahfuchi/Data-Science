@@ -84,17 +84,15 @@ All of the images for the competition are already sized at 256x256. Select the t
 ## 3.2 Pre-view of the Data
 
 
-The dataset contained four directories: monet_tfrec, photo_tfrec, monet_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting images, and the photo_tfrec and photo_jpg directories contained the same photos. I used the TFRecords as per the Kaggle's recommendation.
+The dataset contained four directories: money_tfrec, photo_tfrec, money_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting and photo images, respectively. I followed the TFRecords dataset. The monet directories contained paintings of Monet. I used these images to train my model.
 
-The monet directories contained Monet paintings. I used these images to train my model.
-
-The photo directories contained photos. I added Monet's styling to these images via GAN architectures. CycleGAN dataset contains other artists styles as well. 
+The photo directories contained photos. I modified the images to have the same style as Monet using machine learning algorithms (GAN architectures). The CycleGAN dataset includes other artists' styles as well.
 
 **Files**
-monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
-monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
-photo_jpg - 7028 photos sized 256x256 in JPEG format
-photo_tfrec - 7028 photos sized 256x256 in TFRecord format
+- monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
+- monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
+- photo_jpg - 7028 photos sized 256x256 in JPEG format
+- photo_tfrec - 7028 photos sized 256x256 in TFRecord format
 
 ![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
 
