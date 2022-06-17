@@ -127,7 +127,7 @@ Normalization or feature scaling is a technique that helps to ensure that featur
 ```
 OUTPUT_CHANNELS = 3
 
-def downsample(filters, size, apply_instancenorm=True):
+def downsampler(filters, size, apply_instancenorm=True):
     initializer = tf.random_normal_initializer(0., 0.02)
     gamma_init = keras.initializers.RandomNormal(mean=0.0, stddev=0.02)
 
