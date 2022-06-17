@@ -79,7 +79,7 @@ import numpy as np
 ```
 -------------------------
 
-**This is the input data from Kaggle :**  ['monet_jpg', 'monet_tfrec', 'photo_jpg', 'photo_tfrec']
+All of the images for the competition are already sized at 256x256. Select the third color channel, which will be red. Also, we need to scale the images to a scale of [-1, 1]. Since we are building a generative model, we don't need the labels or the image ID, so we will just return the image from the TFRecord log.
 
 ## 3.2 Pre-view of the Data
 
