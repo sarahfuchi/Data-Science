@@ -272,7 +272,7 @@ with strategy.scope():
     monet_discriminator = Discriminator() # differentiates features between real Monet paintings and generated Monet paintings.
     photo_discriminator = Discriminator() # differentiates features between real photos and generated photos.
 ```
-Since our generators are not trained yet, the generated Monet-esque photo does not show what is expected at this point.
+At this point, our generators are not yet trained, so the generated Monet-esque photo does not look like what we expect.
 
 ```
 to_monet = monet_generator(example_photo)
