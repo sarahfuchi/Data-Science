@@ -99,7 +99,7 @@ The photo directories contained photos. I modified the images to have the same s
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
 
-All of the images for the project were already in a 256x256 resolution. To ensure that the images are in RGB format, I set the channel to 3. I needed to scale the images so that they would all be [-1, 1]. Since the model is a generative model, I don't need to use the labels or image id to get the image, I'll just get the image from the TFRecord.
+All of the images for the project were already in a 256x256 resolution. To ensure that the images are in RGB format, I set the color channel to 3. I needed to scale the images to [-1, 1] so that they would be the same size. Since the model is a generative model, I don't need to use the labels or image id to get the image, I'll just get the image from the TFRecord.
 
 ```
 IMAGE_SIZE = [256, 256]
