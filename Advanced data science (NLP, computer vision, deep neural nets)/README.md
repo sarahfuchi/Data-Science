@@ -88,17 +88,6 @@ The dataset contained four directories: money_tfrec, photo_tfrec, money_jpg, and
 
 The photo directories contained photos. I modified the images to have the same style as Monet using machine learning algorithms (GAN architectures). The CycleGAN dataset includes other artists' styles as well.
 
-**Files**
-- monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
-- monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
-- photo_jpg - 7028 photos sized 256x256 in JPEG format
-- photo_tfrec - 7028 photos sized 256x256 in TFRecord format
-
-![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
-
-<a id="ch5"></a>
-## 3.3 Data Pre-processing: 
-
 All of the images for the project were already in a 256x256 resolution. To ensure that the images are in RGB format, I set the color channel to 3. I needed to scale the images to [-1, 1] so that they would be the same size. Since the model is a generative model, I don't need to use the labels or image id to get the image, I'll just get the image from the TFRecord.
 
 ```
@@ -120,6 +109,17 @@ def read_tfrecord(example):
     image = decode_image(example['image'])
     return image
 ```
+
+**Files**
+- monet_jpg - 300 Monet paintings sized 256x256 in JPEG format
+- monet_tfrec - 300 Monet paintings sized 256x256 in TFRecord format
+- photo_jpg - 7028 photos sized 256x256 in JPEG format
+- photo_tfrec - 7028 photos sized 256x256 in TFRecord format
+
+![photo_and_monet_example.jpg](/images/monet/monet1.jpg)
+
+<a id="ch5"></a>
+## 3.3 Data Pre-processing: 
 
 I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed. More details on upsample and downsample will be discussed below.
 
