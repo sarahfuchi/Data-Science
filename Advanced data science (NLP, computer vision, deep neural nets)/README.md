@@ -26,38 +26,35 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 # Project Overview
 I have always enjoyed painting and working with data. I have two passions that I want to merge together and do something creative with them. Painters, such as Claude Monet, have unique brush strokes and color choices that set them apart from other painters.The project revolves around using Generative Adversarial Networks (GAN) to incorporate Monet's style into existing photographs and recreate that style from scratch.
 
-If those photos are created successfully, the classifier will approve and I call myself a junior Monet. I trust the computer vision's recent advancements can handle this, and let us see how well I can Monet-ize it? :)
+If my photos are deemed successful by the classifier, then I will be considered a junior Monet. I'm confident that the computer vision technology we're using now can handle this task, so let's see how well it performs Monetization-wise.
 
-**A GAN** consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For this project, I generated images in the style of Monet. This generator is trained using a discriminator. The two models will work against each other, with the generator trying to convince the discriminator, and the discriminator trying to accurately classify the real vs. generated images. I have built a GAN that generates 7,000 to 10,000 Monet-style images.
+**A GAN** can be formed from two types of neural networks: a generator model and a discriminator model. The generator produces the images. For this project, I created images in the style of Monet. This machine learning algorithm is used to differentiate between real images and generated ones.The two models will compete against each other, with the generator trying to convince the discriminator, and the discriminator trying to accurately identify real images from generated ones. I have created a GAN that can generate images similar to those created by Monet.
 
 Let's take a look at the steps:  
 
 <a id="ch2"></a>
 # Data Science Steps
-1. **Problem Definition:** Finding whether the image that is created is real or generated through classification. 
-2. **Data Gathering:** I used the Monet TFRecord dataset as well as the Photo TFRecord dataset, I got access to them through the KaggleDatasets() app. 
-3. **Data Preperation:** I prepped the data by using scaling and normalization methods.
-4. **EDA (Explanatory Data Analysis):** It is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I mostly used visualization techniques to analyze the data. 
-5. **Data Modelling:** In this project, I built a generator to generate Monet-like photos, a discriminator to classify whether the image is real or fake, CycleGAN architecture to train the model.
-6. **Validate Model:** After training the model, I worked on validating it to see the performance of the model I have built.
-7. **Optimize Model:** Used loss function to adjust the weights to optimize the model. 
+1. **Problem Definition:** Is the image real or is it generated through classification? 
+2. **Data Gathering:** I used the Monet TFRecord dataset and the Photo TFRecord dataset from the KaggleDatasets app.
+3. **Data Preperation:** I normalized and scaled the data before processing it.
+4. **EDA (Explanatory Data Analysis):** It is important to use descriptive and graphical statistics to look for patterns, correlations, and comparisons in the dataset. In this step, I used visualization techniques to analyze the data.
+5. **Data Modelling:** In this project, I developed a generator to produce Monet-style photos, as well as a discriminator to determine whether an image is real or fake. I used a CycleGAN architecture to train the model.
+6. **Validate Model:** After training the model, I validated it to check the accuracy of the model I had built.
+7. **Optimize Model:** The loss function was used to adjust the weighting of the model in order to optimize the prediction results. 
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
-Goal is to generate Monet like photos either from stratch or from existing photos, and then classify them whether they are real or fake.
+The goal of this project is to create Monet-like photos either from scratch or from existing photos, and then to classify them according to whether they are real or fake.
 
 **Project Summary from Kaggle:**
-We recognize the works of artists through their unique style, such as color choices or brush strokes. The “je ne sais quoi” of artists like Claude Monet can now be imitated with algorithms thanks to generative adversarial networks (GANs). In this getting started competition, you will bring that style to your photos or recreate the style from scratch!
+We appreciate the works of artists by looking at their unique style, such as the colors they choose or the way they brush their strokes. Thanks to Generative Adversarial Networks (GANs), it is now possible to algorithmically imitate the "je ne sais quoi" of artists like Claude Monet.In this project, I will be able to showcase my creative photography style or create a new style that reflects my personality.
 
-Computer vision has advanced tremendously in recent years and GANs are now capable of mimicking objects in a very convincing way. But creating museum-worthy masterpieces is thought of to be, well, more art than science. So can (data) science, in the form of GANs, trick classifiers into believing you’ve created a true Monet? That’s the challenge you’ll take on!
+Computer vision has improved a lot in recent years, and GANs can now create realistic images of objects quite convincingly. Some people believe that creating masterpieces that are considered museum-worthy is more an art than a science. So can (data) science, in the form of GAN, trick classifiers into believing that they have created true Monet? This is the challenge I will accept!
 
 The Challenge:
-A GAN consists of at least two neural networks: a generator model and a discriminator model. The generator is a neural network that creates the images. For our competition, you should generate images in the style of Monet. This generator is trained using a discriminator.
+A GAN can include a generator model and a discriminator model. The generator creates the images. For my project, I will create images in the style of Monet. This generator has been trained to differentiate between different types of data.
 
-The two models will work against each other, with the generator trying to trick the discriminator, and the discriminator trying to accurately classify the real vs. generated images.
-
-Your task is to build a GAN that generates 7,000 to 10,000 Monet-style images.
-
+The two models will compete against each other, with the generator trying to trick the discriminator, and the discriminator trying to correctly identify the real images from the generated ones. The task is to build a GAN that can generate images similar to Monet's.
 
 
 <a id="ch4"></a>
