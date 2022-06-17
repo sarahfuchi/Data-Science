@@ -444,8 +444,8 @@ with strategy.scope():
 ```
 <a id="ch10"></a>
 # Step 8: Train the CycleGAN
-In this part of the project, I compiled the model. Since I used tf.keras.Model to build the CycleGAN, now is the time to use the fit() function to train.
 
+In this part of the project, I compiled the model. Since CycleGAN is already built, now is the time to use the fit() function to train it.
 ```
 with strategy.scope():
     monet_generator_optimizer = tf.keras.optimizers.Adam(2e-4, beta_1=0.5)
@@ -482,7 +482,7 @@ cycle_gan_model.fit(
 <a id="ch11"></a>
 # Step 9: Visualization 
 
-Now is the time to see how the algorithm translated the photos in to Monet-Esque: 
+Now is the time to see how the algorithm translated the photos in to Monet-esque paintings.
 
 ```
 _, ax = plt.subplots(5, 2, figsize=(12, 12))
@@ -503,7 +503,7 @@ plt.show()
 
 <a id="ch90"></a>
 # References
-I would like to express gratitude for the following resources, and thank developers for the inspiration:
+Thank you for the following resources and the developers for their inspiration.
 
 * [Monet CycleGAN Tutorial](https://www.kaggle.com/code/amyjang/monet-cyclegan-tutorial) - Indepth dive to Cyclegan steps.
 * [Instance vs Batch Normalization](https://www.baeldung.com/cs/instance-vs-batch-normalization) -  Normalization (IN) and Batch Normalization (BN) overview.
