@@ -494,8 +494,8 @@ for i, img in enumerate(photo_ds.take(5)):
 
     ax[i, 0].imshow(img)
     ax[i, 1].imshow(prediction)
-    ax[i, 0].set_title("Input Photo")
-    ax[i, 1].set_title("Monet-esque")
+    ax[i, 0].set_title("Input Photo Example")
+    ax[i, 1].set_title("Monet-esque Example")
     ax[i, 0].axis("off")
     ax[i, 1].axis("off")
 plt.show()
