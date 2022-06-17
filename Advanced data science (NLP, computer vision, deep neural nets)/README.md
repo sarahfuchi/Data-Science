@@ -174,7 +174,7 @@ def upsampler(filters, size, apply_dropout=False):
 <a id="ch6"></a>
 # Step 4: Build the Generator
 
-The way I have constructed the code is: first, the generator downsamples the input image and then upsample while establishing long skip connections.
+The way I have implemented the code is by downsampling the input image first, and then upsampling it while establishing long skip connections.
 
 ```
 def Generator():
@@ -182,24 +182,24 @@ def Generator():
 
     # bs = batch size
     down_stack = [
-        downsample(64, 4, apply_instancenorm=False), # (bs, 128, 128, 64)
-        downsample(128, 4), # (bs, 64, 64, 128)
-        downsample(256, 4), # (bs, 32, 32, 256)
-        downsample(512, 4), # (bs, 16, 16, 512)
-        downsample(512, 4), # (bs, 8, 8, 512)
-        downsample(512, 4), # (bs, 4, 4, 512)
-        downsample(512, 4), # (bs, 2, 2, 512)
-        downsample(512, 4), # (bs, 1, 1, 512)
+        downsampler(64, 4, apply_instancenorm=False), # (bs, 128, 128, 64)
+        downsampler(128, 4), # (bs, 64, 64, 128)
+        downsampler(256, 4), # (bs, 32, 32, 256)
+        downsampler(512, 4), # (bs, 16, 16, 512)
+        downsampler(512, 4), # (bs, 8, 8, 512)
+        downsampler(512, 4), # (bs, 4, 4, 512)
+        downsampler(512, 4), # (bs, 2, 2, 512)
+        downsampler(512, 4), # (bs, 1, 1, 512)
     ]
 
     up_stack = [
-        upsample(512, 4, apply_dropout=True), # (bs, 2, 2, 1024)
-        upsample(512, 4, apply_dropout=True), # (bs, 4, 4, 1024)
-        upsample(512, 4, apply_dropout=True), # (bs, 8, 8, 1024)
-        upsample(512, 4), # (bs, 16, 16, 1024)
-        upsample(256, 4), # (bs, 32, 32, 512)
-        upsample(128, 4), # (bs, 64, 64, 256)
-        upsample(64, 4), # (bs, 128, 128, 128)
+        upsampler(512, 4, apply_dropout=True), # (bs, 2, 2, 1024)
+        upsampler(512, 4, apply_dropout=True), # (bs, 4, 4, 1024)
+        upsampler(512, 4, apply_dropout=True), # (bs, 8, 8, 1024)
+        upsampler(512, 4), # (bs, 16, 16, 1024)
+        upsampler(256, 4), # (bs, 32, 32, 512)
+        upsampler(128, 4), # (bs, 64, 64, 256)
+        upsampler(64, 4), # (bs, 128, 128, 128)
     ]
 
     initializer = tf.random_normal_initializer(0., 0.02)
@@ -211,7 +211,7 @@ def Generator():
 
     x = inputs
 
-    # Downsampling through the model
+    # Downsampling 
     skips = []
     for down in down_stack:
         x = down(x)
@@ -219,7 +219,7 @@ def Generator():
 
     skips = reversed(skips[:-1])
 
-    # Upsampling and establishing the skip connections
+    # Upsampling followed by the skip connections
     for up, skip in zip(up_stack, skips):
         x = up(x)
         x = layers.Concatenate()([x, skip])
