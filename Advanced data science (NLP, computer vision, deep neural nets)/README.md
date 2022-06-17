@@ -80,7 +80,6 @@ import numpy as np
 
 ## 3.2 Pre-view of the Data
 
-
 The dataset contained four directories: money_tfrec, photo_tfrec, money_jpg, and photo_jpg. The monet_tfrec and monet_jpg directories contained the same painting and photo images, respectively. I followed the TFRecords dataset. The monet directories contained paintings of Monet. I used these images to train my model.
 
 The photo directories contained photos. I modified the images to have the same style as Monet using machine learning algorithms (GAN architectures). The CycleGAN dataset includes other artists' styles as well.
@@ -118,11 +117,10 @@ def read_tfrecord(example):
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
 
-I used a UNET architecture for the CycleGAN. In order the build the generator, upsample and downsample methods are needed. More details on upsample and downsample will be discussed below.
+I used the UNET architecture for CycleGAN. In order to build the generator, upsampling and downsampling methods are needed. More information on upsampling and downsampling will be discussed below.
+The downsample reduces the width and height of the image by the stride. The stride is the length of the step the filter takes. Since the stride is two, the filter was applied to every other pixel, resulting in a reduction of weight and height by two.
 
-The downsample reduces the 2D dimensions, the width and height, of the image by the stride. The stride is the length of the step the filter takes. Since the stride is 2, the filter was applied to every other pixel, hence reducing the weight and height by 2.
-
-Normalization or feature scaling is a way to make sure that features with very diverse ranges will proportionally impact the network performance. Without normalization, some features or variables might be ignored. In this particular project I used instance normalization (IN), which operates on a single sample as opposed to batch normalization (BN). Both normalization methods can accelerate training and make the network converge faster. Main difference is While IN transforms a single training sample, BN does that to the whole mini-batch of samples [More information can be found here on IN and BNs.](https://www.baeldung.com/cs/instance-vs-batch-normalization) 
+Normalization or feature scaling is a technique that helps to ensure that features with very diverse ranges will have an equal impact on network performance. Without normalization, some functions or variables may be ignored. In this particular project, I used instance normalization (IN), which operates on individual samples, rather than batch normalization (BN).Both normalization methods can speed up training and make the network converge faster. There is a main difference between the two methods, IN transforming a single training sample, while BN does that to the whole mini-batch of samples. [More information can be found here on IN and BNs.](https://www.baeldung.com/cs/instance-vs-batch-normalization) 
 
 ![instance_and_batch_normalization.jpg](/images/monet/monet2.jpg)
 
