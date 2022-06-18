@@ -248,6 +248,8 @@ py.iplot(fig)
 
 ![Correlation Matrix](/images/breast_cancer/breast_cancer18.jpg)
 
+The more red the box is (meaning the correlation coefficient is closer to 1), the more correlated the variables are. The stronger the purple color (that is, the closer the correlation coefficient is to 0), the lower the correlation.
+
 <a id="ch7"></a>
 # Step 6: Positive correlated features
 
