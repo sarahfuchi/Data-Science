@@ -254,7 +254,7 @@ py.iplot(fig)
 # Step 6: Positive correlated features
 
 ```
-palette ={0 : 'lightblue', 1 : 'gold'}
+palette ={0 : 'blue', 1 : 'green'}
 edgecolor = 'grey'
 
 # Plot +
