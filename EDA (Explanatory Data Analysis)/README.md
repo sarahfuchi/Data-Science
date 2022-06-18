@@ -124,7 +124,7 @@ data.describe()
 # Step 3: Target distribution
 
 ```
-# Two datasets
+# We have two datasets, which consist of malignant and benign data.
 M = data[(data['diagnosis'] != 0)]
 B = data[(data['diagnosis'] == 0)]
 ```
@@ -132,7 +132,7 @@ B = data[(data['diagnosis'] == 0)]
 ```
 #------------COUNT-----------------------
 trace = go.Bar(x = (len(M), len(B)), y = ['malignant', 'benign'], orientation = 'h', opacity = 0.8, marker=dict(
-        color=[ 'gold', 'lightskyblue'],
+        color=[ 'green', 'blue'],
         line=dict(color='#000000',width=1.5)))
 
 layout = dict(title =  'Count of diagnosis variable')
@@ -143,7 +143,7 @@ py.iplot(fig)
 #------------PERCENTAGE-------------------
 trace = go.Pie(labels = ['benign','malignant'], values = data['diagnosis'].value_counts(), 
                textfont=dict(size=15), opacity = 0.8,
-               marker=dict(colors=['lightskyblue', 'gold'], 
+               marker=dict(colors=['blue', 'green'], 
                            line=dict(color='#000000', width=1.5)))
 
 
