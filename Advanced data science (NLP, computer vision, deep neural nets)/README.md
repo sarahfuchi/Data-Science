@@ -407,7 +407,7 @@ class CycleGan(keras.Model):
 <a id="ch9"></a>
 # Step 7: Define the Loss Functions
 
-The discriminator loss function computes the difference between a real image and a matrix of 1s, and between a fake image and a matrix of 0s. A perfect discriminator will output all 1s for real images and all 0s for fake images. The discriminator loss outputs the average of the true loss and the generated loss.
+The discriminator loss function measures how well the system can discriminate between real images and fake images. A perfect discriminator would output only 1s for true images and 0s for false images. The discriminator loss measures the average difference between the real and generated loss values.
 
 ```
 with strategy.scope():
@@ -420,13 +420,13 @@ with strategy.scope():
 
         return total_disc_loss * 0.5
 ```
-The generator wants to convince the discriminator into thinking the generated image is real. The perfect generator will have the discriminator output only 1s. Thus, it compares the generated image to a matrix of 1s to find the loss.
+The generator is trying to convince the discriminator that the generated image is real. A generator that produces only 1s from its discriminator output would be ideal. The loss is calculated by subtracting the generated image from the matrix of 1s.
 ```
 with strategy.scope():
     def generator_loss(generated):
         return tf.keras.losses.BinaryCrossentropy(from_logits=True, reduction=tf.keras.losses.Reduction.NONE)(tf.ones_like(generated), generated)
 ```
-The generator is trying to convince the discriminator that the generated image is real. A generator that produces only 1s as its discriminator output would be ideal. The loss is determined by comparing the generated image to a matrix of 1s to find the difference.
+I want to make the original photo and the twice converted photo similar to each other. We can calculate the cycle consistency loss by finding the average of their difference.
 ```
 with strategy.scope():
     def calc_cycle_loss(real_image, cycled_image, LAMBDA):
@@ -434,7 +434,7 @@ with strategy.scope():
 
         return LAMBDA * loss1
 ```
-The identity loss compares the image with the source from which it was generated. We want an image to be generated that is identical to the original image. The identity loss compares the input with the output of the generator.
+The identity loss compares the image with the source from which it was generated. We want an image to be generated that is identical to the original image. The identity loss compares the input with the output of the generator. This can be used to determine if the generator is producing the accurate output.
 
 ```
 with strategy.scope():
