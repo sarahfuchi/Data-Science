@@ -1,6 +1,6 @@
 ![Exploratory data analysis for breast cancer prediction](/images/breast_cancer/breast_cancer0.jpg)
 
-This project focuses on exploratory data analysis with a simple step-by-step explanation and uses Kaggle datasets and gets inspiration from public notebooks.
+Data science has a great impact on the medical field, and this is especially true in the area of cancer studies. In this project we will work with breast cancer data. This project focuses on data analysis using a simple step-by-step explanation and takes inspiration from public notebooks.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
@@ -22,7 +22,7 @@ This project focuses on exploratory data analysis with a simple step-by-step exp
 
 # **Project Summary from Kaggle:**
 
-Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass. They describe characteristics of the cell nuclei present in the image. n the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: "Robust Linear Programming Discrimination of Two Linearly Inseparable Sets", Optimization Methods and Software 1, 1992, 23-34].
+Features are computed from a digitized image of a breast mass. The cell nuclei in the image have certain characteristics. n the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: "Robust Linear Programming Discrimination of Two Linearly Inseparable Sets", Optimization Methods and Software 1, 1992, 23-34].
 
 This database is also available through the UW CS ftp server:
 - ftp ftp.cs.wisc.edu
@@ -48,7 +48,7 @@ This database is also available through the UW CS ftp server:
 - symmetry
 - fractal dimension ("coastline approximation" - 1)
 
-The mean, standard error and "worst" or largest (mean of the three largest values) of these features were computed for each image, resulting in 30 features. For instance, field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.
+Each image was analyzed for 30 features. The mean, standard error, and largest value of these features were computed. For example, the field "Mean Radius" is in field 3, the field "Radius SE" is in field 13, and the field "Worst Radius" is in field 23.
 
 * All feature values are recoded with four significant digits
 
