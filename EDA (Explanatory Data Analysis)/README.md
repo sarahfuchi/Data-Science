@@ -110,7 +110,7 @@ data.diagnosis.replace(to_replace = dict(M = 1, B = 0), inplace = True)
 
 ```
 # Head
-data.head()
+data.head(10)
 ```
 ![Data head](/images/breast_cancer/breast_cancer2.jpg)
 
