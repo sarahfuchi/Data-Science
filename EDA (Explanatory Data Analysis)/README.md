@@ -283,6 +283,7 @@ plt.show()
 ```
 ![Positive correlated features](/images/breast_cancer/breast_cancer19.jpg)
 
+As you we see from the plot, positive correlations can be concluded through linear relationships.
 
 <a id="ch8"></a>
 # Step 6: Uncorrelated features
@@ -313,6 +314,8 @@ plt.show()
 ```
 ![Uncorrelated features](/images/breast_cancer/breast_cancer20.jpg)
 
+If two variables are not correlated, there is no linear relationship between them.
+
 <a id="ch9"></a>
 # Step 7: Negative correlated features
 
@@ -341,6 +344,7 @@ plt.savefig('3')
 plt.show()
 ```
 ![Negative correlated features](/images/breast_cancer/breast_cancer21.jpg)
+
 
 <a id="ch90"></a>
 # References
