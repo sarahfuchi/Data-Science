@@ -130,7 +130,7 @@ B = data[(data['diagnosis'] == 0)]
 ```
 
 ```
-#------------COUNT-----------------------
+#First, we will plot the count
 trace = go.Bar(x = (len(M), len(B)), y = ['malignant', 'benign'], orientation = 'h', opacity = 0.8, marker=dict(
         color=[ 'green', 'blue'],
         line=dict(color='#000000',width=1.5)))
@@ -140,7 +140,7 @@ layout = dict(title =  'Count of diagnosis variable for malignant and benign dat
 fig = dict(data = [trace], layout=layout)
 py.iplot(fig)
 
-#------------PERCENTAGE-------------------
+#Then, we will plot the percentage
 trace = go.Pie(labels = ['benign','malignant'], values = data['diagnosis'].value_counts(), 
                textfont=dict(size=15), opacity = 0.8,
                marker=dict(colors=['blue', 'green'], 
