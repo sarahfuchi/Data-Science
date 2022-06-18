@@ -63,25 +63,25 @@ Let's take a look at the steps:
 
 ![Exploratory data analysis steps](/images/breast_cancer/breast_cancer1.jpg)
 
-Exploratory data analysis (EDA) is used by data scientists to analyze and investigate data sets and summarize their main characteristics, often employing data visualization methods. It helps determine how best to manipulate data sources to get the answers you need, making it easier for data scientists to discover patterns, spot anomalies, test a hypothesis, or check assumptions.
+Exploratory data analysis is a method used by data scientists to investigate and summarize the characteristics of data sets. This can often be done through data visualization methods. The data science tool helps determine how best to use data sources to get the answers we need. This makes it easier for data scientists to discover patterns, spot anomalies, test a hypothesis, or check assumptions.
 
-EDA is primarily used to see what data can reveal beyond the formal modeling or hypothesis testing task and provides a provides a better understanding of data set variables and the relationships between them. It can also help determine if the statistical techniques you are considering for data analysis are appropriate. Originally developed by American mathematician John Tukey in the 1970s, EDA techniques continue to be a widely used method in the data discovery process today
+EDA is a versatile data analysis tool that can help researchers and developers better understand the relationships between data set variables. The EDA techniques can help you determine if the statistical techniques you are considering are appropriate for the data you are working with.Originally developed by American mathematician John Tukey, these techniques are still widely used today in the data discovery process.
 
-It is a study that focuses on advanced functionalized exploratory data analysis with a simple step-by-step explanation. It involves organizing and summarizing the raw data, discovering important features and patterns in the data and any striking deviations from those patterns, and then interpreting the findings. 
+The process of data analysis involves organizing and summarizing the raw data, discovering important features and patterns in the data, and interpreting the findings.
 
 Some outcomes of EDA:
 
-- Describing the distribution of a single variable (center, spread, shape, outliers)
-- Checking data (for errors or other problems)
-- Checking assumptions to more complex statistical analyses
-- Investigating relationships between variables
+- The distribution of a single variable can be described using its center, spread, shape, and outliers.
+- Making sure the data is correct.
+- Checking assumptions is a common step in more complex statistical analyses. This helps to ensure that the data being analyzed is accurate and reliable.
+- To investigate relationships between variables, researchers often use correlational analysis. This involves measuring how closely two variables correlate. Correlational analysis can help scientists understand how one variable influences another.
 
-Here are the steps of EDA I will focus on in this summary:
+In this summary, I will focus on the steps of EDA. I will explain what each step is and what it involves.:
 
-- Head and describe
-- Target distribution 
-- Features distribution 
-- Correlation matrix
+- Data head and describe data (viewing data and its statistical information)
+- Target distribution (this is the distribution of malignant and benign data)
+- Features distribution (this is the distribution between the features)
+- Correlation matrix (this is a table that displays the correlation coefficients between different variables)
 - Positive correlated features
 - Uncorrelated features
 - Negative correlated features 
@@ -89,14 +89,12 @@ Here are the steps of EDA I will focus on in this summary:
 <a id="ch3"></a>
 # Step 1: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) or using the Kaggle app in Python.  
+The dataset we are looking at can be found on the Kaggle website for this project: [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) or using the Kaggle app in Python.  
 ```
 # Read data
 data = pd.read_csv('../input/data.csv')
 ```
-
-I chekced the missing values: All features are complete, only 'Unnamed: 32' is completely null, probably an error in the dataset, I dropped it below:
-
+I inspected the missing values: All features are complete, only 'Unnamed: 32' is completely null, most likely an error in the data set, so I dropped it below.
 ```
 # Drop unnecessary variables
 data = data.drop(['Unnamed: 32','id'],axis = 1)
