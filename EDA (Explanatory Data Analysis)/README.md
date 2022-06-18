@@ -167,13 +167,13 @@ def plot_distribution(data_select, size_bin) :
     hist_data = [tmp1, tmp2]
     
     group_labels = ['malignant', 'benign']
-    colors = ['#FFD700', '#7EC0EE']
+    colors = ['#228C22', '#0000FF']
 
     fig = ff.create_distplot(hist_data, group_labels, colors = colors, show_hist = True, bin_size = size_bin, curve_type='kde')
     
     fig['layout'].update(title = data_select)
 
-    py.iplot(fig, filename = 'Density plot')
+    py.iplot(fig, filename = 'Density plot for malignant and benign data')
 ```
 
 ```
