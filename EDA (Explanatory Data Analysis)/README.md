@@ -135,7 +135,7 @@ trace = go.Bar(x = (len(M), len(B)), y = ['malignant', 'benign'], orientation = 
         color=[ 'green', 'blue'],
         line=dict(color='#000000',width=1.5)))
 
-layout = dict(title =  'Count of diagnosis variable')
+layout = dict(title =  'Count of diagnosis variable for malignant and benign data')
                     
 fig = dict(data = [trace], layout=layout)
 py.iplot(fig)
@@ -147,10 +147,11 @@ trace = go.Pie(labels = ['benign','malignant'], values = data['diagnosis'].value
                            line=dict(color='#000000', width=1.5)))
 
 
-layout = dict(title =  'Distribution of diagnosis variable')
+layout = dict(title =  'Distribution of diagnosis variable for malignant and benign data')
            
 fig = dict(data = [trace], layout=layout)
 py.iplot(fig)
+
 ```
 
 ![Count of Diagnosis](/images/breast_cancer/breast_cancer4.jpg)
