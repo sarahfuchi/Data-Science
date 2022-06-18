@@ -345,6 +345,7 @@ plt.show()
 ```
 ![Negative correlated features](/images/breast_cancer/breast_cancer21.jpg)
 
+A negative correlation between two variables means that one variable increases while the other decreases. This relationship may or may not be causation between the two variables, but it does describe an observable pattern. A correlation between two variables means that they tend to move in tandem, while a negative correlation means that they move in opposite directions.
 
 <a id="ch90"></a>
 # References
