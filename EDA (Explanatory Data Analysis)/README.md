@@ -140,7 +140,7 @@ py.iplot(fig)
 
 #Then, we will plot the percentage
 trace = go.Pie(labels = ['benign','malignant'], values = data['diagnosis'].value_counts(), 
-               textfont=dict(size=15), opacity = 0.8,
+               textfont=dict(size=30), opacity = 0.8,
                marker=dict(colors=['blue', 'green'], 
                            line=dict(color='#000000', width=1.5)))
 
