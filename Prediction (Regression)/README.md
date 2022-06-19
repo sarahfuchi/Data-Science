@@ -85,7 +85,7 @@ import hvplot.pandas
 
 ```
 USAhousing = pd.read_csv('/kaggle/input/usa-housing/USA_Housing.csv')
-USAhousing.head()
+USAhousing.head(10)
 ```
 
 ![data_head.jpg](/images/house/house1.jpg)
