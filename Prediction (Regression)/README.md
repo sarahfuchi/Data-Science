@@ -157,7 +157,6 @@ def print_evaluate(true, predicted):
     print('MSE:', mse)
     print('RMSE:', rmse)
     print('R2 Square', r2_square)
-    print('__________________________________')
     
 def evaluate(true, predicted):
     mae = metrics.mean_absolute_error(true, predicted)
