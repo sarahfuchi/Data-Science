@@ -1,6 +1,6 @@
 ![Getting Started with a Movie Recommendation System](/images/movie/movie0.jpg)
 
-This project focuses on movie recommendation systems, using TMDB 5000 Movie Dataset and gets inspiration from public notebooks.
+This project focuses on movie recommendation systems, using the TMDB 5000 movie dataset and taking inspiration from public notebooks.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
@@ -15,26 +15,26 @@ This project focuses on movie recommendation systems, using TMDB 5000 Movie Data
 <a id="ch1"></a>
 # Project Overview
 
-The rapid growth of data collection has led to a new era of information. Data is being used to create more efficient systems and this is where Recommendation Systems come into play. Recommendation Systems are a type of information filtering systems as they improve the quality of search results and provides items that are more relevant to the search item or are realted to the search history of the user.
+The growing number of data collections is leading to a new era of information. Data is used to build better systems, and this is where recommendation systems come into play. Recommendation systems are a type of information filtering systems because they improve the quality of search results and provide items that are more relevant or related to the search item or search history of the user.
 
-They are used to predict the rating or preference that a user would give to an item. Almost every major tech company has applied them in some form or the other: Amazon uses it to suggest products to customers, YouTube uses it to decide which video to play next on autoplay, and Facebook uses it to recommend pages to like and people to follow. Moreover, companies like Netflix and Spotify depend highly on the effectiveness of their recommendation engines for their business and sucees.
+Almost every major tech company uses them in one form or another: Amazon uses them to suggest products to customers, YouTube uses them to decide which video to play next on autoplay, and Facebook uses them to recommend pages. Moreover, companies like Netflix and Spotify depend heavily on the effectiveness of their recommendation systems for their business and success.
 
 <a id="ch2"></a>
 # Types of recommendation systems
 
-There are basically three types of recommender systems:-
+There are basically three types of recommender systems:
 
-- Demographic Filtering- They offer generalized recommendations to every user, based on movie popularity and/or genre. The System recommends the same movies to users with similar demographic features. Since each user is different , this approach is considered to be too simple. The basic idea behind this system is that movies that are more popular and critically acclaimed will have a higher probability of being liked by the average audience.
+- Demographic Filtering- Netflix offers recommendations to every user, based on what movies are popular or in a specific genre. The System recommends similar movies to users who have similar demographic features. Since each person is different, this approach is considered to be too simplistic.The basic idea behind this system is that movies that are more popular and critically acclaimed will have a higher probability of being liked by the average audience.
 
-- Content Based Filtering- They suggest similar items based on a particular item. This system uses item metadata, such as genre, director, description, actors, etc. for movies, to make these recommendations. The general idea behind these recommender systems is that if a person liked a particular item, he or she will also like an item that is similar to it.
+- Content Based Filtering- They suggest similar items based on the item that one have selected. This system uses metadata about items, such as genre, director, description, and actors. The basic idea behind these recommender systems is that if someone liked an item, they're likely to like other items similar to it.
 
-- Collaborative Filtering- This system matches persons with similar interests and provides recommendations based on this matching. Collaborative filters do not require item metadata like its content-based counterparts.
+- Collaborative Filtering- This system matches people with similar interests and provides recommendations based on this matching. Collaborative filters don't require metadata like content-based filters do.
 
 <a id="ch3"></a>
 # Step 1: Data Gathering and info from Kaggle
 
 # About Dataset
-What can we say about the success of a movie before it is released? Are there certain companies (Pixar?) that have found a consistent formula? Given that major films costing over $100 million to produce can still flop, this question is more important than ever to the industry. Film aficionados might have different interests. Can we predict which films will be highly rated, whether or not they are a commercial success?
+What can we say about the success of a movie before it is released? Do you have a consistent formula for making decisions? Given that big-budget films can still fail, this question is more important than ever to the movie industry. Movie fans may have different interests, so can we anticipate which films will be highly rated, whether they are commercial success or not?
 
 This is a great place to start digging in to those questions, with data on the plot, cast, crew, budget, and revenues of several thousand films.
 
