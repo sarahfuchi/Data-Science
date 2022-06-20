@@ -240,22 +240,22 @@ Our system was able to locate similar movies with plot descriptions, but the qua
 
 I needed to extract the three most important actors, directors, and keywords related to the movie from the cast, crew, and keyword features. Our data is currently stored in a format that I need to change into a more secure and usable structure. After that, I developed functions to help me extract the essential data from each feature.
 
-![Actors, directors, and keywords](/images/movie/movie.10jpg)
+![Actors, directors, and keywords](/images/movie/movie10.jpg)
 
-The names and keyword instances were then converted to lowercase and any spaces between them removed. This is done to ensure that the Johnnys of "Johnny Depp" and "Johnny Galecki" are not confused by our vectorizer. I generated the metadata soup, which contained all of the metadata I wanted to provide to the vectorizer (namely, the names of actors, director, and keywords).
+The names and keyword instances were then converted to lowercase and any spaces between them removed. This is done in order to ensure that the first names of any name, such as "Nancy", are not confused by the system. That way, our vectorizer does not confuse "Nancy Brown" and "Nancy Mitchell". I created the metadata soup, which included all the metadata I wanted to provide to the vectorizer (namely, the names of actors, director, and keywords).
 
 The steps for creating this improved recommender were identical to those using the plot description-based recommender. I used CountVectorizer() instead of TF-IDF, which was a significant difference. This is because I didn't want to underestimate the existence of the actor or director just because the actor or director appeared or directed more movies. By providing a new cosine_sim2 matrix as a second input, I was able to reuse my get_recommendations() function:
 
 ```
 get_recommendations('Inception', cosine_sim2)
 ```
-![get_recommendations('Inception', cosine_sim2)](/images/movie/movie.11jpg)
+![get_recommendations('Inception', cosine_sim2)](/images/movie/movie11.jpg)
 
 ```
 get_recommendations('The Godfather', cosine_sim2)
 ```
 
-![get_recommendations('The Godfather', cosine_sim2)](/images/movie/movie.12jpg)
+![get_recommendations('The Godfather', cosine_sim2)](/images/movie/movie12.jpg)
 
 The increased metadata has allowed our recommender to gather more information and provide us with better recommendations as seen for Inception and The Godfather movies. 
 
@@ -271,7 +271,7 @@ I would like to express gratitude for the following resources, and thank develop
 * [Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
 * [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
 * [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
-* [„Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
+* [Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
 * [Syskill & Webert: Identifying interesting web sites](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf)
 
 
