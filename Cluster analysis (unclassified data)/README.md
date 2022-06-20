@@ -143,7 +143,7 @@ Create a new feature called "score" and calculate its value using the "weighted_
 q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
 ```
 
-Then, sort the DataFrame by the score feature and output the top 15 movies' title, vote count, vote average, and weighted rating or score.
+Then, sort the DataFrame by the score feature and output the top 15 movies' title, vote count, vote average, and weighted rating or score. The index has been reset:
 
 ```
 q_movies = q_movies.sort_values('score', ascending=False)
@@ -151,7 +151,7 @@ q_movies[['title', 'vote_count', 'vote_average', 'score']].head(15)
 ```
 ![Top 15 movies](/images/movie/movie4.jpg)
 
-We've made our first (although rudimentary) recommendation. We can identify movies that are very popular under the Trending Now tab of these systems, and we can get them by sorting the dataset by the popularity column.
+We've made a recommendation for the first time. We can identify movies that are very popular right now on these systems, and we can find them by sorting the dataset by the popularity column.
 
 ```
 pop= df2.sort_values('popularity', ascending=False)
