@@ -264,6 +264,7 @@ The increased metadata has allowed our recommender to gather more information an
 
 ![Collaborative Filtering](/images/movie/movie13.jpg)
 
+Collaborative filtering is one of the powerful personalization technologies used on the adaptive web. Collaborative filtering is the process of filtering or evaluating items through the opinions of other people. CF technology lets communities of web users share their opinions on large amounts of data, helping to reduce the amount of information that needs to be processed. [Paper by Schafer et al. on Collaborative Filtering Recommender Systems can be found here.](https://link.springer.com/chapter/10.1007/978-3-540-72079-9_9)
 
 
 <a id="ch90"></a>
