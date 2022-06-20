@@ -206,8 +206,7 @@ Here are the results of the Polynomial Regression model:
 ![polynomial_regression.jpg](/images/house/house11.jpg)
 
 ## 4.6 Stochastic Gradient Descent
- Gradient descent is a technique for adjusting the parameters of a model or algorithm in order to reduce the cost function. Gradient descent searches for the smallest error in a function by increasing the value of the parameters in the direction of the steepest descent. When the gradient reaches zero, it reaches the minimum value. There is a good explanation for this phenomena with analogies from the real world: [All you need to know about Gradient Descent
-](https://medium.com/analytics-vidhya/all-you-need-to-know-about-gradient-descent-f0178c19131d).
+ Gradient descent is a technique for adjusting the parameters of a model or algorithm in order to reduce the cost function. Gradient descent searches for the smallest error in a function by increasing the value of the parameters in the direction of the steepest descent. When the gradient reaches zero, it reaches the minimum value. There is a good explanation for this phenomena with analogies from the real world: [All you need to know about Gradient Descent](https://medium.com/analytics-vidhya/all-you-need-to-know-about-gradient-descent-f0178c19131d).
 
 Here are the results of the Stochastic Gradient Descent model:
 
@@ -254,7 +253,13 @@ In this project, I learned about different regression models and how to evaluate
 Thank you for the following resources and developers for the inspiration:
 
 * [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
-
-
-
-
+* [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+* [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+* [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
+* [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
+* [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
+* [Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/)
+* [All you need to know about Gradient Descent](https://medium.com/analytics-vidhya/all-you-need-to-know-about-gradient-descent-f0178c19131d)
+* [Neural Networks](https://www.ibm.com/cloud/learn/neural-networks)
+* [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84)
+* [Support Vector Machine ](https://www.saedsayad.com/support_vector_machine_reg.htm)
