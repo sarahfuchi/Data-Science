@@ -56,10 +56,10 @@ The dataset for this project can be found on the Kaggle website: [House Prices -
 I used the USA_Housing dataset. The data contains the following columns:
 
 - <b> Avg. Area Income </b>: Avg. Income of residents of the city house is located in.
-- <b> Avg. Area House Age </b>: Avg. Age of Houses in same city.
-- <b> Avg. Area Number of Rooms </b>: Avg. Number of Rooms for Houses in same city.
-- <b> Avg. Area Number of Bedrooms </b>: Avg. Number of Bedrooms for Houses in same city.
-- <b> Area Population </b>: Population of city in which the house is located in.
+- <b> Avg. Area House Age </b>: Avg. Age of Houses in the same city.
+- <b> Avg. Area Number of Rooms </b>: Avg. Number of Rooms for Houses in the same city.
+- <b> Avg. Area Number of Bedrooms </b>: Avg. Number of Bedrooms for Houses in the same city.
+- <b> Area Population </b>: Population of the city in which the house is located.
 - <b> Price </b>: Price that the house sold at.
 - <b> Address </b>: Address for the house.
 
