@@ -79,7 +79,7 @@ df2= df2.merge(df1,on='id')
 
 Take a look at the data: 
 ```
-df2.head(5)
+df2.head(10)
 ```
 ![First look at the data](/images/movie/movie1.jpg)
 
