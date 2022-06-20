@@ -133,7 +133,7 @@ Standardizing the data is a very important step before making the model. I stand
 - Remove Noise: If possible, outliers should be removed from the data before it is used in analysis. This will help to make the data more reliable and accurate. 
 - Remove Collinearity: Linear regression can be prone to overfitting the data when the input variables are highly correlated. This is mainly why I looked at the pairplots to see if I could remove something I didn't see. 
 - Normal Distribution: If the input and output variables have a normal distribution, linear regression is more accurate in predicting outcomes. There are some ways to make the distribution of the variables more normal.
-- Rescaling : Linear regression often produces more reliable predictions if we scale the input variables using standardization or normalization..
+- Rescaling : Linear regression often produces more reliable predictions if we scale the input variables using standardization or normalization.
 
 The sklearn library makes it easy to apply the models: 
 
@@ -152,7 +152,7 @@ We can take a look at the residual histogram:
 
 ![pair_plots.jpg](/images/house/house6.jpg)
 
-Now that we've covered the basics, let's get to the evaluation. This article is helpful: [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+Now that we've covered the basics, let's get to the evaluation. This article is helpful: [what metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
 
 There are three main metrics for evaluating regression models:
 1. R Square/Adjusted R Square : R Square measures how well the model explains the variation in the dependent variable.
@@ -257,7 +257,7 @@ Thank you for the following resources and developers for the inspiration:
 
 * [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
 * [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
-* [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+* [what metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
 * [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
 * [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
 * [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
