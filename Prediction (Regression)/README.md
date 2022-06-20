@@ -122,7 +122,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 ```
 
-Standardizing the data is a very important step before making the model. I standardized the data using the SatndardScaler() function. The model performance functions were defined to show how the model performs.
+Standardizing the data is a very important step before making the model. I standardized the data using the StandardScaler() function. The model performance functions were defined to show how the model performs.
 
 <a id="ch6"></a>
 # Step 4: Build the Models
