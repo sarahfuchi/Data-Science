@@ -242,12 +242,12 @@ I needed to extract the three most important actors, directors, and keywords rel
 
 The names and keyword instances were then converted to lowercase and any spaces between them removed. This is done to ensure that the Johnnys of "Johnny Depp" and "Johnny Galecki" are not confused by our vectorizer. I generated the metadata soup, which contained all of the metadata I wanted to provide to the vectorizer (namely, the names of actors, director, and keywords).
 
-The steps for creating this improved recommender were identical to those using the plot description-based recommender. I used CountVectorizer() instead of TF-IDF, which was a significant difference. This is because I didn't want to underestimate the existence of the actor or director just because the actor or director appeared or directed more movies.By providing a new cosine sim2 matrix as a second input, I was able to reuse my get_recommendations() function:
+The steps for creating this improved recommender were identical to those using the plot description-based recommender. I used CountVectorizer() instead of TF-IDF, which was a significant difference. This is because I didn't want to underestimate the existence of the actor or director just because the actor or director appeared or directed more movies. By providing a new cosine sim2 matrix as a second input, I was able to reuse my get_recommendations() function:
 
 ```
-get_recommendations('The Dark Knight Rises', cosine_sim2)
+get_recommendations('Inception', cosine_sim2)
 ```
-![get_recommendations('The Dark Knight Rises', cosine_sim2)](/images/movie/movie.11jpg)
+![get_recommendations('Inception', cosine_sim2)](/images/movie/movie.11jpg)
 
 ```
 get_recommendations('The Godfather', cosine_sim2)
