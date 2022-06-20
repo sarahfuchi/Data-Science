@@ -169,6 +169,8 @@ As stated at the [Robust Regression resource by UCLA](https://stats.oarc.ucla.ed
 
 I used the Random sample consensus (RANSAC) model to generate a prediction. The estimation method is an iterative process that takes into account outliers without any significant impact.
 
+Here are the results for the Robust Regression model:
+
 ![robust_regression.jpg](/images/house/house8.jpg)
 
 ## 4.3 Ridge Regression
@@ -181,7 +183,7 @@ In summary this is what Ridge Regression does:
 - It reduces the size of the parameters. Therefore, it is used to reduce the likelihood of multicollinearity.
 - The model is simplified by coefficient shrinkage.
 
-Here are the results for the Ridge Reegression model:
+Here are the results for the Ridge Regression model:
 
 ![ridge_regression.jpg](/images/house/house9.jpg)
 
