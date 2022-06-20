@@ -257,10 +257,12 @@ get_recommendations('The Godfather', cosine_sim2)
 
 ![get_recommendations('The Godfather', cosine_sim2)](/images/movie/movie12.jpg)
 
-The increased metadata has allowed our recommender to gather more information and provide us with better recommendations as seen for Inception and The Godfather movies. 
+The increased metadata has allowed our recommender to gather more information and provide us with better recommendations as seen for the Inception and The Godfather movies. 
 
 <a id="ch6"></a>
 # Step 4: Collaborative Filtering
+
+![Collaborative Filtering](/images/movie/movie13.jpg)
 
 
 
