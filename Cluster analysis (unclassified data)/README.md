@@ -189,26 +189,17 @@ df2['overview'].head(5)
 ```
 ![plot descriptions](/images/movie/movie7.jpg)
 
-I needed to convert the word vector of each overview. For each overview, I constructed the TF-IDF vectors (Term Frequency-Inverse Document Frequency). The Term Frequency (TF) is the frequency, with which a word appears in a document and is expressed as (term instances/total instances). The relative count of documents containing the word is represented as log (number of documents/documents with term) in Inverse Document Frequency (IDF). Each word's total value to the documents in which it appears is equal to TF * IDF.
-
-As before, each column will represent a word from the overview vocabulary (all words that occur in at least one document), and each row will represent a movie. This is done to lower the weight of terms that appear frequently in plot overviews, and hence their value in calculating the final similarity score.
-
-Scikit-learn contains a built-in TfIdfVectorizer class that produces the TF-IDF matrix in a couple of lines:
+To understand what the text is about, we look for words that are commonly used. Term frequency measures how often a particular word or phrase appears in a text. Luckely, the scikit-learn library provides a built-in TfIdfVectorizer class that can produce a TF-IDF matrix in a few lines of code. However more info on TF-IDF can be seen here: [A Gentle Introduction To Calculating The TF-IDF Values](https://towardsdatascience.com/a-gentle-introduction-to-calculating-the-tf-idf-values-9e391f8a13e5)
 
 ```
-#Import TfIdfVectorizer from scikit-learn
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-#Define a TF-IDF Vectorizer Object. Remove all english stop words such as 'the', 'a'
 tfidf = TfidfVectorizer(stop_words='english')
 
-#Replace NaN with an empty string
 df2['overview'] = df2['overview'].fillna('')
 
-#Construct the required TF-IDF matrix by fitting and transforming the data
 tfidf_matrix = tfidf.fit_transform(df2['overview'])
 
-#Output the shape of tfidf_matrix
 tfidf_matrix.shape
 ```
 
