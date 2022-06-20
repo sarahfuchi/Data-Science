@@ -26,8 +26,8 @@ Let's take a look at how to do this:
 # Data Science Steps
 1. **Problem Definition:** How much will the homes cost? Since house prices are a continuous variable, this is a regression problem.
 2. **Data Gathering:** I used the USA_Housing dataset, which I got access to through the [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data).  
-3. **Data Preperation:** I prepared the data by using scaling methods..
-4. **EDA (Explanatory Data Analysis):** It is important to use descriptive and graphical statistics to look for patterns, correlations, and comparisons in the dataset. In this step, I used heatmaps and correlation matrices to analyze the data. 
+3. **Data Preparation:** I prepared the data by using scaling methods..
+4. **EDA (Exploratory Data Analysis):** It is important to use descriptive and graphical statistics to look for patterns, correlations, and comparisons in the dataset. In this step, I used heatmaps and correlation matrices to analyze the data. 
 5. **Data Modelling:** In this project, I used different linear regression methods including Linear Regression, Robust Regression, Ridge Regression, LASSO Regression,  Polynomial Regression, Stochastic Gradient Descent, Artficial Neural Network,  Random Forest Regressor and Support Vector Machine.
 6. **Validate Model:** After training the model, I used cross-validation techniques to validate the model.
 7. **Optimize Model:** In this particular project, I didn't focus on optimizing the model, but used the models from sklearn with constant parameters. Parameter optimization will be a future improvement that I will be working on. 
