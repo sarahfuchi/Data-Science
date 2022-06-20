@@ -175,7 +175,7 @@ Here are the results for the Robust Regression model:
 
 ## 4.3 Ridge Regression
 
-There is no shortage of excellent resources on this topic, one great resource can be found here: [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/). As is explained in the referenced resource, Ridge regression is a model tuning method that is useful for analysing data that is plagued by multicollinearity. This method produces high-quality results with L2 regularization. When multicollinearity is a problem, least-squares methods are unbiased, and variances are large, which means predicted values will be far from the actual values.
+There is no shortage of excellent resources on this topic, one great resource can be found here: [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/). As is explained in the referenced resource, Ridge regression is a model tuning method that is useful for analyzing data that is plagued by multicollinearity. This method produces high-quality results with L2 regularization. When multicollinearity is a problem, least-squares methods are unbiased, and variances are large, which means predicted values will be far from the actual values.
 
 
 In summary this is what Ridge Regression does:
