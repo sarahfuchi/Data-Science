@@ -165,11 +165,9 @@ plt.xlabel("Popularity")
 plt.title("Popular Movies")
 ```
 
-Text(0.5,1,'Popular Movies')
-
 ![Popular movies](/images/movie/movie5.jpg)
 
-Please take into account that these demographic recommenders give all users with a generic chart of recommended movies. They are indifferent to user's preferences and interests. This may be fixed when we switch to a more advanced system called Content Based Filtering.
+Please note that these demographic recommender systems recommend all users with a generic chart of recommended movies. They do not care about what the user wants or prefers. We may be able to fix this issue when we switch to a more advanced system called content-based filtering.
 
 <a id="ch5"></a>
 # Step 3: Content Based Filtering
