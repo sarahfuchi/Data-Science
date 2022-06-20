@@ -165,7 +165,7 @@ Next, I printed the evaluation metrics for the linear regression model.
 
 ## 4.2 Robust Regression
 
-As stated at [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/): Robust regression is an alternative to least squares regression when the data is contaminated by outliers or influential observations, and can also be used to detect influential observations. A robust regression technique is often used when the data contain outliers.
+As stated at the [Robust Regression resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/): Robust regression is an alternative to least squares regression when the data is contaminated by outliers or influential observations, and can also be used to detect influential observations. A robust regression technique is often used when the data contain outliers.
 
 I used the Random sample consensus (RANSAC) model to generate a prediction. The estimation method is an iterative process that takes into account outliers without any significant impact.
 
@@ -258,7 +258,7 @@ Thank you for the following resources and developers for the inspiration:
 * [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
 * [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 * [what metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
-* [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
+* [Robust regression resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
 * [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
 * [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
 * [Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/)
