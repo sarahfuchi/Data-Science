@@ -205,71 +205,36 @@ tfidf_matrix.shape
 
 (4803, 20978)
 
-We can observe that the 4800 movies in our dataset were described with over 20,000 different words. We can now compute a similarity score using this matrix. The euclidean, Pearson, and cosine similarity scores are all possibilities for this. There is no right or wrong response to the question of which score is the best. Different scores work well in different situations, and experimenting with different measures is often a good idea.
+We found that the 4800 movies in our dataset were described with over 20,000 different words. We can now compute a similarity score using this matrix. There are three possible similarity scores for this: the euclidean, Pearson, and cosine scores. There is no "right" answer when it comes to which score is the best.Different scores work well in different situations, so it's a good idea to experiment with different measures.
 
-The cosine similarity will be used to create a numerical value that represents the similarity between two movies. Because it is independent of magnitude and is reasonably simple and quick to calculate, we utilize the cosine similarity score. It is mathematically defined as follows:
+A numerical value will be created that represents the similarity between two movies. We use the cosine similarity score because it is independent of magnitude and is reasonably simple and quick to calculate. It is defined mathematically as follows:
 
 ![Cosine Similarity Score](/images/movie/movie7.jpg)
 
-Calculating the dot product gives me the cosine similarity score because I utilized the TF-IDF vectorizer. As a result, I applied linear kernel() from sklearn instead of cosine similarities() because it's faster.
+The dot product calculation gave me the cosine similarity score because I used the TF-IDF vectorizer. As a result, I implemented linear kernel() from sklearn instead of cosine similarity() because it's quicker.
 
 ```
-# Import linear_kernel
 from sklearn.metrics.pairwise import linear_kernel
 
-# Compute the cosine similarity matrix
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 ```
 
-I created a function that takes a movie title as an input and returns a list of the top ten most comparable movies. To begin, a reverse mapping of movie names and DataFrame indices was required. To put it another way, I needed a way to find the index of a movie in the metadata DataFrame based on its title.
+After further processing the data, I was able to find the index of a movie by its title, get a list of cosine similarity ratings for that movie compared to all other movies. Then, convert it to a tuple list, where the first element is the position and the second is the similarity value. Then sort the  list of tuples based on the similarity scores. Followed by noting the top ten items on this list.I ignored the first element because it's about the self (the movie most similar to a particular movie is the movie itself). I then found the titles that correspond to the top elements' indices.
+
+Let's check out the results for the movie 'Inception'
 
 ```
-#Construct a reverse map of indices and movie titles
-indices = pd.Series(df2.index, index=df2['title']).drop_duplicates()
+get_recommendations('Inception')
 ```
 
-I've arrived at a point where I could define the recommendation function. The following were the steps:
-
-- Get the movie's index based on its title.
-- Get a list of cosine similarity ratings for that movie compared to all other movies. Convert it to a tuple list, with the first element being the position and the second being the similarity score.
-- The second element is to sort the aforementioned list of tuples based on the similarity scores.
-- Take note of the top ten items on this list. Ignore the first element because it is about self (the movie most similar to a particular movie is the movie itself).
-- Return the titles that correspond to the top element's indices.
-
-```
-# Function that takes in movie title as input and outputs most similar movies
-def get_recommendations(title, cosine_sim=cosine_sim):
-    # Get the index of the movie that matches the title
-    idx = indices[title]
-
-    # Get the pairwsie similarity scores of all movies with that movie
-    sim_scores = list(enumerate(cosine_sim[idx]))
-
-    # Sort the movies based on the similarity scores
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-
-    # Get the scores of the 10 most similar movies
-    sim_scores = sim_scores[1:11]
-
-    # Get the movie indices
-    movie_indices = [i[0] for i in sim_scores]
-
-    # Return the top 10 most similar movies
-    return df2['title'].iloc[movie_indices]
-```
-
-```
-get_recommendations('The Dark Knight Rises')
-```
-
-![get_recommendations('The Dark Knight Rises')](/images/movie/movie8.jpg)
+![get_recommendations('Inception')](/images/movie/movie8.jpg)
 
 
 ```
-get_recommendations('The Avengers')
+get_recommendations('The Godfather')
 ```
 
-![get_recommendations('The Avengers')](/images/movie/movie9.jpg)
+![get_recommendations('The Godfather')](/images/movie/movie9.jpg)
 
 Our system did a good job of locating movies with comparable plot descriptions, but the quality of the recommendations isn't excellent. "The Dark Knight Rises" returns all Batman films, but fans of that film are more likely to love subsequent Christopher Nolan films. This is something that the current system is incapable of capturing.
 
