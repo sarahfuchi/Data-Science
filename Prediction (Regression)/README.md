@@ -181,15 +181,15 @@ In summary this is what Ridge Regression does:
 - It reduces the size of the parameters. Therefore, it is used to reduce the likelihood of multicollinearity.
 - The model is simplified by coefficient shrinkage.
 
-Here are the results for my Ridge Reegression model:
+Here are the results for the Ridge Reegression model:
 
 ![ridge_regression.jpg](/images/house/house9.jpg)
 
 ## 4.4 Lasso Regression
 
-Same resource I highly benefited from above during the Ridge Regression part covers the [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression). As they state on the website: Lasso regression is a regularization technique. It is used over regression methods for a more accurate prediction. This model uses shrinkage. Shrinkage is where data values are shrunk towards a central point as the mean. The lasso procedure encourages simple, sparse models (i.e. models with fewer parameters). This particular type of regression is well-suited for models showing high levels of multicollinearity or when we want to automate certain parts of model selection, like variable selection/parameter elimination.
+The same resource I extensively used during the Ridge Regression part can be used for the  [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression).Lasso regression is a technique that helps to regularize data. The regression method is more accurate when used in conjunction with other methods. This model uses shrinkage, which is where data values are shrunk towards a central point as the mean. The lasso procedure encourages simple, sparse models which are easier to understand and work with. Many models have fewer parameters than those with more parameters. This regression method is well-suited for models with high levels of multicollinearity or when you want to automate certain parts of model selection, like variable selection/parameter elimination.
 
-Lasso Regression uses L1 regularization technique. It is used when we have more number of features because it automatically performs feature selection.
+Lasso regression is a technique that uses L1 regularization. Feature selection is a process of selecting the features that are most important for a given application, that process is perfomed automatically here. Thus it is used when we have more number of features. 
 
 Here are the results of the Lasso Regression model:
 
