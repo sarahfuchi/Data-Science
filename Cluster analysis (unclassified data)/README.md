@@ -83,7 +83,7 @@ df2.head(10)
 ```
 ![First look at the data](/images/movie/movie1.jpg)
 
-I found [this paper](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf) very helpful to gather information regarding recommendations systems and the filtering techniques. Then I looked at three types of filtering techniques : 
+I found [this paper](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf) that was helpful in understanding recommendations systems and the filtering techniques. Then I looked into three filtering techniques:
 
 ![Filtering Techniques](/images/movie/movie2.jpg)
 
