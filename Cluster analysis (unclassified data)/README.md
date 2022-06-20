@@ -276,6 +276,7 @@ I would like to express gratitude for the following resources, and thank develop
 * [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
 * [Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
 * [Syskill & Webert: Identifying interesting web sites](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf)
+* [Collaborative Filtering Recommender Systems](https://link.springer.com/chapter/10.1007/978-3-540-72079-9_9)
 
 
 
