@@ -197,16 +197,16 @@ Here are the results of the Lasso Regression model:
 
 ## 4.5 Polynomial Regression
 
-[Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/) is a form of Linear regression where only due to the non-linear relationship between dependent and independent variables we add some polynomial terms to linear regression to convert it into Polynomial regression.
+[Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/) is a form of linear regression where only because of the non-linear relationship between the dependent and independent variables we add some polynomial terms to the linear regression to turn it into a polynomial regression.
 
-Suppose we have X as Independent data and Y as dependent data. Before feeding data to a mode in preprocessing stage we convert the input variables into polynomial terms using some degree. A simple linear regression can be extended by constructing polynomial features from the coefficients.
+We have X as data that is independent of Y, and Y as data that is dependent on X. Before feeding data to a mode in preprocessing stage, we convert the input variables into polynomial terms using some degree. Simple linear regression can be extended by constructing polynomial features from the coefficients.
 
 Here are the results of the Polynomial Regression model:
 
 ![polynomial_regression.jpg](/images/house/house11.jpg)
 
 ## 4.6 Stochastic Gradient Descent
- The general idea of Gradient Descent is to change the parameters iteratively in order to minimize a cost function. Gradient Descent measures the local gradient of the error function with regards to the parameters vector, and it goes in the direction of descending gradient. Once the gradient is zero, we have reached a minimum. A good explanation with analogies from real wold can be found at [All you need to know about Gradient Descent
+ Gradient descent is a technique for adjusting the parameters of a model or algorithm in order to reduce the cost function. Gradient descent searches for the smallest error in a function by increasing the value of the parameters in the direction of the steepest descent. When the gradient reaches zero, it reaches the minimum value. There is a good explanation for this phenomena with analogies from the real world: [All you need to know about Gradient Descent
 ](https://medium.com/analytics-vidhya/all-you-need-to-know-about-gradient-descent-f0178c19131d).
 
 Here are the results of the Stochastic Gradient Descent model:
@@ -215,7 +215,7 @@ Here are the results of the Stochastic Gradient Descent model:
 
 ## 4.7 Neural Networks
 
-Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network. More on that can be found at [Neural Networks](https://www.ibm.com/cloud/learn/neural-networks). 
+Artificial neural networks are made up of a layer of nodes, each of which has an input layer, one or more hidden layers, and an output layer. Each node has an associated weight and threshold. When a node is activated, it sends a signal to other nodes that are connected to it. The signal has a weight and threshold associated with it, which determines how strongly the node is activated.If the output of any node is above a certain threshold value, that node is activated and sends data to the next layer of the network. Otherwise, no data is passed on to the next layer of the network. For more information on that: [Neural Networks](https://www.ibm.com/cloud/learn/neural-networks). 
 
 Here are the results of the Neural Networks model:
 
@@ -225,7 +225,7 @@ Here are the results of the Neural Networks model:
 
 ## 4.8 Random Forest Regressor
 
-Random Forest Regression is a supervised learning algorithm that uses ensemble learning method for regression. Ensemble learning method is a technique that combines predictions from multiple machine learning algorithms to make a more accurate prediction than a single model. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
+Random Forest Regression is a supervised learning algorithm that uses ensemble learning method for regression. The ensemble learning method is a technique that uses predictions from multiple machine learning algorithms to make a more accurate prediction than a single model could. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
 
 Here are the results of the Random Forest Regressor model:
 
@@ -234,12 +234,12 @@ Here are the results of the Random Forest Regressor model:
 ## 4.9 Support Vector Machine 
 ![neural_net1.jpg](/images/house/house17.jpg)
 
-Support Vector Machine be used for classification and regression methods. In this particular project, I used it for rgression. The Support Vector Regression (SVR) uses the same principles as the SVM for classification, with only a few minor differences. Because output is a real number, it becomes very difficult to predict the information at hand, which has infinite possibilities. In the case of regression, a margin of tolerance (epsilon) is set in approximation to the SVM. The main idea is to minimize error, individualizing the hyperplane which maximizes the margin. More on that can be found at [Support Vector Machine ](https://www.saedsayad.com/support_vector_machine_reg.htm).
+Support vector machines are commonly used for classification and regression methods. I used this tool for regression in this particular project. The Support Vector Regression (SVR) uses the same principles as the Support Vector Machine (SVM) for classification, with a few minor differences. A margin of tolerance (epsilon) is set to approximate the effectiveness of a SVM. The goal is to minimize error by individually tailoring the hyperplane which maximizes the margin. For more information on that topic, you can find it at the following address: [Support Vector Machine ](https://www.saedsayad.com/support_vector_machine_reg.htm).
 
 <a id="ch7"></a>
 # Step 5: Model Comparison 
 
-Let's see all of the models in one place for comparison: 
+Let's see all of the models together so we can compare them: 
 
 ![neural_net1.jpg](/images/house/house18.jpg)
 
@@ -247,11 +247,11 @@ Let's see all of the models in one place for comparison:
 <a id="ch8"></a>
 # Step 6: Summary
 
-In this project I went over different regression models and their evaluation metrics. It was a great way to go deeper into regression and experimenting with differnt models. As a next step, I plan to focus on introducing hyperparameter optimization and diving deeper into the model parameters. 
+In this project, I learned about different regression models and how to evaluate them using different metrics. It was a great way to explore regression and experiment with different models. As a next step, I plan to focus on optimizing hyperparameters and getting a better understanding of the model's parameters. 
 
 <a id="ch90"></a>
 # References
-I would like to express gratitude for the following resources, and thank developers for the inspiration:
+Thank you for the following resources and developers for the inspiration:
 
 * [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
 
