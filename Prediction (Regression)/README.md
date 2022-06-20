@@ -201,7 +201,7 @@ Here are the results of the Lasso Regression model:
 
 [Polynomial Regression](https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/) is a form of linear regression where only because of the non-linear relationship between the dependent and independent variables we add some polynomial terms to the linear regression to turn it into a polynomial regression.
 
-We have X as data that is independent of Y, and Y as data that is dependent on X. Before feeding data to a mode in preprocessing stage, we convert the input variables into polynomial terms using some degree. Simple linear regression can be extended by constructing polynomial features from the coefficients.
+We have X as data that is independent of Y, and Y as data that is dependent on X. Before feeding data to a mode in the preprocessing stage, we convert the input variables into polynomial terms using some degree. Simple linear regression can be extended by constructing polynomial features from the coefficients.
 
 Here are the results of the Polynomial Regression model:
 
@@ -226,7 +226,7 @@ Here are the results of the Neural Networks model:
 
 ## 4.8 Random Forest Regressor
 
-Random Forest Regression is a supervised learning algorithm that uses ensemble learning method for regression. The ensemble learning method is a technique that uses predictions from multiple machine learning algorithms to make a more accurate prediction than a single model could. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
+Random Forest Regression is a supervised learning algorithm that uses ensemble learning methods for regression. The ensemble learning method is a technique that uses predictions from multiple machine learning algorithms to make a more accurate prediction than a single model could. More on that can be found at [Random Forest Regressor](https://levelup.gitconnected.com/random-forest-regression-209c0f354c84).
 
 Here are the results of the Random Forest Regressor model:
 
