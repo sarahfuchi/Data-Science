@@ -185,7 +185,7 @@ In a CBF system, objects of interest are defined by their associated features. T
 Based on plot descriptions, I analyzed pairwise similarity scores between all movies and made recommendations based on those values. The dataset's overview feature includes a plot explanation that provides additional detail about the data. Let's take a closer look at the data:
 
 ```
-df2['overview'].head(5)
+df2['overview'].head(10)
 ```
 ![plot descriptions](/images/movie/movie7.jpg)
 
