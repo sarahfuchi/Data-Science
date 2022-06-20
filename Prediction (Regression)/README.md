@@ -34,12 +34,12 @@ Let's take a look at how to do this:
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
-Goal is to predict the home prices using variables.
+The goal of this study is to predict the home prices using known variables.
 
 **Project Summary from Kaggle:**
-Ask a home buyer to describe their dream house, and they probably won't begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition's dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence.
+What is your dream house like? The dataset from this playground competition proves that more factors affect price negotiations than the number of bedrooms or a white-picket fence.
 
-With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
+This competition challenges participants to predict the final price of each home in Ames, Iowa using 79 explanatory variables.
 
 Practice Skills: 
 
@@ -49,17 +49,17 @@ Practice Skills:
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) or using the Kaggle app in Python. 
+The dataset for this project can be found on the Kaggle website: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) or using the Kaggle app in Python. 
 
 **This is the input data from Kaggle :**  ['USA_Housing.csv']
 
 I used the USA_Housing dataset. The data contains the following columns:
 
 - <b> Avg. Area Income </b>: Avg. Income of residents of the city house is located in.
-- <b> Avg. Area House Age </b>: Avg Age of Houses in same city.
-- <b> Avg. Area Number of Rooms </b>: Avg Number of Rooms for Houses in same city.
-- <b> Avg. Area Number of Bedrooms </b>: Avg Number of Bedrooms for Houses in same city.
-- <b> Area Population </b>: Population of city hou se is located in
+- <b> Avg. Area House Age </b>: Avg. Age of Houses in same city.
+- <b> Avg. Area Number of Rooms </b>: Avg. Number of Rooms for Houses in same city.
+- <b> Avg. Area Number of Bedrooms </b>: Avg. Number of Bedrooms for Houses in same city.
+- <b> Area Population </b>: Population of city in which the house is located in.
 - <b> Price </b>: Price that the house sold at.
 - <b> Address </b>: Address for the house.
 
@@ -94,12 +94,12 @@ USAhousing.info()
 
 ![data_head.jpg](/images/house/house2.jpg)
 
-As seen above, there is no null values in the dataset. 
+The dataset does not contain any null values.
 
 <a id="ch5"></a>
 ## 3.3 Exploratory Data Analysis (EDA): 
 
-I used pairplots and heatmaps to look at the data in more detail. 
+I examined the data in more detail using pair plots and heatmaps.
 
 ![pair_plots.jpg](/images/house/house3.jpg)
 
@@ -107,13 +107,14 @@ I used pairplots and heatmaps to look at the data in more detail.
 
 ## 3.3 Data Preperation: 
 
-The Kaggle dataset came in a cleaned up form. So in this section, I have worked on splitting the data to prep for the data modelling part. Data is first split into an X array that contains the features to train on, and a y array with the target variable, Price. I got rid of the address column in this case as it contained only text. 
+The Kaggle dataset arrived in a cleaned-up form. In this section, I have divided the data into pieces that I can work on separately. First, the data is split into an X array containing the training functions, and an y array with the target Price variable. In this case, I got rid of the address column as it contained only text.
 
 ```
 X = USAhousing[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms', 'Avg. Area Number of Bedrooms', 'Area Population']]
 y = USAhousing['Price']
 ```
-Then I splitted the data into test and train. Train set will be used to train the data, test will be used to test the model's performance. 
+
+I split the data into test and train sets. The train set will be used to train the model, while the test set will be used to test the model's performance.
 
 ```
 from sklearn.model_selection import train_test_split
@@ -121,20 +122,20 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 ```
 
-Standardizing the data is a very important step before making the model. So I used SatndardScaler() to standardize the data. Then defined the functions for displaying the model performace. 
+Standardizing the data is a very important step before making the model. I standardized the data using the SatndardScaler() function. The model performance functions were defined to show how the model performs.
 
 <a id="ch6"></a>
 # Step 4: Build the Models
 
 ## 4.1 Linear Regression
 
-- Linear Assumption: Linear regression assumes that the relationship between the input and output is linear. In most cases, the unprocessed data may not be linear in real life. There are techniques to make the relationship linear (e.g. log transform for an exponential relationship).
-- Remove Noise: Outliers need to be removed from the dataset if possible for a cleaner input. 
-- Remove Collinearity: Linear regression have a tendency to over-fit the data when input variables are highly correlated. This is mainly why I looked at the pairplots to see if there was anything I could remove, which I did not see. 
-- Normal Distribution: Linear regression makes better predictions if the input and output variables have a normal (Gaussian) distribution. There are some options to transform the variables to make their distribution more normal.
-- Rescaling : Linear regression will often make more reliable predictions if you rescale input variables using standardization or normalization.
+- Linear Assumption: Linear regression assumes that the relationship between input and output is linear. In most cases, raw data may not be linear in real life. There are methods to make the relationship linear (e.g. "Linearize" an exponential-looking graph with log function).
+- Remove Noise: If possible, outliers should be removed from the data before it is used in analysis. This will help to make the data more reliable and accurate. 
+- Remove Collinearity: Linear regression can be prone to overfitting the data when the input variables are highly correlated. This is mainly why I looked at the pairplots to see if I could remove something I didn't see. 
+- Normal Distribution: If the input and output variables have a normal distribution, linear regression is more accurate in predicting outcomes. There are some ways to make the distribution of the variables more normal.
+- Rescaling : Linear regression often produces more reliable predictions if we scale the input variables using standardization or normalization..
 
-sklearn libraty makes it quite simple to apply the models as such: 
+The sklearn library makes it easy to apply the models: 
 
 ```
 from sklearn.linear_model import LinearRegression
@@ -143,42 +144,42 @@ lin_reg = LinearRegression(normalize=True)
 lin_reg.fit(X_train,y_train)
 ```
 
-I then visualized the True values vs Predicted Values 
+Then, I visualized the true values and predicted values for the data.
 
 ![pair_plots.jpg](/images/house/house5.jpg)
 
-Let's take a look at the residual histogram: 
+We can take a look at the residual histogram:
 
 ![pair_plots.jpg](/images/house/house6.jpg)
 
-Now it comes to the evaluation part. Here is a good article I found very useful: [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+Now that we've covered the basics, let's get to the evaluation. This article is helpful: [what metrics to use when evaluatin the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
 
-Mainly there are 3 metrics for model evaluation in regression:
-1. R Square/Adjusted R Square : R Square measures how much variability in dependent variable can be explained by the model.
-2. Mean Square Error(MSE)/Root Mean Square Error(RMSE): While R Square is a relative measure of how well the model fits dependent variables, Mean Square Error is an absolute measure of the goodness for the fit.
-3. Mean Absolute Error(MAE): Mean Absolute Error(MAE) is similar to Mean Square Error(MSE). However, instead of the sum of square of error in MSE, MAE is taking the sum of the absolute value of error.
+There are three main metrics for evaluating regression models:
+1. R Square/Adjusted R Square : R Square measures how well the model explains the variation in the dependent variable.
+2. Mean Square Error(MSE)/Root Mean Square Error(RMSE): While R Square is a measure of how well the model fits dependent variables, Mean Square Error is an absolute measure of the goodness of the fit.
+3. Mean Absolute Error(MAE): Mean absolute error (MAE) is similar to root mean square error (MSE). However, MAE is taking the sum of the absolute value of the error, rather than the square of the error in MSE.
 
-Next, I went and printed the evaluation metrics for the linear regression model. 
+Next, I printed the evaluation metrics for the linear regression model.
 
 ![linear_regression.jpg](/images/house/house7.jpg)
 
 ## 4.2 Robust Regression
 
-As stated at [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/): Robust regression is an alternative to least squares regression when data are contaminated with outliers or influential observations, and it can also be used for the purpose of detecting influential observations. A common example to use robust estimation is when the data contain outliers. 
+As stated at [ROBUST REGRESSION resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/): Robust regression is an alternative to least squares regression when the data is contaminated by outliers or influential observations, and can also be used to detect influential observations. A robust regression technique is often used when the data contain outliers.
 
-I used the Random sample consensus (RANSAC) model via sklearn. It is an iterative method to estimnate parameters of a mathematical model while treating the outliers with no influence. 
+I used the Random sample consensus (RANSAC) model to generate a prediction. The estimation method is an iterative process that takes into account outliers without any significant impact.
 
 ![robust_regression.jpg](/images/house/house8.jpg)
 
 ## 4.3 Ridge Regression
 
-There is a great resource on [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/). As they explain in the above resource, Ridge regression is a model tuning method that is used to analyse any data that suffers from multicollinearity. This method performs L2 regularization. When the issue of multicollinearity occurs, least-squares are unbiased, and variances are large, this results in predicted values being far away from the actual values. 
+There is no shortage of excellent resources on this topic, one great resource can be found here: [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/). As is explained in the referenced resource, Ridge regression is a model tuning method that is useful for analysing data that is plagued by multicollinearity. This method produces high-quality results with L2 regularization. When multicollinearity is a problem, least-squares methods are unbiased, and variances are large, which means predicted values will be far from the actual values.
 
 
 In summary this is what Ridge Regression does:
 
-- It shrinks the parameters. Therefore, it is used to prevent multicollinearity
-- It reduces the model complexity by coefficient shrinkage
+- It reduces the size of the parameters. Therefore, it is used to reduce the likelihood of multicollinearity.
+- The model is simplified by coefficient shrinkage.
 
 Here are the results for my Ridge Reegression model:
 
