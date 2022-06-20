@@ -231,9 +231,12 @@ Here are the results of the Random Forest Regressor model:
 ![neural_net1.jpg](/images/house/house16.jpg)
 
 ## 4.9 Support Vector Machine 
-![neural_net1.jpg](/images/house/house17.jpg)
 
 Support vector machines are commonly used for classification and regression methods. I used this tool for regression in this particular project. The Support Vector Regression (SVR) uses the same principles as the Support Vector Machine (SVM) for classification, with a few minor differences. A margin of tolerance (epsilon) is set to approximate the effectiveness of a SVM. The goal is to minimize error by individually tailoring the hyperplane which maximizes the margin. For more information on that topic, you can find it at the following address: [Support Vector Machine ](https://www.saedsayad.com/support_vector_machine_reg.htm).
+
+Here are the results of the Support Vector Machine model:
+
+![neural_net1.jpg](/images/house/house17.jpg)
 
 <a id="ch7"></a>
 # Step 5: Model Comparison 
