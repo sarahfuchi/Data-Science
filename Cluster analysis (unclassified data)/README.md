@@ -266,6 +266,19 @@ The increased metadata has allowed our recommender to gather more information an
 
 Collaborative filtering is one of the powerful personalization technologies used on the adaptive web. Collaborative filtering is the process of filtering or evaluating items through the opinions of other people. CF technology lets communities of web users share their opinions on large amounts of data, helping to reduce the amount of information that needs to be processed. [Paper by Schafer et al. on Collaborative Filtering Recommender Systems can be found here.](https://link.springer.com/chapter/10.1007/978-3-540-72079-9_9)
 
+Content-based engine which was discussed above has some significant limitations. It is only able to suggest movies which are similar to a certain movie. It is not able to provide recommendations across genres. Our engine does not take into account the personal preferences of a user, so anyone querying our engine for recommendations based on a movie will receive the same recommendations for that movie.
+
+In this part, I used a technique called collaborative filtering to make recommendations to movie watchers. By pooling the data from multiple users, I was able to create a more accurate list of movies that may be of interest. There are two main types of filtering, user-based and item-based.
+
+In a user-based recommendation system, the system recommends products to a user who is similar to others who have already liked those products. Although user-based CF is easy to implement, it has a number of shortcomings. One of the main problems with user preferences is that they can change over time. It may not be a good idea to precompute the matrix based on the neighboring users' data. We can use item-based CF to tackle this problem.
+
+In Item-Based Collaborative Filtering, similarity is measured between items, not between users. The CF uses user ratings to recommend items that are similar to the items that the target user rated. Item-based CF is more static, so you can successfully avoid dynamic user-configured issues. The main problem with this system is that it is not able to handle large number of users and products.The computation expense increases as the number of users and products increase. The data may be too sparse to draw any meaningful conclusions.
+
+Now we have the scalability and the sparsity issue. What do we do next? We can use a latent factor model to capture similarities between users and items. The optimization model would be as good as its ability to predict ratings for items when the user is the input. The success criterion would be the lowest possible RMSE value.
+
+Latent factors can be defined as properties or concepts that are exhibited by either users or items. For example, in music, the latent factor may relate to the genre to which the music belongs. We map each user and each item into a latent space with a dimension r. This makes it easier to understand the relationship between users and items as they are compared directly.
+
+![SVD](/images/movie/movie14.jpg)
 
 <a id="ch90"></a>
 # References
