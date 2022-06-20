@@ -176,23 +176,18 @@ Please note that these demographic recommender systems recommend all users with 
 
 Content-based filtering makes recommendations based on user preferences for product features. Content-based filtering is an important area of research that continues to develop and expand. It is considered to be the continuation of information from filtering research: [Belkin et al.'s paper](https://dl.acm.org/doi/abs/10.1145/138859.138861). 
 
-In a CBF system, the objects of interest are defined by their associated features. Text recommendation systems, such as the newsgroup filtering system, for example, use the words in their texts as features. A content-based recommender builds a profile of the user's interests based on the characteristics included in objects that the user has rated, which is known as "item-to-item correlation," and it determines the type of user profile dependent on the learning method used. Decision trees, neural nets, and vector-based representations have all been employed.
+In a CBF system, objects of interest are defined by their associated features. Text recommendation systems, such as newsgroup filtering systems, use words in the text as features.The content-based recommender builds a profile of user interests based on the features contained in the objects rated by the user, known as "item-to-item relevance", which determines the type of user profile based on the learning method used. Decision trees, neural nets, and vector-based representations have all been used in decision-making.
 
-[Other system can be found here, presented by Pazzani et al.](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf), in which the users rate the Web documents and assign them values from the binary “hot” and “cold” scale. These ratings are then used to determine the likelihood of the words appearing in hot or cold documents, based on the user ratings. Then there's the WebWatcher, which tracks users' actions and link choices on Web pages in order to recommend links on Web pages that the user could visit in the future. Unlike  Collaborative Filtering (CF), the CBF is not as complicated because all that is required is an analysis of the things that an independent user has purchased or seen. Because creating an adequate number of characteristics is not always achievable, each item in CBF is described by its features.
+[In a study of Web documents](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf), users assign a value to each one on a two-point scale, with "hot" representing a high value and "cold" representing a low value. These ratings are then used to determine the likelihood of words appearing in hot or cold documents based on user ratings.Then there is WebWatcher, which monitors user actions and link selections on web pages to recommend links on web pages that the user may visit in the future. Unlike collaborative filtering, the CBF is not as complicated because all that is required is an analysis of the things that an independent user has purchased or seen.
 
 * Plot description based Recommender
 
-Based on plot descriptions, I generated pairwise similarity scores for all movies and make recommendations based on those values. Our dataset's overview feature includes a plot explanation. Let's take a closer look at the numbers:
+Based on plot descriptions, I analyzed pairwise similarity scores between all movies and made recommendations based on those values. The dataset's overview feature includes a plot explanation that provides additional detail about the data. Let's take a closer look at the data:
 
 ```
 df2['overview'].head(5)
 ```
-0    In the 22nd century, a paraplegic Marine is di...
-1    Captain Barbossa, long believed to be dead, ha...
-2    A cryptic message from Bond’s past sends him o...
-3    Following the death of District Attorney Harve...
-4    John Carter is a war-weary, former military ca...
-Name: overview, dtype: object
+![plot descriptions](/images/movie/movie7.jpg)
 
 I needed to convert the word vector of each overview. For each overview, I constructed the TF-IDF vectors (Term Frequency-Inverse Document Frequency). The Term Frequency (TF) is the frequency, with which a word appears in a document and is expressed as (term instances/total instances). The relative count of documents containing the word is represented as log (number of documents/documents with term) in Inverse Document Frequency (IDF). Each word's total value to the documents in which it appears is equal to TF * IDF.
 
