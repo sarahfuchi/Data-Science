@@ -300,7 +300,7 @@ ratings[ratings['userId'] == 5]
 ![User 5 data](/images/movie/movie16.jpg)
 
 
-Then I will make a prediction for userID = 5, and movieID = 1029:
+Then I will make a prediction for userID = 5, and movieID = 356:
 
 ```
 svd.predict(5, 356, 4)
