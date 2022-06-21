@@ -219,7 +219,7 @@ cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 After further processing the data, I was able to find the index of a movie by its title, get a list of cosine similarity ratings for that movie compared to all other movies. Then, convert it to a tuple list, where the first element is the position and the second is the similarity value. Then sort the  list of tuples based on the similarity scores. Followed by noting the top ten items on this list.I ignored the first element because it's about the self (the movie most similar to a particular movie is the movie itself). I then found the titles that correspond to the top elements' indices.
 
-Let's check out the results for the movies 'Inception' and 'The Godfather'
+Let's check out the results for the movies 'Inception' and 'The Godfather':
 
 ```
 get_recommendations('Inception')
