@@ -280,16 +280,37 @@ Latent factors can be defined as properties or concepts that are exhibited by ei
 
 ![SVD](/images/movie/movie14.jpg)
 
-We can use another dataset with userId if we want to do collaborative filtering with SVD.
+We can use another dataset with userId if we want to do collaborative filtering with SVD. Below we can see the first 10 movies rated on scale of 5. I will present the data for userId = 5.
 
 ```
 from surprise import Reader, evaluate, Dataset, SVD
 reader = Reader()
 ratings = pd.read_csv('../input/the-movies-dataset/ratings_small.csv')
-ratings.head(10)
+ratings[ratings['userId'] == 5].head(10)
 ```
 
 ![SVD dataset](/images/movie/movie15.jpg)
+
+I then trained this dataset. I will pick userID = 5 to make predictions on:
+
+```
+ratings[ratings['userId'] == 5]
+```
+
+![User 5 data](/images/movie/movie16.jpg)
+
+
+Then I will make a prediction for userID = 5, and movieID = 1029:
+
+```
+svd.predict(5, 356, 4)
+```
+
+Prediction(uid=5, iid=356, r_ui=4, est=4.1839714326949125, details={'was_impossible': False})
+
+For movie with ID 356, we predict it will have a rating of **4.18**. Recommender system doesn't care what the movie is. The rating prediction algorithm is based on a user's assigned movie ID, and it tries to guess how other users rated the movie.
+
+to learn more about the surprise library: [see the Surprise documentation](https://surprise.readthedocs.io/en/stable/index.html)
 
 <a id="ch90"></a>
 # References
