@@ -1,4 +1,4 @@
-![titanic.png](/images/titanic/titanic0.png)
+![titanic.png](/images/titanic/titanic0.jpg)
 
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
