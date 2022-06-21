@@ -207,9 +207,7 @@ tfidf_matrix.shape
 
 We found that the 4800 movies in our dataset were described with over 20,000 different words. We can now compute a similarity score using this matrix. There are three possible similarity scores for this: the euclidean, Pearson, and cosine scores. There is no "right" answer when it comes to which score is the best.Different scores work well in different situations, so it's a good idea to experiment with different measures.
 
-A numerical value will be created that represents the similarity between two movies. We use the cosine similarity score because it is independent of magnitude and is reasonably simple and quick to calculate. It is defined mathematically as follows:
-
-![Cosine Similarity Score](/images/movie/movie7.jpg)
+A numerical value will be created that represents the similarity between two movies. We use the cosine similarity score because it is independent of magnitude and is reasonably simple and quick to calculate. 
 
 The dot product calculation gave me the cosine similarity score because I used the TF-IDF vectorizer. As a result, I implemented linear kernel() from sklearn instead of cosine similarity() because it's quicker.
 
