@@ -289,8 +289,6 @@ ratings[ratings['userId'] == 5].head(10)
 
 ![SVD dataset](/images/movie/movie15.jpg)
 
-I then trained this dataset. I will pick userID = 5 to make predictions on:
-
 Then I will make a prediction for userID = 5, and movieID = 356:
 
 ```
