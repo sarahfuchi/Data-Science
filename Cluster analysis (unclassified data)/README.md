@@ -310,6 +310,7 @@ Prediction(uid=5, iid=356, r_ui=4, est=4.1839714326949125, details={'was_impossi
 
 For movie with ID 356, we predict it will have a rating of **4.18**. Recommender system doesn't care what the movie is. The rating prediction algorithm is based on a user's assigned movie ID, and it tries to guess how other users rated the movie.
 
+There are recommendation enginees out there which are recommending content to others based on its demographic, content, and collaborative filtering features. While demographic filtering is easy to use, it's not always possible or practical. Hybrid systems can use content-based and collaborative filtering to improve their recommendation engines. This project helped me learn about filtering techniques, and future work can focus on improving the algorithm.
 
 <a id="ch90"></a>
 # References
