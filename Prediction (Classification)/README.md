@@ -20,64 +20,73 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 
 <a id="ch1"></a>
 # Project Overview
-In this project,I picked a very famous example for classificaion. It is 0 or 1. It either occurred or did not occur. For example, cancer positive or not, manufacturing part pass or fail, it will rain tomorrow or won't etc. 
+In this project, I chose a very popular example of classification. It is either 0 or 1. It either happened or it didn't happen. For example, cancer is positive or not, the production part is working or not working, tomorrow it will rain or not, etc.
 
-In this case, I am focusing on passingers survived the disaster or not. I used Kaggle's Getting Started Competition, Titanic: Machine Learning from Disaster. I followed a some steps such as focusing on problem definition, gathering the data, preparing the data, EDA (explanatory data analysis), coming up with the data model, validating the model and optimizing the model further.
-
-
-
+In this particular case, I am focusing on passengers who survived the disaster or not. I worked with the project in Kaggle's Getting Started Competition, Titanic: Machine Learning from Disaster. I followed a process of problem definition, gathering data, preparing data, explanatory data analysis, coming up with a data model, validating the model, and optimizing the model further.
 
 Let's take a look at the steps:
-   
-
 
 <a id="ch2"></a>
 # Data Science Steps
-1. **Problem Definition:** Finding "what sorts of people were more likely to survive?” using passenger data (ie name, age, gender, socio-economic class, etc).
-2. **Data Gathering:** Kaggle provided the input data on their website. That is how I got access to them.
-3. **Data Preperation:** I prepped the data by analyzing missing, or outlier data points.
-4. **EDA (Explanatory Data Analysis):** Garbage-in, garbage-out (GIGO). Therefore, it is essential to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step I made sure to make sense of the data. 
-5. **Data Modelling:** It is very important to know when to select which model. If we select the wrong model for a particular usecase, all the other steps become meaningless. 
-6. **Validate Model:** After training the model, I worked on validating it to see the performance and the overfitting/underfitting issues.
-7. **Optimize Model:** Using techniques like hyperparameter optimization, I worked on making the model better.  
+1. **Problem Definition:** What factors determined whether someone survived a disaster? Using passenger data, we were able to identify certain groups of people who were more likely to survive.
+2. **Data Gathering:** Kaggle provided the input data on their website.
+3. **Data Preperation:** I prepared the data by analyzing data points that were missing or outliers.
+4. **EDA (Explanatory Data Analysis):** If you input garbage data into a system, you'll get garbage output. Therefore, it is important to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step, I analyzed the data to make sure it was understandable.
+5. **Data Modelling:** It is important to know when to select a model. If we choose the wrong model for a particular use case, all other steps become pointless. 
+6. **Validate Model:** After training the model, I checked its performance and looked for any issues with overfitting or underfitting.
+7. **Optimize Model:** Using techniques like hyperparameter optimization, I worked on making the model better.
 
 <a id="ch3"></a>
 # Step 1: Problem Definition
-Goal is to predict the survival outcome of passengers on the Titanic.
+The goal of this project is to predict the survival outcomes of passengers on the Titanic.
 
 **Project Summary from Kaggle:**
-The sinking of the Titanic is one of the most infamous shipwrecks in history.
+The sinking of the Titanic is one of the most famous maritime disasters in history. On April 15, 1912, the RMS Titanic sank after colliding with an iceberg. This was considered to be an unsinkable ship, but nonetheless it went down due to the accident. Unfortunately, there weren't enough lifeboats for everyone on the ship, resulting in the death of 1502 people out of 2224 passengers and crew.
 
-On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.
-
-While there was some element of luck involved in surviving, it seems some groups of people were more likely to survive than others.
-
-In this challenge, we ask you to build a predictive model that answers the question: “what sorts of people were more likely to survive?” using passenger data (ie name, age, gender, socio-economic class, etc).
-
-
+Some groups of people seemed to be more likely to survive than others, although luck was involved. In this challenge, they want us to create a predictive model that can identify who is more likely to survive based on data about passengers (name, age, gender, social class, etc).
 
 <a id="ch4"></a>
 # Step 2: Data Gathering
 
-Dataset can be found at the Kaggle's mainpage for this project: [Kaggle's Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)
+The dataset can be found on Kaggle's main page for this project: [Kaggle's Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic/data)
 
 <a id="ch5"></a>
 # Step 3: Data Preperation
-The data is pre-processed already coming from Kaggle so I just focused on cleaning the data further. 
+The data was pre-processed by Kaggle, so I only focused on cleaning it up further.
 
 ## 3.1 Import Libraries
 
+```
+import sys 
 
-**These were the versions of the libraries I used**
+import pandas as pd 
+import matplotlib 
 
-Python version: 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-pandas version: 1.3.4
-matplotlib version: 3.4.3
-NumPy version: 1.20.3
-SciPy version: 1.7.1
-IPython version: 8.0.1
-scikit-learn version: 0.24.2
--------------------------
+import numpy as np 
+import scipy as sp 
+
+import IPython
+import sklearn 
+
+import random
+import time
+
+from subprocess import check_output
+
+from sklearn import svm, tree, linear_model, neighbors, naive_bayes, ensemble, discriminant_analysis, gaussian_process
+from xgboost import XGBClassifier
+
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+from sklearn import feature_selection
+from sklearn import model_selection
+from sklearn import metrics
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import matplotlib.pylab as pylab
+import seaborn as sns
+from pandas.tools.plotting import scatter_matrix
+```
 
 **This is the input data from Kaggle :**  ['gender_submission.csv', 'test.csv', 'train.csv']
 
