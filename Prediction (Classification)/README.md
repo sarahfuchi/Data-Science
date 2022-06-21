@@ -91,14 +91,7 @@ from pandas.tools.plotting import scatter_matrix
 **This is the input data from Kaggle :**  ['gender_submission.csv', 'test.csv', 'train.csv']
 
 ## 3.2 Pre-view of the Data
-1. The *Survived* variable is the outcome or dependent variable. The datatype is 1 if the person survived and 0 if they did not survive. The rest of the variables are independent variables.
-2. The *PassengerID* and *Ticket* variables are considered to be random and unique identifiers that do not affect the result variables. Thus, they will not be analyzed.
-3. The variable *Pclass* is an ordinal data type for the ticket class, a measure of socioeconomic status (SES), representing 1 = highest class, 2 = middle class, and 3 = lowest class.
-4. The *Name* variable can be used in feature engineering to derive information about gender, such as from the title, family size, and social status of a person's surname. Since these variables already exist, we'll see if title, like master, makes a difference.
-5. The *Sex* and *Embarked* variables will be converted to dummy variables for mathematical calculations.
-6. The *Age* and *Fare* variable are continuous quantitative datatypes.
-7. The *SibSp* represents number of related siblings/spouse aboard and *Parch* represents number of related parents/children aboard. 
-8. The *Cabin* variable can be used in feature engineering for approximate position on ship when the incident occurred and SES from deck levels. However, since there are many null values, it does not add value and thus is excluded from analysis.
+The *Survived* variable is the outcome or dependent variable. The datatype is 1 if the person survived and 0 if they did not survive. The rest of the variables are independent variables. Most variable names are self explanatory but a couple may be worth mentioning. The *SibSp* represents number of related siblings/spouse aboard and *Parch* represents number of related parents/children aboard. 
 
 ![pre-view_dataframe.jpg](/images/titanic/titanic1.jpg)
 
