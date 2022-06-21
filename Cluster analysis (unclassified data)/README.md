@@ -278,7 +278,7 @@ Latent factors can be defined as properties or concepts that are exhibited by ei
 
 ![SVD](/images/movie/movie14.jpg)
 
-We can use another dataset with userId if we want to do collaborative filtering with SVD. Below we can see the first 10 movies rated on scale of 5. I will show the data for userId = 5, but there is data for all users in this dataset. I leveraged the Surprise library in the code below. To learn more: [see the Surprise documentation.](https://surprise.readthedocs.io/en/stable/index.html)
+We can use another dataset with userId if we want to do collaborative filtering with SVD. Below we can see the first 10 movies rated on a scale of 5. I will show the data for userId = 5, but there is data for all users in this dataset. I leveraged the Surprise library in the code below. To learn more: [see the Surprise documentation.](https://surprise.readthedocs.io/en/stable/index.html)
 
 ```
 from surprise import Reader, evaluate, Dataset, SVD
@@ -297,9 +297,9 @@ svd.predict(5, 356, 4)
 
 Prediction(uid=5, iid=356, r_ui=4, est=4.1839714326949125, details={'was_impossible': False})
 
-For movie with ID 356, we predict it will have a rating of **4.18**. Recommender system doesn't care what the movie is. The rating prediction algorithm is based on a user's assigned movie ID, and it tries to guess how other users rated the movie.
+For the movie with ID 356, we predict it will have a rating of **4.18**. Recommender system doesn't care what the movie is. The rating prediction algorithm is based on a user's assigned movie ID, and it tries to guess how other users rated the movie.
 
-There are recommendation enginees out there which are recommending content to others based on its demographic, content, and collaborative filtering features. While demographic filtering is easy to use, it's not always possible or practical. Hybrid systems can use content-based and collaborative filtering to improve their recommendation engines. This project helped me learn about filtering techniques, and future work can focus on improving the algorithm.
+There are recommendation engines out there which are recommending content to others based on its demographic, content, and collaborative filtering features. While demographic filtering is easy to use, it's not always possible or practical. Hybrid systems can use content-based and collaborative filtering to improve their recommendation engines. This project helped me learn about filtering techniques, and future work can focus on improving the algorithm.
 
 <a id="ch90"></a>
 # References
