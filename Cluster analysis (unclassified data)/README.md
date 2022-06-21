@@ -278,7 +278,7 @@ Latent factors can be defined as properties or concepts that are exhibited by ei
 
 ![SVD](/images/movie/movie14.jpg)
 
-We can use another dataset with userId if we want to do collaborative filtering with SVD. Below we can see the first 10 movies rated on scale of 5. I will present the data for userId = 5. I leveraged the Surprise library in the code below. To learn more: [see the Surprise documentation.](https://surprise.readthedocs.io/en/stable/index.html)
+We can use another dataset with userId if we want to do collaborative filtering with SVD. Below we can see the first 10 movies rated on scale of 5. I will show the data for userId = 5, but there is data for all users in this dataset. I leveraged the Surprise library in the code below. To learn more: [see the Surprise documentation.](https://surprise.readthedocs.io/en/stable/index.html)
 
 ```
 from surprise import Reader, evaluate, Dataset, SVD
@@ -290,13 +290,6 @@ ratings[ratings['userId'] == 5].head(10)
 ![SVD dataset](/images/movie/movie15.jpg)
 
 I then trained this dataset. I will pick userID = 5 to make predictions on:
-
-```
-ratings[ratings['userId'] == 5]
-```
-
-![User 5 data](/images/movie/movie16.jpg)
-
 
 Then I will make a prediction for userID = 5, and movieID = 356:
 
