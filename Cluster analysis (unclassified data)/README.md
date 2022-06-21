@@ -314,7 +314,7 @@ There are recommendation enginees out there which are recommending content to ot
 
 <a id="ch90"></a>
 # References
-I would like to express gratitude for the following resources, and thank developers for the inspiration:
+Thank you for the following resources I learned from: 
 
 * [Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
 * [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
