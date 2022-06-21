@@ -291,6 +291,8 @@ ratings[ratings['userId'] == 5].head(10)
 
 ![SVD dataset](/images/movie/movie15.jpg)
 
+To learn more about the surprise library: [see the Surprise documentation](https://surprise.readthedocs.io/en/stable/index.html)
+
 I then trained this dataset. I will pick userID = 5 to make predictions on:
 
 ```
@@ -310,7 +312,6 @@ Prediction(uid=5, iid=356, r_ui=4, est=4.1839714326949125, details={'was_impossi
 
 For movie with ID 356, we predict it will have a rating of **4.18**. Recommender system doesn't care what the movie is. The rating prediction algorithm is based on a user's assigned movie ID, and it tries to guess how other users rated the movie.
 
-to learn more about the surprise library: [see the Surprise documentation](https://surprise.readthedocs.io/en/stable/index.html)
 
 <a id="ch90"></a>
 # References
@@ -322,6 +323,7 @@ I would like to express gratitude for the following resources, and thank develop
 * [Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
 * [Syskill & Webert: Identifying interesting web sites](https://www.aaai.org/Papers/Symposia/Spring/1996/SS-96-05/SS96-05-010.pdf)
 * [Collaborative Filtering Recommender Systems](https://link.springer.com/chapter/10.1007/978-3-540-72079-9_9)
+* [Surprise documentation](https://surprise.readthedocs.io/en/stable/index.html)
 
 
 
