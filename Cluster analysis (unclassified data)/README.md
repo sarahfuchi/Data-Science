@@ -280,6 +280,17 @@ Latent factors can be defined as properties or concepts that are exhibited by ei
 
 ![SVD](/images/movie/movie14.jpg)
 
+We can use another dataset with userId if we want to do collaborative filtering with SVD.
+
+```
+from surprise import Reader, evaluate, Dataset, SVD
+reader = Reader()
+ratings = pd.read_csv('../input/the-movies-dataset/ratings_small.csv')
+ratings.head(10)
+```
+
+![SVD dataset](/images/movie/movie15.jpg)
+
 <a id="ch90"></a>
 # References
 I would like to express gratitude for the following resources, and thank developers for the inspiration:
