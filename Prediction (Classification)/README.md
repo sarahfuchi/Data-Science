@@ -109,7 +109,7 @@ Divided the data into 75/25 format. 75 is training and 25 is test.
 After cleaning and organizing the data, exploration is crucial in order to find insights. I used EDA to visualize the data I am working with, in order to understand its properties and stats.
 Visualizing the quantitative data on graph:
 
-![Titanic_Project_28_1.png](/images/titanic/titanic3.png)
+![Titanic_Project_28_1.png](/images/titanic/titanic3.jpg)
 
 Looking at individual features by survival:
 
