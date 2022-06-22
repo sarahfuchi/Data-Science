@@ -99,14 +99,14 @@ The *Survived* variable is the outcome or dependent variable. The datatype is 1 
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
-I cleaned the data by identifying and removing abnormal values and outliers, filled in missing data where appropriate, worked on improving the features, and performed data conversion. Convert objects to categories using the Label Encoder.
+I cleaned the data by identifying and removing abnormal values and outliers, filled in missing data where appropriate, worked on improving the features, and performed data conversion. I used Label encoder to convert objects to category. 
 
-I splitted the data in 75/25 format, 75 being the training and 25 being the testing. I paid attention to this split as to not overfit or underfit the model.
+Divided the data into 75/25 format. 75 is training and 25 is test. 
 
 <a id="ch6"></a>
 # Step 4: Explanatory Data Analysis (EDA)
-Exploration is key after cleaning and organizing the dataset. I worked on EDA to visualize the properties and stats of the data I am working with.
 
+After cleaning and organizing the data, exploration is crucial in order to find insights. I used EDA to visualize the data I am working with, in order to understand its properties and stats.
 Visualizing the quantitative data on graph:
 
 ![Titanic_Project_28_1.png](/images/titanic/titanic3.png)
