@@ -1,4 +1,4 @@
-![titanic.png](/images/titanic/titanic0.jpg)
+![titanic.jpg](/images/titanic/titanic0.jpg)
 
 This project uses Kaggle datasets and gets inspiration from public notebooks.
 
@@ -108,43 +108,43 @@ Divided the data into 75/25 format. 75 is training and 25 is test.
 
 After cleaning and organizing the data, it is important to explore it in order to find any insights. I used EDA to visualize the data I am working with, in order to better understand its properties and statistics. 
 
-![Titanic_Project_28_1.png](/images/titanic/titanic3.jpg)
+![Titanic_Project_28_1.jpg](/images/titanic/titanic3.jpg)
 
 Looking at individual features by survival:
 
-![Titanic_Project_29_1.png](/images/titanic/titanic4.jpg)
+![Titanic_Project_29_1.jpg](/images/titanic/titanic4.jpg)
 
 I then compared class and a 2nd feature:
 
-![Titanic_Project_30_1.png](/images/titanic/titanic5.jpg)
+![Titanic_Project_30_1.jpg](/images/titanic/titanic5.jpg)
 
 Followed by comparing sex and a 2nd feature:
 
-![Titanic_Project_31_1.png](/images/titanic/titanic6.jpg)
+![Titanic_Project_31_1.jpg](/images/titanic/titanic6.jpg)
 
 Family size and sex vs survival and class and sex vs survival:
 
-![Titanic_Project_32_1.png](/images/titanic/titanic7.jpg)
+![Titanic_Project_32_1.jpg](/images/titanic/titanic7.jpg)
 
 Embark data visualization with class and sex vs survival:
 
-![Titanic_Project_33_1.png](/images/titanic/titanic8.jpg)
+![Titanic_Project_33_1.jpg](/images/titanic/titanic8.jpg)
 
 Distributions of age of passengers who survived or did not survive:
 
-![Titanic_Project_34_1.png](/images/titanic/titanic9.jpg)
+![Titanic_Project_34_1.jpg](/images/titanic/titanic9.jpg)
 
 Histogram comparison of sex, class, and age by survival:
 
-![Titanic_Project_35_1.png](/images/titanic/titanic10.jpg)
+![Titanic_Project_35_1.jpg](/images/titanic/titanic10.jpg)
 
 Pairplot to see the entire dataset:
 
-![Titanic_Project_36_1.png](/images/titanic/titanic11.jpg)
+![Titanic_Project_36_1.jpg](/images/titanic/titanic11.jpg)
 
 Heatmap of the entire dataset:
 
-![Titanic_Project_37_0.png](/images/titanic/titanic12.jpg)
+![Titanic_Project_37_0.jpg](/images/titanic/titanic12.jpg)
 
 <a id="ch7"></a>
 # Step 5: Data Modelling
@@ -168,7 +168,7 @@ In order to define that I worked on some performance analysis for different mode
 
 Then let's see the barplot:
 
-![Titanic_Project_39_1.png](/images/titanic/titanic14.png)
+![Titanic_Project_39_1.jpg](/images/titanic/titanic14.jpg)
 
 <a id="ch8"></a>
 ## 5.1 Evaluate Model Performance
@@ -186,11 +186,11 @@ This is the result of the model with improvements:
 
 The confusion matrix without normalization:
 
-![Titanic_Project_44_1.png](/images/titanic/titanic16.png)
+![Titanic_Project_44_1.jpg](/images/titanic/titanic16.jpg)
 
 Confusion matrix with normalization:
 
-![Titanic_Project_44_2.png](/images/titanic/titanic17.png)
+![Titanic_Project_44_2.jpg](/images/titanic/titanic17.jpg)
 
 ## 5.11 Model Performance with Cross-Validation (CV)
 In this section, I worked on cross valdiation (CV). By using CV I was autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
@@ -220,7 +220,7 @@ The next step is to validate the data.
 
 Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
 
-![Titanic_Project_54_0.png](/images/titanic/titanic20.jpg)
+![Titanic_Project_54_0.jpg](/images/titanic/titanic20.jpg)
 
 I worked on using more than one model instead of picking one. This gave an opportunity to create a supermodel. I removed the models 
 who are exactly correlated to another model (1) and the models with no predict_proba attribute are also removed. 
