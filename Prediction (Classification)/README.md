@@ -244,7 +244,7 @@ Next steps will include further preprocessing and feature engineering to improve
 
 <a id="ch90"></a>
 # References
-I would like to express gratitude for the following resources, and thank developers for the inspiration:
+I would like to thank the following resources and developers:
 
 * [A Data Science Framework: To Achieve 99% Accuracy by LD Freeman](https://www.kaggle.com/ldfreeman3/a-data-science-framework-to-achieve-99-accuracy) - Indepth dive to data science steps.
 
