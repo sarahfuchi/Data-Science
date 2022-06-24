@@ -226,17 +226,16 @@ Comparison of algorithm predictions with each other, where 1 = similar and 0 = o
 
 ![Titanic_Project_54_0.jpg](/images/titanic/titanic20.jpg)
 
-I worked on using more than one model instead of picking one. This gave an opportunity to create a supermodel. I removed the models 
-who are exactly correlated to another model (1) and the models with no predict_proba attribute are also removed. 
+I have been working on using multiple models instead of choosing one. This gave me a chance to create a supermodel. Removed models that correlates exactly with another model (1).
 
-I then worked on hard vote or majority rules and soft vote or weighted probabilities. I tuned each estimator before creating a super model.
+I worked on voting rules that used hard or majority votes, as well as those that used weighted probabilities. I tuned each estimator before creating a supermodel.
 
 <a id="ch13"></a>
 # Conclusion
 
-The model achieved an accuracy of about 78% when predicting the outcomes of unseen data. This was achieved with a simple Decision Tree. Which decision tree algorithm is best for my data: simple vs an improved model? The simple decision tree algorithm had a better default submission score, and with tuning, I was still able to achieve the same best accuracy score as the one I achieved using a simple decision tree model. The cross-validation accuracy score was much higher than the submission accuracy score.
+The model achieved an accuracy of about 78% when predicting the outcomes of unseen data. This was achieved with a simple decision tree. Which decision tree algorithm is best for my data: simple vs an improved model? The simple decision tree algorithm had a better default submission score, and with tuning, I was still able to achieve the same best accuracy score as the one I achieved using a simple decision tree model. The cross-validation accuracy score was much higher than the submission accuracy score.
 
-Next steps will include further preprocessing and feature engineering to improve the CV score and Kaggle score as well as the overall accuracy.
+Next steps will involve further preprocessing and feature engineering to improve the CV score and Kaggle score as well as the overall accuracy.
 
 <a id="ch90"></a>
 # References
