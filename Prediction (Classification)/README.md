@@ -22,7 +22,7 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 # Project Overview
 In this project, I chose a very popular example of classification. It is either 0 or 1. It either happened or it didn't happen. For example, cancer is positive or not, the production part is working or not working, tomorrow it will rain or not, etc.
 
-In this particular case, I am focusing on passengers who survived the disaster or not. I worked with the project in Kaggle's Getting Started Competition, Titanic: Machine Learning from Disaster. I followed a process of problem definition, gathering data, preparing data, explanatory data analysis, coming up with a data model, validating the model, and optimizing the model further.
+I worked with the project in Kaggle's Getting Started Competition, Titanic: Machine Learning from Disaster. I  focused on predicting the survival data for passengers. I followed a process of problem definition, gathering data, preparing data, explanatory data analysis, coming up with a data model, validating the model, and optimizing the model further.
 
 Let's take a look at the steps:
 
@@ -246,8 +246,8 @@ Next steps will include further preprocessing and feature engineering to improve
 # References
 I would like to thank the following resources and developers:
 
+* [Kaggle: Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/overview)
 * [A Data Science Framework: To Achieve 99% Accuracy by LD Freeman](https://www.kaggle.com/ldfreeman3/a-data-science-framework-to-achieve-99-accuracy) - Indepth dive to data science steps.
-
 * [Introduction to Machine Learning with Python: A Guide for Data Scientists by Andreas Müller and Sarah Guido](https://www.amazon.com/gp/product/1449369413/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1449369413&linkId=740510c3199892cca1632fe738fb8d08) - Machine Learning 101 written by a core developer of sklearn
 * [Visualize This: The Flowing Data Guide to Design, Visualization, and Statistics by Nathan Yau](https://www.amazon.com/gp/product/0470944889/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=0470944889&linkId=f797da48813ed5cfc762ce5df8ef957f) - Learn the art and science of data visualization
 * [Machine Learning for Dummies by John Mueller and Luca Massaron ](https://www.amazon.com/gp/product/1119245516/ref=as_li_tl?ie=UTF8&tag=kaggle-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=1119245516&linkId=5b4ac9a6fd1da198d82f9ca841d1af9f) - Easy to understand for a beginner book, but detailed to actually learn the fundamentals of the topic
