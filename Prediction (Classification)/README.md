@@ -193,7 +193,7 @@ Confusion matrix with normalization:
 ![Titanic_Project_44_2.jpg](/images/titanic/titanic17.jpg)
 
 ## 5.11 Model Performance with Cross-Validation (CV)
-In this section, I worked on cross valdiation (CV). The advantages of cross_validate function by [sklearn are](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation):
+In this section, I worked on cross valdiation (CV). Some advantages of [sklearn cross_validate function](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation) are:
 
 - It allows specifying multiple metrics for evaluation.
 - It returns a dict containing fit-times, score-times in addition to the test score.
