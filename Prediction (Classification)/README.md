@@ -172,14 +172,11 @@ Then let's see the barplot showing the accuracy score:
 
 <a id="ch8"></a>
 ## 5.1 Evaluate Model Performance
-After some data pre-processing, analysis, and machine learning algorithms (MLA), I was able to predict passenger survival with ~82% accuracy. can I do better?
+After some data pre-processing, analysis, and machine learning algorithms (MLA), I was able to predict passenger survival with ~82% accuracy. Can I do better?
 
 
 ### Somethings to consider: ###
-Our accuracy is increasing, but can we do better? I looked more correlations to improve the data.
-
-
-This is the result of the model with improvements:
+I improved the data by using the learnings from EDA. This is the result of the Decision Tree model with improvements:
 
 
 ![handmade_model_score.jpg](/images/titanic/titanic15.jpg)
@@ -230,8 +227,7 @@ Comparison of algorithm predictions with each other, where 1 = similar and 0 = o
 I worked on using more than one model instead of picking one. This gave an opportunity to create a supermodel. I removed the models 
 who are exactly correlated to another model (1) and the models with no predict_proba attribute are also removed. 
 
-I then worked on hard vote or majority rules and soft vote or weighted probabilities. I tuned each estimator before creating a super model
-
+I then worked on hard vote or majority rules and soft vote or weighted probabilities. I tuned each estimator before creating a super model.
 
 <a id="ch12"></a>
 # Step 7: Optimize Model
