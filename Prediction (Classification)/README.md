@@ -11,10 +11,11 @@ This project uses Kaggle datasets and gets inspiration from public notebooks.
 1. [Chapter 6 - Step 4: Explanatory Data Analysis (EDA)](#ch6)
 1. [Chapter 7 - Step 5: Data Modelling](#ch7)
 1. [Chapter 8 - Evaluate Model Performance](#ch8)
-1. [Chapter 9 - Tune Model with Hyper-Parameters](#ch9)
-1. [Chapter 10 - Tune Model with Feature Selection](#ch10)
-1. [Chapter 11 - Step 6: Validate Model](#ch11)
-1. [Chapter 12 - Step 7: Optimize Model](#ch12)
+1. [Chapter 9 - Model Performance with Cross-Validation (CV)](#ch9)
+1. [Chapter 10 - Tune Model with Hyper-Parameters](#ch10)
+1. [Chapter 11 - Tune Model with Feature Selection](#ch11)
+1. [Chapter 12 - Step 6: Validate Model](#ch12)
+1. [Chapter 13 - Conclusion](#ch13)
 1. [References](#ch90)
 
 
@@ -189,7 +190,8 @@ Confusion matrix with normalization:
 
 ![Titanic_Project_44_2.jpg](/images/titanic/titanic17.jpg)
 
-## 5.11 Model Performance with Cross-Validation (CV)
+<a id="ch9"></a>
+# 5.11 Model Performance with Cross-Validation (CV) 
 In this section, I worked on cross validiation (CV). I leveraged the [sklearn cross_validate function](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation). Some advantages of sklearn cross_validate function are:
 
 - It allows specifying multiple metrics for evaluation.
@@ -197,7 +199,7 @@ In this section, I worked on cross validiation (CV). I leveraged the [sklearn cr
 
  By using CV I was also autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
 
-<a id="ch9"></a>
+<a id="ch10"></a>
 # 5.12 Tune Model with Hyper-Parameters
 I worked on hyper-parameter optimization to see how various hyper-parameter settings will change the model accuracy. 
 
@@ -210,14 +212,14 @@ DT before any after optimization:
 
 ![dt_parameters.jpg](/images/titanic/titanic18.jpg)
 
-<a id="ch10"></a>
+<a id="ch11"></a>
 ## 5.13 Tune Model with Feature Selection
 Recursive feature elimination (RFE) with cross validation (CV) is used for feature selection:
 
 ![feature_elimination.jpg](/images/titanic/titanic19.jpg)
 
-<a id="ch11"></a>
-# Step 6: Validate Model
+<a id="ch12"></a>
+# Step 6: Correlation of Models
 The next step is to validate the data.
 
 Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
@@ -229,9 +231,8 @@ who are exactly correlated to another model (1) and the models with no predict_p
 
 I then worked on hard vote or majority rules and soft vote or weighted probabilities. I tuned each estimator before creating a super model.
 
-<a id="ch12"></a>
-# Step 7: Optimize Model
-## Conclusion
+<a id="ch13"></a>
+# Conclusion
 
 Model provides ~0.78 submission accuracy on the unseen data which was achieved with the simple decision tree. Using the same dataset and different implementation of a decision tree with a super model (adaboost, random forest, gradient boost, xgboost, etc.) with tuning does not exceed the ~0.78 submission accuracy. Conclusion was the simple decision tree algorithm had the best default submission score and with tuning, I still achieved the same best accuracy score.
  
