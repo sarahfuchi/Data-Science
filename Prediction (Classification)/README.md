@@ -176,7 +176,7 @@ After some data pre-processing, analysis, and machine learning algorithms (MLA),
 
 
 ### Somethings to consider: ###
-I improved the data by using the learnings from EDA. This is the result of the Decision Tree model with improvements:
+I improved the data by using the learnings from EDA. This is the result of the Decision Tree model after data improvements:
 
 
 ![handmade_model_score.jpg](/images/titanic/titanic15.jpg)
