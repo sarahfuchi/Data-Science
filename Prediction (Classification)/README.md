@@ -91,7 +91,7 @@ from pandas.tools.plotting import scatter_matrix
 **This is the input data from Kaggle :**  ['gender_submission.csv', 'test.csv', 'train.csv']
 
 ## 3.2 Pre-view of the Data
-The *Survived* variable is the outcome or dependent variable. The datatype is 1 if the person survived and 0 if they did not survive. The rest of the variables are independent variables. Most variable names are self explanatory but a couple may be worth mentioning. The *SibSp* represents number of related siblings/spouse aboard and *Parch* represents number of related parents/children aboard. 
+The *Survived* variable is the outcome or dependent variable. The datatype is 1 if the person survived and 0 if they did not survive. The rest of the variables are independent variables. Most variable names are self explanatory but a couple may be worth mentioning. The *SibSp* represents the number of siblings / spouses aboard the Titanic and *Parch* represents the number of parents / children aboard the Titanic.
 
 ![pre-view_dataframe.jpg](/images/titanic/titanic1.jpg)
 
@@ -149,9 +149,9 @@ Heatmap of the entire dataset:
 <a id="ch7"></a>
 # Step 5: Data Modelling
 
-I will use supervised learning classification algorithm for predicting the binary ourcome (survived or not). Here are some of the available models I considered using: 
+I will use supervised learning classification algorithm for predicting the binary ourcome (survived or not). Here are some resources I found helpful: 
 
-**Machine Learning Classification Algorithms:**
+**Some Machine Learning Classification Algorithms:**
 * [Ensemble Methods](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble)
 * [Generalized Linear Models (GLM)](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model)
 * [Naive Bayes](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes)
@@ -162,7 +162,7 @@ I will use supervised learning classification algorithm for predicting the binar
 
 
 ### Which Machine Learning Algorithm (MLA) to choose ?
-In order to define that I worked on some performance analysis for different models:
+Deciding on which model to use is never a straight answer. In practice, best approach is to work on different algorithms and then compare their performace. Below I summarized the models and their performances. 
 
 ![compare_mla.jpg](/images/titanic/titanic13.jpg)
 
