@@ -234,15 +234,9 @@ I then worked on hard vote or majority rules and soft vote or weighted probabili
 <a id="ch13"></a>
 # Conclusion
 
-Model provides ~0.78 submission accuracy on the unseen data which was achieved with the simple decision tree. Using the same dataset and different implementation of a decision tree with a super model (adaboost, random forest, gradient boost, xgboost, etc.) with tuning does not exceed the ~0.78 submission accuracy. Conclusion was the simple decision tree algorithm had the best default submission score and with tuning, I still achieved the same best accuracy score.
- 
--  The train dataset has a different distribution than the test/validation dataset and population. This created wide margins between the cross validation (CV) accuracy score and Kaggle submission accuracy score.
-- Given the same dataset, decision tree based algorithms, seemed to converge on the same accuracy score after proper tuning.
--  Despite tuning, no machine learning algorithm, exceeded the homemade algorithm. The author will theorize, that for small datasets, a manmade algorithm is the bar to beat. 
+The model achieved an accuracy of about 78% when predicting the outcomes of unseen data. This was achieved with a simple Decision Tree. Which decision tree algorithm is best for my data: simple vs an improved model? The simple decision tree algorithm had a better default submission score, and with tuning, I was still able to achieve the same best accuracy score as the one I achieved using a simple decision tree model. The cross-validation accuracy score was much higher than the submission accuracy score.
 
 Next steps will include further preprocessing and feature engineering to improve the CV score and Kaggle score as well as the overall accuracy.
-
-
 
 <a id="ch90"></a>
 # References
