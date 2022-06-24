@@ -162,11 +162,11 @@ I will use supervised learning classification algorithm for predicting the binar
 
 
 ### Which Machine Learning Algorithm (MLA) to choose ?
-Deciding on which model to use is never a straight answer. In practice, best approach is to work on different algorithms and then compare their performace. Below I summarized the models and their performances. 
+Deciding on which model to use is never a straight answer. In practice, best approach is to work on different algorithms and then compare their performace. Below I summarized the models I worked with, and their performances:
 
 ![compare_mla.jpg](/images/titanic/titanic13.jpg)
 
-Then let's see the barplot:
+Then let's see the barplot showing the accuracy score:
 
 ![Titanic_Project_39_1.jpg](/images/titanic/titanic14.jpg)
 
@@ -193,7 +193,12 @@ Confusion matrix with normalization:
 ![Titanic_Project_44_2.jpg](/images/titanic/titanic17.jpg)
 
 ## 5.11 Model Performance with Cross-Validation (CV)
-In this section, I worked on cross valdiation (CV). By using CV I was autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
+In this section, I worked on cross valdiation (CV). The advantages of cross_validate function by [sklearn are](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation):
+
+- It allows specifying multiple metrics for evaluation.
+- It returns a dict containing fit-times, score-times in addition to the test score.
+
+ By using CV I was also autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
 
 <a id="ch9"></a>
 # 5.12 Tune Model with Hyper-Parameters
