@@ -31,9 +31,9 @@ Let's take a look at the steps:
 # Data Science Steps
 1. **Problem Definition:** What factors determined whether someone survived a disaster? Using passenger data, we were able to identify certain groups of people who were more likely to survive.
 2. **Data Gathering:** Kaggle provided the input data on their website.
-3. **Data Preperation:** I prepared the data by analyzing data points that were missing or outliers.
-4. **EDA (Explanatory Data Analysis):** If you input garbage data into a system, you'll get garbage output. Therefore, it is important to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step, I analyzed the data to make sure it was understandable.
-5. **Data Modelling:** It is important to know when to select a model. If we choose the wrong model for a particular use case, all other steps become pointless. 
+3. **Data Preparation:** I prepared the data by analyzing data points that were missing or outliers.
+4. **EDA (Exploratory Data Analysis):** If you input garbage data into a system, you'll get garbage output. Therefore, it is important to use descriptive and graphical statistics to look for patterns, correlations and comparisons in the dataset. In this step, I analyzed the data to make sure it was understandable.
+5. **Data Modeling:** It is important to know when to select a model. If we choose the wrong model for a particular use case, all other steps become pointless. 
 6. **Validate Model:** After training the model, I checked its performance and looked for any issues with overfitting or underfitting.
 7. **Optimize Model:** Using techniques like hyperparameter optimization, I worked on making the model better.
 
@@ -100,7 +100,7 @@ The *Survived* variable is the outcome or dependent variable. The datatype is 1 
 
 <a id="ch5"></a>
 ## 3.3 Data Pre-processing: 
-I cleaned the data by identifying and removing abnormal values and outliers, filled in missing data where appropriate, worked on improving the features, and performed data conversion. I used Label encoder to convert objects to category. 
+I cleaned the data by identifying and removing abnormal values and outliers, filled in missing data where appropriate, worked on improving the features, and performed data conversion. I used Label encoder to convert objects to categories. 
 
 Divided the data into 75/25 format. 75 is training and 25 is test. 
 
@@ -150,7 +150,7 @@ Heatmap of the entire dataset:
 <a id="ch7"></a>
 # Step 5: Data Modelling
 
-I will use supervised learning classification algorithm for predicting the binary ourcome (survived or not). Here are some resources I found helpful: 
+I will use a supervised learning classification algorithm for predicting the binary ourcome (survived or not). Here are some resources I found helpful: 
 
 **Some Machine Learning Classification Algorithms:**
 * [Ensemble Methods](http://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble)
@@ -192,12 +192,12 @@ Confusion matrix with normalization:
 
 <a id="ch9"></a>
 # 5.11 Model Performance with Cross-Validation (CV) 
-In this section, I worked on cross validiation (CV). I leveraged the [sklearn cross_validate function](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation). Some advantages of sklearn cross_validate function are:
+In this section, I worked on cross validation (CV). I leveraged the [sklearn cross_validate function](https://scikit-learn.org/stable/modules/cross_validation.html#multimetric-cross-validation). Some advantages of sklearn cross_validate function are:
 
 - It allows specifying multiple metrics for evaluation.
 - It returns a dict containing fit-times, score-times in addition to the test score.
 
- By using CV I was also autamatically able to split and score the model multiple times, to can get an idea of how well it will perform on unseen data.
+ By using CV I was also automatically able to split and score the model multiple times, to get an idea of how well it will perform on unseen data.
 
 <a id="ch10"></a>
 # 5.12 Tune Model with Hyper-Parameters
@@ -205,7 +205,7 @@ I worked on hyper-parameter optimization to see how various hyper-parameter sett
 
 Decision trees are simple to understand usually. They can also be visualized. Data prep is quite easy compared to other methods. They can handle both numeric and categorical data. We can validate a model using tests.
 
-However, decision trees do not generalize data well, they do have tendency to memorize (overfitting). Pruning can be used to overcome this issue. Small variations may impact the decision trees hugely. They can be biased if some classes dominate.
+However, decision trees do not generalize data well, they do have a tendency to memorize (overfitting). Pruning can be used to overcome this issue. Small variations may impact the decision trees hugely. They can be biased if some classes dominate.
 
 
 DT before any after optimization:
@@ -221,7 +221,7 @@ Recursive feature elimination (RFE) with cross validation (CV) is used for featu
 <a id="ch12"></a>
 # Step 6: Correlation of Models
 
-Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
+Comparison of algorithm predictions with each other, where 1 = similar and 0 = not similar in a heatmap:
 
 ![Titanic_Project_54_0.jpg](/images/titanic/titanic20.jpg)
 
