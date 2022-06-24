@@ -220,7 +220,6 @@ Recursive feature elimination (RFE) with cross validation (CV) is used for featu
 
 <a id="ch12"></a>
 # Step 6: Correlation of Models
-The next step is to validate the data.
 
 Comparison of algorithm predictions with each other, where 1 = similar and 0 = opposite in a heatmap:
 
