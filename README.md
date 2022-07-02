@@ -10,7 +10,7 @@ This repository holds the below projects. Currently they're binned in five diffe
 4. [Cluster analysis (unclassified data)](https://github.com/sarahfuchi/Data-Science/blob/main/Cluster%20analysis%20(unclassified%20data)/README.md)
 5. [Advanced data science (NLP, computer vision, deep neural nets)](https://github.com/sarahfuchi/Data-Science/blob/main/Advanced%20data%20science%20(NLP%2C%20computer%20vision%2C%20deep%20neural%20nets)/README.md))
 
-Each project contains more documentation explaning the summary and the key take aways of the project. 
+Each project contains more documentation explaning the summary and the key takeaways of the project. 
 
 ## Background
 
