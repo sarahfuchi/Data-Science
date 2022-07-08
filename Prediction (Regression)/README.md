@@ -257,8 +257,7 @@ In this project, I learned about different regression models and how to evaluate
 # References
 Thank you for the following resources and developers for the inspiration:
 
-* [Practical Introduction to 10 Regression Algorithm](https://www.kaggle.com/code/faressayah/practical-introduction-to-10-regression-algorithm/) - Kaggle notebook going over different regression techniques.
-* [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+* [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
 * [what metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
 * [Robust regression resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
 * [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
