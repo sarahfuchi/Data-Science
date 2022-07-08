@@ -1,6 +1,6 @@
 ![titanic.jpg](/images/titanic/titanic0.jpg)
 
-This project uses Kaggle datasets and gets inspiration from public notebooks.
+I  focused on predicting the survival data for passengers after a disaster.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
