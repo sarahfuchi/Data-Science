@@ -1,6 +1,6 @@
 ![Getting Started with a Movie Recommendation System](/images/movie/movie0.jpg)
 
-This project focuses on movie recommendation systems, using the TMDB 5000 movie dataset and taking inspiration from public notebooks.
+This project focuses on movie recommendation systems using the TMDB 5000 movie dataset.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
@@ -39,6 +39,8 @@ What can we say about the success of a movie before it is released? Do you have 
 This is a great place to start digging into those questions, with data on the plot, cast, crew, budget, and revenues of several thousand films.
 
 # Data Sets
+
+The dataset for this project can be found on the Kaggle website or using the Kaggle app in Python. I chose the second option. 
 
 I worked with the following datasets: tmdb_5000_credits.csv and tmdb_5000_movies.csv  
 
@@ -303,9 +305,9 @@ There are recommendation engines out there which are recommending content to oth
 
 <a id="ch90"></a>
 # References
-Thank you for the following resources I learned from: 
+Thank you for the following resources I found helpful: 
 
-* [Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
+* [Kaggle: Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
 * [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
 * [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
 * [Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)

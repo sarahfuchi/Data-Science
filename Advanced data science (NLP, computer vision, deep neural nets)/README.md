@@ -3,6 +3,8 @@
 “Every artist dips his brush in his own soul, and paints his own nature into his pictures.”
 -Henry Ward Beecher
 
+The project revolves around using Generative Adversarial Networks (GAN) to incorporate Monet's style into existing photographs and recreate that style from scratch.
+
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
 1. [Chapter 2 - Data Science Steps](#ch2)
