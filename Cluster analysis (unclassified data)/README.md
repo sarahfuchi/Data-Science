@@ -307,7 +307,7 @@ There are recommendation engines out there which are recommending content to oth
 # References
 Thank you for the following resources I found helpful: 
 
-* [Kaggle: Getting Started with a Movie Recommendation System](https://www.kaggle.com/code/ibtesama/getting-started-with-a-movie-recommendation-system/notebook) 
+* [Kaggle: Getting Started with a Movie Recommendation System](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata) 
 * [Recommender Systems: Types of Filtering Techniques](https://www.ijert.org/research/recommender-systems-types-of-filtering-techniques-IJERTV3IS110197.pdf)
 * [A Taxonomy of Recommender Agents on the Internet](https://link.springer.com/article/10.1023/A:1022850703159)
 * [Information Filtering and Information Retrieval: Two Sides of the Same Coin?](https://dl.acm.org/doi/abs/10.1145/138859.138861)
