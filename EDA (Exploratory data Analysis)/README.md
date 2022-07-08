@@ -349,10 +349,7 @@ A negative correlation between two variables means that one variable increases w
 
 <a id="ch90"></a>
 # References
-I want to say thank you for the following resources and thank the developers for the inspiration.
-* [Breast Cancer Analysis and Prediction](https://www.kaggle.com/code/vincentlugat/breast-cancer-analysis-and-prediction) - Indepth dive to EDA steps.
-* [Advanced EDA](https://www.kaggle.com/code/kanberburak/advanced-eda) -  Advanced EDA
 
-
+* [Kaggle: Breast Cancer Prediction](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)   
 
 
