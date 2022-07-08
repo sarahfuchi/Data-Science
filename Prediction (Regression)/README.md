@@ -1,6 +1,6 @@
 ![Let's look at the home prices!](/images/house/house0.jpg)
 
-In this project, I will use regression analysis to calculate home prices. This project uses Kaggle datasets and draws inspiration from public notebooks.
+In this project, I will use regression analysis to calculate home prices. 
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
@@ -258,7 +258,7 @@ In this project, I learned about different regression models and how to evaluate
 Thank you for the following resources and developers for the inspiration:
 
 * [Kaggle: House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
-* [what metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
+* [What metrics to use when evaluating the regression models](https://towardsdatascience.com/what-are-the-best-metrics-to-evaluate-your-regression-model-418ca481755b)
 * [Robust regression resource by UCLA](https://stats.oarc.ucla.edu/r/dae/robust-regression/)
 * [Ridge Regression](https://www.mygreatlearning.com/blog/what-is-ridge-regression/)
 * [Lasso Regression](https://www.mygreatlearning.com/blog/understanding-of-lasso-regression/#lassoregression)
