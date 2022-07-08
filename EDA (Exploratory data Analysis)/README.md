@@ -1,6 +1,6 @@
 ![Exploratory data analysis for breast cancer prediction](/images/breast_cancer/breast_cancer0.jpg)
 
-Data science is having a huge impact on the medical field, specifically in the area of cancer studies. In this project we will work with breast cancer data. This project focuses on data analysis using a simple step-by-step explanation, and it takes inspiration from public notebooks.
+Data science is having a huge impact on the medical field, specifically in the area of cancer studies. In this project I will work with breast cancer data. This project focuses on data analysis using a simple step-by-step explanation.
 
 # Table of Contents
 1. [Chapter 1 - Project Overview](#ch1)
