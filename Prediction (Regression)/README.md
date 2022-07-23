@@ -1,4 +1,4 @@
-![Let's look at the home prices!](/images/house/house0.jpg)
+![Let's look at the home prices!](/images/house/house0.jpeg)
 
 In this project, I will use regression analysis to calculate home prices. 
 
