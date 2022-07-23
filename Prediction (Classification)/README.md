@@ -1,4 +1,4 @@
-![titanic.jpg](/images/titanic/titanic0.jpg)
+![titanic.jpg](/images/titanic/titanic0.jpeg)
 
 I  focused on predicting the survival data for passengers after a disaster.
 
