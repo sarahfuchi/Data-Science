@@ -1,13 +1,19 @@
-# Sarah Fuchi - Data Science Projects Portfolio
+### Hi there 👋
 
-## Index
+- 🔭 I'm currently working on building up my GitHub profile with data science projects.  
+- 🌱 I’m learning the basics of Exploratory Data Analysis (EDA), Prediction (Regression), Prediction (Classification), Cluster analysis (Unclassified data) and Advanced data science (Deep Learning).
+- 👯 I’m looking to collaborate on any of the presented data-science projects or open to other projects. 
+- 🤔 I'm looking for help with front end applications, ideally displaying the data-science results on a website. 
+- 💬 Ask me anything data-science related, and I'll be happy to help you out. I love talking about this!
+- 😄 Pronouns: She/her.
+- ⚡ Fun fact: I enjoy knitting when I'm not coding.
 
-This repository holds the below projects. Currently they're binned in five different categories.
+### Backround
 
-1. [EDA (Exploratory data Analysis)](https://github.com/sarahfuchi/Data-Science/blob/main/EDA%20(Exploratory%20data%20Analysis)/README.md)
-2. [Prediction (Regression)](https://github.com/sarahfuchi/Data-Science/blob/main/Prediction%20(Regression)/README.md)
-3. [Prediction (Classification)](https://github.com/sarahfuchi/Data-Science/blob/main/Prediction%20(Classification)/README.md)
-4. [Cluster analysis (unclassified data)](https://github.com/sarahfuchi/Data-Science/blob/main/Cluster%20analysis%20(unclassified%20data)/README.md)
-5. [Advanced data science (NLP, computer vision, deep neural nets)](https://github.com/sarahfuchi/Data-Science/blob/main/Advanced%20data%20science%20(NLP%2C%20computer%20vision%2C%20deep%20neural%20nets)/README.md))
+I graduated from Tokyo Institute of Technology with a Bachelor of Science in electrical engineering. I have worked at some of the top firms in the industry as a quality engineer, but I have found a new passion in data science. I started coding more often in order to improve my skills. I enjoyed automating tasks we commonly complete manually. My team definitely appreciated that! I started working on predictive analytics projects on my own, even though I wasn't assigned any. I came up with my own ideas, designed a solution, and started implementing them proactively.
 
-Each project has more detailed documentation that explains the summary and key takeaways of the project.
+### Contact me
+
+📫 To reach me, please contact me on LinkedIn or email me!
+
+[Email](mailto:sarahfuchi@gmail.com?subject=[GitHub]%20Source%20Han%20Sans) | [LinkedIn](https://www.linkedin.com/in/sarahfuchi/)
