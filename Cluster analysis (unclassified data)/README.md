@@ -1,4 +1,4 @@
-![Getting Started with a Movie Recommendation System](/images/movie/movie0.jpg)
+![Getting Started with a Movie Recommendation System](/images/movie/movie0.jpeg)
 
 This project focuses on movie recommendation systems using the TMDB 5000 movie dataset.
 
