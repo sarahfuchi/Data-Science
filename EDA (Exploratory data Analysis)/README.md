@@ -71,9 +71,9 @@ The process of data analysis involves organizing and summarizing the raw data, d
 
 Some outcomes of EDA:
 
-- Extracting averages, mean, minimum, and maximum values can help you better understand variables.
-- Use the data to identify obvious potenital errors, outliers, and missing values.
-- Identify patterns in data by visualizing it in graphs. For example, box plots, scatter plots, and histograms can help you see patterns in the data.
+- Extracting averages, mean, minimum, and maximum values can help us better understand variables.
+- We can use the data to identify obvious potenital errors, outliers, and missing values.
+- Identify patterns in data by visualizing it in graphs. For example, box plots, scatter plots, and histograms can help us see patterns in the data.
 
 In this summary, I will focus on the steps of EDA. I will explain what each step is and what it involves.:
 
