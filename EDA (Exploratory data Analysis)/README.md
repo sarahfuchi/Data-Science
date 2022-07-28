@@ -71,10 +71,9 @@ The process of data analysis involves organizing and summarizing the raw data, d
 
 Some outcomes of EDA:
 
-- The distribution of a single variable can be described using its center, spread, shape, and outliers.
-- Making sure the data is correct.
-- Checking assumptions is a common step in more complex statistical analyses. This helps to ensure that the data being analyzed is accurate and reliable.
-- To investigate relationships between variables, researchers often use correlational analysis. This involves measuring how closely two variables correlate. Correlational analysis can help scientists understand how one variable influences another.
+- Extracting averages, mean, minimum, and maximum values can help you better understand variables.
+- Use the data to identify obvious potenital errors, outliers, and missing values.
+- Identify patterns in data by visualizing it in graphs. For example, box plots, scatter plots, and histograms can help you see patterns in the data.
 
 In this summary, I will focus on the steps of EDA. I will explain what each step is and what it involves.:
 
