@@ -208,7 +208,7 @@ Decision trees are simple to understand usually. They can also be visualized. Da
 However, decision trees do not generalize data well, they do have a tendency to memorize (overfitting). Pruning can be used to overcome this issue. Small variations may impact the decision trees hugely. They can be biased if some classes dominate.
 
 
-DT before any after optimization:
+DT before any optimization:
 
 ![dt_parameters.jpg](/images/titanic/titanic18.jpg)
 
